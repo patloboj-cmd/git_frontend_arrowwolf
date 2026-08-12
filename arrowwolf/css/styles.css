@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+:root{
+    --cor-principal: #022873;
+    --cor-secundária: #186FE8;
+    --cor-destaque: #015be0;
+    --cor-branca: #F3F3F3;
+    --cor-fundo: #0D0D0D;
+    --tempo: 0.4s ease;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cabecalho{
+    background-color: var(--cor-fundo);
+    padding: 20px 80px;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+.logo h1{
+    font-family: 'elms sans';
+    font-size: 45px;
+    color: #F3F3F3;
+}
+span{
+    color: #015be0;
+}
+.menu-links{
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    margin: 20px 20px;
+
+}
+.menu-links a{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+    font-size: 18;
+    transition: var(--tempo)
+}
+.menu-links a:hover{
+    color: var(--cor-destaque);
+}
