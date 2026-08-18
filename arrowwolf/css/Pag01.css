@@ -1,11 +1,14 @@
   :root{
-    --green:#2eb85c;
-    --green-dark:#249a4b;
+    --green:#3bb664;
+    --green-dark:#067518;
     --border:#e2e5e9;
     --text:#1f2430;
     --muted:#6b7280;
     --bg:#f2f3f5;
     --card-bg:#ffffff;
+    --pink: #EE45A0;
+    --purple: #8B4FE8;
+    --grad: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
   }
   *{box-sizing:border-box;}
   body{
@@ -88,7 +91,7 @@
   }
   .pay-tab svg{width:18px;height:18px;flex-shrink:0;}
   .pay-tab.active{
-    border-color:var(--green);
+    border-color:var(--grad);
     background:#eefbf2;
     color:var(--green-dark);
   }
@@ -168,7 +171,7 @@
   .pay-btn{
     width:100%;
     padding:16px;
-    background:var(--green);
+    background:var(--grad);
     color:#fff;
     border:none;
     border-radius:8px;
