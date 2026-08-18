@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patty Wolf's System</title>
+  <!-- favicon - icone na aba do navegador  -->
+  <link rel="shortcut icon" href="img/pattyWolf2.png" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- fontes -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/pattySystem1.css">
+
+
+</head>
+<body>
+
+  <!-- ===================================================================
+       CABEÇALHO DO SITE
+       Tag <header>: cabeçalho da PÁGINA inteira (logo + navegação principal).
+       =================================================================== -->
+  <header class="topo">
+    <div class="container">
+      <p class="marca">
+        <img src="img/pattyWolf2.png" alt="logomarca Patty Wolf´s" class="marca-logo">
+           Patty Wolf's
+      <!-- <p class="marca"><span class="marca-selo">PW</span>Patty Wolf's</p> -->
+      </p>
+
+      <!-- <nav>: agrupa os links de navegação principal do site -->
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li><a href="#sobre-produto">Sobre</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">Dúvidas</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-botoes"></div>
+      <a href="#" class="btn btn-primary">Login</a>
+      <a href="#planos" class="btn btn-primary">Quero começar grátis</a>
+
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       CONTEÚDO PRINCIPAL DA PÁGINA
+       Tag <main>: existe só UMA por página, e envolve todo o conteúdo
+       que não se repete em outras páginas (ou seja, tudo, menos o
+       header e o footer).
+       =================================================================== -->
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <!-- <section> primeira impressão do produto, com imagem + apresentação + chamada. -->
+    <section id="hero" aria-labelledby="titulo-hero">
+      <div class="container">
+        <!-- .hero-grid: organiza texto e imagem lado a lado (2 colunas) -->
+        <div class="hero-grid">
+
+          <div class="hero-texto">
+            <p class="etiqueta">Feito para consultoras de beleza</p>
+            <h1 id="titulo-hero">
+              Chega de planilha e post-it.<br>
+              <span class="destaque">Sua consultoria organizada do jeito certo.</span>
+            </h1>
+            <p class="hero-lead">
+              Pedidos, estoque, clientes e financeiro em um só lugar — pra você vender mais e se preocupar menos.
+            </p>
+            <div class="hero-cta">
+              <a href="#planos" class="btn btn-primary">Quero começar grátis</a>
+              <a href="#sobre-produto" class="btn btn-ghost">Ver como funciona</a>
+            </div>
+          </div>
+
+          <!-- <figure>: tag semântica pra conteúdo ilustrativo autocontido
+               (aqui, o mockup do sistema). -->
+          <figure class="hero-figura">
+            <img
+              src="img/dispositivos_sistema.png"
+              alt="Telas do sistema Patty Wolf's mostrando o Dashboard, a lista de clientes e a tela de login, em computador, tablet e celular">
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SOBRE O PRODUTO ================= -->
+    <!-- Seção que mostra "dores do dia a dia da consultora" e "benefícios" -->
+    <section id="sobre-produto" aria-labelledby="titulo-sobre">
+
+      <!-- <header> aqui dentro da <section> é válido: representa o
+           cabeçalho DESSA seção específica (etiqueta + título),
+           não o cabeçalho do site inteiro. -->
+      <header class="section-head">
+        <p class="etiqueta">Sobre o produto</p>
+        <h2 id="titulo-sobre">Tudo que sua consultoria precisa, num só luga</h2>
+      </header>
+
+      <div class="container">
+        <!-- <ul>: é uma LISTA de itens (os cards de benefício),
+             por isso usamos <ul>/<li> em vez de <div> soltas. -->
+        <ul class="beneficios-lista">
+          <li class="beneficio-card">
+            <span class="beneficio-icone" aria-hidden="true">📋</span>
+            <h3>Sem planilhas perdidas</h3>
+            <p>Pedidos, estoque e clientes organizados em um único lugar.</p>
+          </li>
+          <li class="beneficio-card">
+            <span class="beneficio-icone" aria-hidden="true">⏰</span>
+            <h3>Nunca perca a validade</h3>
+            <p>Alertas automáticos antes do produto vencer no estoque.</p>
+          </li>
+          <li class="beneficio-card">
+            <span class="beneficio-icone" aria-hidden="true">💰</span>
+            <h3>Lucro real, sem susto</h3>
+            <p>Saiba exatamente quanto sobra no fim de cada mês.</p>
+          </li>
+          <li class="beneficio-card">
+            <span class="beneficio-icone" aria-hidden="true">💜</span>
+            <h3>Clientes fidelizadas</h3>
+            <p>Histórico de compras e lembretes de aniversário automáticos.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= DEPOIMENTOS ================= -->
+    <section id="depoimentos" aria-labelledby="titulo-depoimentos">
+      <div class="container">
+        <header class="section-head">
+          <p class="etiqueta">Quem usa, recomenda</p>
+          <h2 id="titulo-depoimentos">Consultoras que saíram do caos</h2>
+        </header>
+
+        <ul class="depoimentos-lista">
+          <!-- <blockquote>: tag semântica pra citação de outra pessoa.
+               <cite> marca o nome de quem falou. -->
+          <li class="depoimento-card">
+            <blockquote>
+              <p>“Hoje sei exatamente o que vendi, pra quem e quanto lucrei.”</p>
+              <footer>
+                <img src="img/ana.jpg" alt="foto de Ana Beatriz" class="depoimento-avatar">
+                <div>
+                  <cite>Ana Beatriz Lima</cite>
+                  <span>Consultora há 3 anos</span>
+                </div>
+                
+              </footer>
+            </blockquote>
+          </li>
+          <li class="depoimento-card">
+            <blockquote>
+              <p>“Com os alertas, nunca mais deixei produto vencer parado.”</p>
+              <footer>
+                <img src="img/camila.jpg" alt="foto de Camila  Duarte" class="depoimento-avatar">
+                <div>
+                    <cite>Camila Duarte</cite>
+                    <span>Consultora independente</span>
+                </div>
+                
+              </footer>
+            </blockquote>
+          </li>
+          <li class="depoimento-card">
+            <blockquote>
+              <p>“Organizei seis meses de bagunça financeira numa tarde só.”</p>
+              <footer>
+                
+                <img src="img/renata.jpg" alt="foto de Renata Souza" class="depoimento-avatar">
+                <div>
+                    <cite>Renata Souza</cite>
+                    <span>Consultora há 5 anos</span>
+                </div>
+                
+              </footer>
+            </blockquote>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= PLANOS ================= -->
+    <!-- 3 cartões: Gratuito, Essencial e Profissional (destaque). -->
+    <section id="planos" aria-labelledby="titulo-planos">
+      <div class="container">
+        <header class="section-head">
+          <p class="etiqueta">Planos</p>
+          <h2 id="titulo-planos">Escolha o plano do tamanho da sua consultoria</h2>
+        </header>
+
+        <ul class="planos-lista">
+          <li class="plano-card">
+            <p class="plano-nome">Comece gratuitamente</p>
+            <p class="plano-preco">R$ 0<span>/sempre</span></p>
+            <p class="plano-descricao">Pra testar o sistema sem compromisso.</p>
+            <ul class="plano-beneficios">
+              <li>Até 10 clientes cadastradas</li>
+              <li>Controle básico de estoque</li>
+              <li>1 usuária</li>
+            </ul>
+            <a href="checkout.html" class="btn btn-ghost">Começar grátis</a>
+          </li>
+
+          <li class="plano-card destaque">
+            <p class="plano-selo">Mais escolhido</p>
+            <p class="plano-nome">Profissional</p>
+            <p class="plano-preco">R$ 49<span>,90/mês</span></p>
+            <p class="plano-descricao">Pra escalar as vendas sem perder o controle.</p>
+            <ul class="plano-beneficios">
+              <li>Clientes ilimitadas</li>
+              <li>Alertas inteligentes</li>
+              <li>Relatórios avançados</li>
+              <li>Suporte prioritário</li>
+            </ul>
+            <a href="checkout.html" class="btn btn-primary">Começar agora</a>
+          </li>
+
+          <li class="plano-card">
+            <p class="plano-nome">Essencial</p>
+            <p class="plano-preco">R$ 29<span>,90/mês</span></p>
+            <p class="plano-descricao">Pra quem está organizando a consultoria.</p>
+            <ul class="plano-beneficios">
+              <li>Até 50 clientes cadastradas</li>
+              <li>Controle de estoque e validade</li>
+              <li>Financeiro básico</li>
+            </ul>
+            <a href="checkout.html" class="btn btn-ghost">Começar agora</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <!-- <details>/<summary>: tags nativas do HTML que já abrem e
+         fecham sozinhas ao clicar, sem precisar de JavaScript. -->
+    <section id="faq" aria-labelledby="titulo-faq">
+      <div class="container">
+        <header class="section-head">
+          <p class="etiqueta">Dúvidas frequentes</p>
+          <h2 id="titulo-faq">Perguntas que consultoras nos fazem</h2>
+        </header>
+
+        <div class="faq-lista">
+          <details class="faq-item" open>
+            <summary>Preciso saber mexer em computador?</summary>
+            <p>Não. O sistema foi pensado pra quem nunca usou uma ferramenta de gestão antes.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Meus dados ficam seguros?</summary>
+            <p>Sim, todas as informações ficam armazenadas com criptografia, com acesso só pra você.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Posso cancelar quando quiser?</summary>
+            <p>Pode, sem fidelidade nem multa, direto pelo próprio sistema.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Existe teste gratuito nos planos pagos?</summary>
+            <p>Sim, 7 dias grátis para usar o sistema.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA FINAL ================= -->
+    <section id="cta-final" aria-labelledby="titulo-cta-final">
+      <div class="cta-caixa">
+        <h2 id="titulo-cta-final">Sua consultoria merece sair do papel.</h2>
+        <p>Junte-se a centenas de consultoras que trocaram a bagunça por controle.</p>
+        <a href="#planos" class="btn btn-primary">Quero começar agora</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       RODAPÉ DO SITE
+       =================================================================== -->
+  <footer class="rodape">
+    <div class="container">
+      <!-- <p class="marca"><span class="marca-selo">PW</span>Patty Wolf's</p> -->
+
+      <nav aria-label="Links do rodapé">
+        <ul>
+          <li><a href="#sobre-produto">Produto</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <!-- <address>: tag semântica específica pra informações de contato -->
+      <address>
+        suporte@arrowwolf.com.br
+      </address>
+    </div>
+    <small>© 2026 Patty Wolf's Management System — desenvolvido por arrowwolf.</small>
+  </footer>
+
+</body>
+</html>
