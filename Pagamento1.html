@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/CSS/Pag01.css">
+<title>PATTYSYSTEM PAY</title>
+</head>
+<body>
+
+<div class="topbar"></div>
+
+<div class="wrapper">
+  <div class="card">
+
+    <div class="product-header">
+      <img src="/IMG/PATTYLOGOEDIT.png" alt="PATTYSYSTEM">
+      <h1>PATTYSYSTEM PLANO 1</h1>
+    </div>
+
+    <div class="field">
+      <input type="text" placeholder="Nome completo">
+    </div>
+    <div class="field">
+      <input type="email" placeholder="Email">
+    </div>
+    <div class="field">
+      <input type="email" placeholder="Confirmar email">
+    </div>
+
+    <!-- Payment method tabs -->
+    <div class="pay-tabs">
+      <div class="pay-tab active" data-target="panel-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        Cartão
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+      </div>
+      <div class="pay-tab" data-target="panel-pix">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12l3.5-3.5a2 2 0 0 1 2.83 0L17 12"></path><path d="M7 12l3.5 3.5a2 2 0 0 0 2.83 0L17 12"></path><rect x="2" y="10" width="3" height="4" rx="1"></rect><rect x="19" y="10" width="3" height="4" rx="1"></rect></svg>
+        Pix
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+      </div>
+      <div class="pay-tab" data-target="panel-boleto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="2" height="16"></rect><rect x="7" y="4" width="1" height="16"></rect><rect x="10" y="4" width="2" height="16"></rect><rect x="14" y="4" width="1" height="16"></rect><rect x="17" y="4" width="2" height="16"></rect><rect x="21" y="4" width="1" height="16"></rect></svg>
+        Boleto
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+      </div>
+    </div>
+
+    <!-- Card panel -->
+    <div class="pay-panel active" id="panel-card">
+      <div class="field field-icon">
+        <input type="text" placeholder="Número de Cartão de Crédito">
+        <span class="icn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        </span>
+      </div>
+      <div class="row2">
+        <div>
+          <select>
+            <option>Mês</option>
+            <option>01</option><option>02</option><option>03</option><option>04</option>
+            <option>05</option><option>06</option><option>07</option><option>08</option>
+            <option>09</option><option>10</option><option>11</option><option>12</option>
+          </select>
+        </div>
+        <div>
+          <select>
+            <option>Ano</option>
+            <option>2026</option><option>2027</option><option>2028</option>
+            <option>2029</option><option>2030</option><option>2031</option>
+          </select>
+        </div>
+      </div>
+      <div class="field field-icon">
+        <input type="text" placeholder="Cód. segurança">
+        <span class="icn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        </span>
+      </div>
+      <div class="field">
+        <select>
+          <option>1x de R$ 297,00</option>
+          <option>2x de R$ 148,50</option>
+          <option>3x de R$ 99,00</option>
+        </select>
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" checked>
+        Salvar dados para as próximas compras
+      </label>
+
+      <div class="security-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        Nós protegemos seus dados de pagamento usando encriptação para prover segurança no nível de bancos.
+      </div>
+
+      <button class="pay-btn">PAGAR AGORA</button>
+    </div>
+
+    <!-- PIX panel -->
+    <div class="pay-panel" id="panel-pix">
+      <div class="pix-box">
+        <div class="qr-placeholder">QR Code Pix</div>
+        <p>Escaneie o QR Code acima com o app do seu banco<br>ou copie o código abaixo para pagar.</p>
+        <div class="field">
+          <input type="text" value="00020126360014BR.GOV.BCB.PIX0114..." readonly>
+        </div>
+      </div>
+
+      <div class="security-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        O pagamento é confirmado automaticamente após a compensação, em poucos minutos.
+      </div>
+
+      <button class="pay-btn">GERAR CÓDIGO PIX</button>
+    </div>
+
+    <!-- Boleto panel -->
+    <div class="pay-panel" id="panel-boleto">
+      <div class="boleto-box">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="1.6" height="16"></rect><rect x="6.5" y="4" width="0.8" height="16"></rect><rect x="9" y="4" width="1.6" height="16"></rect><rect x="12.5" y="4" width="0.8" height="16"></rect><rect x="15" y="4" width="1.6" height="16"></rect><rect x="18.5" y="4" width="0.8" height="16"></rect><rect x="21" y="4" width="0.8" height="16"></rect></svg>
+        <p>O boleto será gerado após a confirmação e enviado para o seu email.</p>
+        <p class="deadline">Vencimento em 3 dias úteis</p>
+      </div>
+
+      <div class="security-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        A confirmação do pagamento pode levar até 2 dias úteis após o pagamento do boleto.
+      </div>
+
+      <button class="pay-btn">GERAR BOLETO</button>
+    </div>
+
+    <div class="footer-brand">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
+      <b>Arrowwolf</b>
+    </div>
+    <div class="footer-lang">🌐 Internacional</div>
+    <div class="footer-legal">
+      Este site é protegido pelo reCAPTCHA do Google<br>
+      <a href="#">Política de Privacidade</a> e <a href="#">Termos de Serviço</a><br>
+      Ao prosseguir você concorda com os <a href="#">Termos de Compra</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.pay-tab');
+  const panels = document.querySelectorAll('.pay-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
