@@ -946,3 +946,8 @@ footer {
         padding: 60px 25px;
     }
 }
+
+footer {
+    background-color: #080808;
+    color: #ffffff;
+}
