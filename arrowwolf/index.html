@@ -7,185 +7,312 @@
     <title>arrowwolf</title>
     <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+
+    <!-- ══════════════════════════════════════════════════
+         HEADER
+         .cabecalho → 100% de largura (fundo branco vai longe)
+         .col-line  → centraliza e desenha as linhas laterais
+         .nav_bar   → flex interno com logo e botões
+    ═══════════════════════════════════════════════════ -->
     <header class="cabecalho">
-        <nav class="nav_bar">
-            <div class="elementos_menu_direita">
-                <div class="logo"><img src="imagens/logoBrancoPreto.png" alt="Logo da arrowwolf"></div>
-                <ul class="menu">
-                    <li>
-                        <a href="">Produtos</a>
-                        <a href="">Soluções</a>
-                        <a href="">Cases</a>
-                        <a href="">Nosso time</a>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="elemtos_menu_esquerda">
-                <button class="btn_direct_login"><a href="pattySystem1.html">Patty System</a></button>
-                <button class="btn_contato">Fale Conosco</button>
-            </div>
-        </nav>
-
-    </header>
-    <main>
-        <section class="section_1">
-            <div>
-                <p class="texto_1_section_1"></p>
-            </div>
-            <button class="btn_section_1">Entre em contato</button>
-        </section>
-
-        <section class="section_2"> 
-            <p texto_1_section_2></p>
-            <div class="card_section_2">
-                <img src="imagens/trembao1.png" alt="Trem Bão" class="img_card_section_2">
-                <h2 class="h2_card_section_2"></h2>
-                <p class="p_card_section_2"></p>
-            </div>
-            <div class="card_section_2">
-                <img src="" alt="Encanto" class="img_card_section_2">
-                <h2 class="h2_card_section_2"></h2>
-                <p class="p_card_section_2"></p>
-            </div>
-            <a href="pattySystem1.html">
-                <div class="card_section_2">
-                    <img src="" alt="Patty Sistem" class="img_card_section_2">
-                    <h2 class="h2_card_section_2"></h2>
-                    <p class="p_card_section_2"></p>
+        <div class="col-line">
+            <nav class="nav_bar">
+                <div class="elementos_menu_direita">
+                    <div class="logo">
+                        <img src="img/logoBrancoPreto.png" alt="Logo da arrowwolf">
+                    </div>
+                    <ul class="menu">
+                        <li>
+                            <a href="#produtos">Produtos</a>
+                            <a href="salespage.html">Soluções</a>
+                            <a href="#cases">Cases</a>
+                            <a href="#nosso_time">Nosso time</a>
+                        </li>
+                    </ul>
                 </div>
-            </a>
+                <div class="elementos_menu_esquerda">
+                    <button class="btn_direct_login"><a href="pattySystem1.html">Patty System</a></button>
+                    <button class="btn_contato">Fale Conosco</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 1 — HERO COM VÍDEO
+             O <video> fica solto dentro da section (position
+             absolute, cobre tudo). O .col-line e .wrapper
+             ficam na frente com z-index maior.
+        ═══════════════════════════════════════════════ -->
+        <section class="section_1">
+
+
+            <div class="col-line">
+                <div class="wrapper">
+                    <p class="texto_1_section_1">Tecnologia que transforma negócios reais.</p>
+                    <button class="btn_section_1">Entre em contato</button>
+                </div>
+            </div>
         </section>
-        <section class="section_3">
-                        <div class="section-header">
-                            <h2>Nossas Soluções Digitais</h2>
-                            <p>Conheça os produtos e serviços que oferecemos para alavancar seu negócio</p>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 2 — CARDS COM IMAGEM + TEXTO
+             Estrutura de cada card:
+             .card_s2           → coluna flex vertical
+             .card_s2__img      → imagem tall (proporção fixa)
+             .card_s2__body     → área de texto abaixo da imagem
+        ═══════════════════════════════════════════════ -->
+        <section class="section_2">
+            <div class="col-line">
+                <div class="wrapper">
+
+                    <!-- título centralizado da seção -->
+                    <h2 class="titulo_section_2">
+                        Soluções que já estão<br>transformando negócios reais
+                    </h2>
+
+                    <!-- grid de 3 cards -->
+                    <div class="grid_section_2">
+
+                        <!-- card 1 -->
+                        <div class="card_s2">
+                            <div class="card_s2__img">
+                                <img src="img/Design sem nome (2).png" alt="Trem Bão — site de restaurante">
+                            </div>
+                            <div class="card_s2__body">
+                                <h3 class="card_s2__titulo">Sites para Restaurantes</h3>
+                                <p class="card_s2__desc">Cardápio digital, reservas online e identidade visual que converte visitas em mesas cheias.</p>
+                                <a href="#" class="card_s2__link">Ver projeto →</a>
+                            </div>
                         </div>
 
-                        <div class="grid-cards">
-                            <div class="card featured">
-                                <div class="badge-featured">Destaque</div>
-                                <div>
-                                    <div class="card-icon"><i class="fas fa-cubes"></i></div>
-                                    <h3>Patty System (Saas/Gestão)</h3>
-                                    <p>Sistema completo de gestão desenvolvido para consultoras multimarcas e pequenos negócios gerenciarem vendas, estoque e clientes em um só lugar.</p>
-                                </div>
-                            <div>
-                            <a href="#" class="btn-card" target="_blank">Saber Mais</a>
+                        <!-- card 2 -->
+                        <div class="card_s2">
+                            <div class="card_s2__img">
+                                <img src="img/Para não esquecer.png" alt="Site institucional">
+                            </div>
+                            <div class="card_s2__body">
+                                <h3 class="card_s2__titulo">Sites Institucionais</h3>
+                                <p class="card_s2__desc">Presença digital profissional com design exclusivo para posicionar sua marca como referência no segmento.</p>
+                                <a href="#" class="card_s2__link">Ver projeto →</a>
+                            </div>
                         </div>
+
+                        <!-- card 3 -->
+                        <div class="card_s2">
+                            <div class="card_s2__img">
+                                <img src="img/Patty System Insta.png" alt="Patty System — sistema de gestão">
+                            </div>
+                            <div class="card_s2__body">
+                                <h3 class="card_s2__titulo">Patty System</h3>
+                                <p class="card_s2__desc">Sistema SaaS de gestão completa para consultoras multimarcas: vendas, estoque e clientes em um só lugar.</p>
+                                <a href="pattySystem1.html" class="card_s2__link">Conhecer o sistema →</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 3 — NOSSO PROCESSO (TIMELINE)
+
+             Fundo escuro do hero do 3.md.
+             Linha central azul + itens alternados.
+             Cards internos claros (section-light).
+        ═══════════════════════════════════════════════ -->
+        <section id="produtos" class="section_3">
+            <div class="col-line">
+                <div class="wrapper">
+
+                    <div class="section-header">
+                        <span class="section-label">
+                            <i class="fas fa-code"></i> Nosso Método
+                        </span>
+                        <h2>Como Construímos <span>Seu Projeto</span></h2>
+                        <p>Um processo estruturado para transformar sua ideia em uma solução digital profissional.</p>
                     </div>
 
-                    <div class="card">
-                        <div>
-                            <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-                            <h3>Sites Institucionais</h3>
-                            <p>Desenvolvimento web completo com design exclusivo, gerando máxima credibilidade e posicionando sua marca como líder do seu segmento.</p>
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-step">Etapa 01</div>
+                                <h3>Primeiro Contato & Alinhamento</h3>
+                                <p>Reunião inicial sem compromisso para entender os objetivos estratégicos da sua empresa e como o projeto web agregará valor comercial.</p>
+                            </div>
                         </div>
-                    <div>
-                    <a href="#" class="btn-card" target="_blank">Solicitar Orçamento</a>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-step">Etapa 02</div>
+                                <h3>Entrevista & Levantamento de Requisitos</h3>
+                                <p>Imersão total na sua marca. Coletamos dados do público-alvo, funcionalidades necessárias, referências visuais e mapa de conteúdo.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-step">Etapa 03</div>
+                                <h3>Design UI/UX & Prototipagem</h3>
+                                <p>Desenhamos a interface responsiva da sua página, focando em usabilidade, autoridade visual e gatilhos para aumentar conversões.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-step">Etapa 04</div>
+                                <h3>Desenvolvimento & Código Limpo</h3>
+                                <p>Codificação responsiva de alta performance, otimizando velocidade de carregamento, segurança e adequação com as práticas de SEO.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-step">Etapa 05</div>
+                                <h3>Testes, Entrega & Suporte</h3>
+                                <p>Testes rigorosos antes da entrega. Fornecemos todos os arquivos fonte, acessos do servidor e suporte contínuo pós-lançamento.</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-
-            <div class="card">
-                <div>
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Landing Pages de Vendas</h3>
-                    <p>Páginas de alta conversão estruturadas com gatilhos de persuasão para otimizar suas campanhas de tráfego pago (Google e Meta Ads).</p>
-                </div>
-                <div>
-                    <a href="#" class="btn-card" target="_blank">Quero minha LP</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <div class="card-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <h3>Otimização SEO & Performance</h3>
-                    <p>Aceleração de sites existentes, correção de código e otimização para motores de busca com foco em melhores posições no Google.</p>
-                    
-                </div>
-            <div>
-            <a href="#" class="btn-card" target="_blank">Otimizar Meu Site</a>
-        </div>
-        </div>
-        </div>
         </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION DARK — AZUL ESCURO
+             .col-line aqui tem bordas laterais azul-claro
+             (definido no CSS por .section_dark .col-line)
+        ═══════════════════════════════════════════════ -->
+        <section id="infraestrutura_confiável" class="section_dark">
+            <div class="col-line">
+                <div class="wrapper">
+                    <h2>Infraestrutura confiável para cada etapa do seu negócio.</h2>
+                    <p>Da primeira linha de código ao cliente número mil — a arrowwolf está com você.</p>
+                    <a href="#" class="btn-dark">Fale com nossa equipe →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 4 — PATTY SYSTEM
+        ═══════════════════════════════════════════════ -->
+        <section id="section_4" class="section_4">
+            <div class="col-line">
+                <div class="wrapper">
+                    <div class="patty_system_screen">
+                        <img src="img/telaInterna_1.png" alt="Patty System Screen">
+                    </div>
+                    <div class="box_section_4">
+                        <div class="text_box_section_4">
+                            <h2 class="h2_section_4">Build</h2>
+                            <p class="p_section_4">Construímos sistemas pensando na escalabilidade desde o início.</p>
+                        </div>
+                        <div class="text_box_section_4">
+                            <h2 class="h2_section_4">Gestão</h2>
+                            <p class="p_section_4">Ferramentas que organizam seu negócio sem complicar sua rotina.</p>
+                        </div>
+                        <div class="text_box_section_4">
+                            <h2 class="h2_section_4">Otimização</h2>
+                            <p class="p_section_4">Cada entrega é analisada e refinada para gerar o máximo resultado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 5 — SITES
+        ═══════════════════════════════════════════════ -->
+        <section id="cases" class="section_5">
+            <div class="col-line">
+                <div class="wrapper">
+                    <div class="content_section_5">
+                        <div class="text_section_5">
+                            <h1 class="h1_section_5">Faça seu Website<br>e turbine sua presença digital</h1>
+                            <p class="p_section_5">Sites que convertem visitantes em clientes — com design exclusivo e performance de primeira.</p>
+                        </div>
+                        <div class="btns_section_5">
+                            <div class="btn_1_section_5">Visibilidade</div>
+                            <div class="btn_2_section_5">Fale conosco</div>
+                        </div>
+                        <div class="carrossel_sites_restaurantes">
+                            <img src="" alt="Exemplo de site">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 6 — NOSSO TIME
+        ═══════════════════════════════════════════════ -->
+        <section id="nosso_time" class="section_6">
+            <div class="col-line">
+                <div class="wrapper">
+                    <h1 class="h1_section_6">Nosso Time</h1>
+                    <div class="card_colaborador">
+                        <img src="img/davinci_mulher_branca_com_oculos_cabelos_pretos_cacheado_e.png" alt="Patrícia Lobo">
+                        <h2 class="h2_card_colaborador">Patrícia Lobo</h2>
+                        <p class="p_1_card_colaborador">Fundadora</p>
+                        <p class="p_2_card_colaborador">Desenvolvedor fullstack <br> UX e relacionamento com clientes.</p>
+                    </div>
+                    <div class="card_colaborador">
+                        <img src="" alt="Marco Flexa">
+                        <h2 class="h2_card_colaborador">Marco Flexa</h2>
+                        <p class="p_1_card_colaborador">Fundador</p>
+                        <p class="p_2_card_colaborador">Desenvolvedor Back-End <br> Lider  de Projetos</p>
+                    </div>
+                    <div class="card_colaborador">
+                        <img src="" alt="Luciane Ribeiro">
+                        <h2 class="h2_card_colaborador">Luciane Ribeiro</h2>
+                        <p class="p_1_card_colaborador">Designer</p>
+                        <p class="p_2_card_colaborador"></p>
+                    </div>
+                    <div class="card_colaborador">
+                        <img src="" alt="Ramon Silva">
+                        <h2 class="h2_card_colaborador">Ramon Silva</h2>
+                        <p class="p_1_card_colaborador"></p>
+                        <p class="p_2_card_colaborador"></p>
+                    </div>
+                    <div class="card_colaborador">
+                        <img src="" alt="James Dias">
+                        <h2 class="h2_card_colaborador">James Dias</h2>
+                        <p class="p_1_card_colaborador"></p>
+                        <p class="p_2_card_colaborador"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-   <section class="section_4">
-            <div class="patty_system_screen">
-                <img src="" alt="Patty System Screen">
-            </div>
-            <div class="box_section_4">
-                <div class="text_box_section_4">
-                    <h2 class="h2_section_4">Build</h2>
-                    <p class="p_section_4"></p>
-                </div>
-                <div class="text_box_section_4">
-                    <h2 class="h2_section_4">Gestão</h2>
-                    <p class="p_section_4"></p>
-                </div>
-                <div class="text_box_section_4">
-                    <h2 class="h2_section_4">Otimização</h2>
-                    <p class="p_section_4"></p>
-                </div>
-            </div>
-        </section>
-        <section class="section_5">
-            <div class="content_section_5">
-                <div class="text_section_5">
-                    <h1 class="h1_section_5">Faça seu Website<br> e turbine sua presença digital </h1>
-                    <p class="p_section_5"></p>
-                </div>
-                <div class="btns_section_5">
-                    <div class="btn_1_section_5">Visibilidade</div>
-                    <div class="btn_2_section_5">Fale conosco</div>
-                </div>
-                <div class="carrossel_sites_restaurantes">
-                    <img src="" alt="">
-                </div>
-            </div>
-        </section>
-        <section class="section_6">
-            <h1 class="h1_section_6">Nosso Time</h1>
-            <div class="card_colaborador">
-                <img src="" alt="Patríca Lobo">
-                <h2 class="h2_card_colaborador"></h2>
-                <p class="p_1_card_colaborador"></p>
-                <p class="p_2_card_colaborador"></p>
-            </div>
-            <div class="card_colaborador">
-                <img src="" alt="Marco Flexa">
-                <h2 class="h2_card_colaborador"></h2>
-                <p class="p_1_card_colaborador"></p>
-                <p class="p_2_card_colaborador"></p>
-            </div>
-            <div class="card_colaborador">
-                <img src="" alt="Luciane Ribeiro">
-                <h2 class="h2_card_colaborador"></h2>
-                <p class="p_1_card_colaborador"></p>
-                <p class="p_2_card_colaborador"></p>
-            </div>
-            <div class="card_colaborador">
-                <img src="" alt="Ramon Silva">
-                <h2 class="h2_card_colaborador"></h2>
-                <p class="p_1_card_colaborador"></p>
-                <p class="p_2_card_colaborador"></p>
-            </div>
-            <div class="card_colaborador">
-                <img src="" alt="James Dias">
-                <h2 class="h2_card_colaborador"></h2>
-                <p class="p_1_card_colaborador"></p>
-                <p class="p_2_card_colaborador"></p>
-            </div>
-        </section>
-    </main>
+    <!-- ══════════════════════════════════════════════════
+         FOOTER
+         Azul escuro. .col-line com bordas azul-claro.
+         Texto branco.
+    ═══════════════════════════════════════════════════ -->
     <footer>
-        &copy; 2026 ArrowWolf. Todos os direitos reservados.
+        <div class="col-line">
+            <div class="wrapper">
+                &copy; 2026 arrowwolf Tecnologia. Todos os direitos reservados.
+            </div>
+        </div>
     </footer>
+
 </body>
 
 </html>

@@ -15,68 +15,92 @@ html {
 body {
     width: 100%;
     min-height: 100vh;
-
     font-family: Arial, Helvetica, sans-serif;
-
     background: #ffffff;
     color: #0a2540;
+    padding-top: 68px;
 }
 
 
 /* =========================================================
-   CONTAINER CENTRAL
-   Estrutura semelhante à referência da Stripe
+   LINHA DELIMITADORA — O CONCEITO CENTRAL DO LAYOUT STRIPE
+
+   A Stripe usa duas linhas verticais sutis que criam uma
+   "calha" visual onde o conteúdo vive. O fundo das seções
+   vai de ponta a ponta, mas essas linhas definem a coluna.
+
+   Como funciona:
+   - .col-line é um wrapper de largura máxima centralizado
+   - ele tem border-left e border-right em cinza claro
+   - nas seções escuras (azul), as bordas mudam de cor
+     para ficarem visíveis sobre o fundo escuro
+
+   É diferente do .wrapper: o .wrapper só limita o padding
+   do conteúdo. O .col-line é quem desenha as linhas.
 ========================================================= */
 
-.container {
+.col-line {
     width: 100%;
-    max-width: 1028px;
+    max-width: 1100px;
     margin: 0 auto;
 
-    border-left: 1px solid #e5e7eb;
+    /* as duas linhas verticais */
+    border-left:  1px solid #e5e7eb;
     border-right: 1px solid #e5e7eb;
+}
 
-    background: #ffffff;
+/* nas seções escuras as linhas ficam azul-claro visíveis */
+.section_dark .col-line,
+footer .col-line {
+    border-left-color:  #1e3a5f;
+    border-right-color: #1e3a5f;
+}
+
+/* ── wrapper interno: só controla padding do conteúdo ──── */
+
+.wrapper {
+    padding: 0 48px;
 }
 
 
 /* =========================================================
    HEADER
+   
+   O nav fica contido dentro das linhas delimitadoras.
+   O .cabecalho é 100% de largura (fundo branco vai de
+   ponta a ponta), mas o .col-line dentro dele centraliza
+   o nav e desenha as linhas laterais.
 ========================================================= */
 
 .cabecalho {
     width: 100%;
-    background: #ffffff;
-
-    border-top: 1px solid #e5e7eb;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.88);
     border-bottom: 1px solid #e5e7eb;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
 }
 
 .nav_bar {
     min-height: 68px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 24px;
+    /* padding interno — dentro do col-line */
+    padding: 0 32px;
 }
 
-
-/* lado direito do menu */
+/* lado esquerdo: logo + links */
 
 .elementos_menu_direita {
     display: flex;
     align-items: center;
-    gap: 38px;
-}
-
-
-/* logo */
-
-.logo {
-    display: flex;
-    align-items: center;
+    gap: 36px;
 }
 
 .logo img {
@@ -84,9 +108,6 @@ body {
     height: auto;
     display: block;
 }
-
-
-/* menu */
 
 .menu {
     list-style: none;
@@ -101,12 +122,9 @@ body {
 
 .menu a {
     color: #0a2540;
-
     text-decoration: none;
-
     font-size: 13px;
     font-weight: 500;
-
     transition: color 0.2s ease;
 }
 
@@ -114,31 +132,22 @@ body {
     color: #635bff;
 }
 
+/* lado direito: botões */
 
-/* lado esquerdo do menu */
-
-.elemtos_menu_esquerda {
+.elementos_menu_esquerda {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-
-/* botões do header */
-
 .btn_direct_login,
 .btn_contato {
     border: none;
-
     padding: 10px 16px;
-
     border-radius: 5px;
-
     font-size: 13px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: 0.2s ease;
 }
 
@@ -162,523 +171,709 @@ body {
 
 
 /* =========================================================
-   MAIN
-========================================================= */
+   SECTION 1 — HERO COM VÍDEO
 
-main {
-    width: 100%;
-}
+   A section é 100% de largura — o vídeo de fundo ocupa
+   toda a tela.
 
+   O .col-line delimita as linhas laterais.
+   O .wrapper controla o padding do texto.
 
-/* =========================================================
-   SECTION 1 — HERO
+   position: relative → necessário para o vídeo absoluto.
+   overflow: hidden → garante que o vídeo não vaze.
+
+   O vídeo fica em position: absolute cobrindo tudo,
+   atrás do texto (z-index: 0).
+   O conteúdo fica em z-index: 2.
 ========================================================= */
 
 .section_1 {
     position: relative;
-
-    min-height: 560px;
-
+    min-height: 580px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    padding: 90px 80px;
-
     overflow: hidden;
-
     border-bottom: 1px solid #e5e7eb;
+    background-image: url(/img/Blue\ Simple\ Future\ Company\ YouTube\ Video\ Intro.gif);
 }
 
+/* ── vídeo de fundo ──────────────────────────────────────
 
-/* efeito visual semelhante ao gradiente da referência */
+   position: absolute → sai do fluxo e cobre o pai.
+   inset: 0 → atalho para top:0 right:0 bottom:0 left:0.
+   width/height: 100% → cobre toda a section.
+   object-fit: cover → recorta o vídeo para preencher
+   sem distorcer (igual background-size: cover).
+   z-index: 0 → fica atrás do conteúdo.
+*/
 
-.section_1::after {
-    content: "";
-
+.video_hero {
     position: absolute;
-
-    width: 650px;
-    height: 650px;
-
-    right: -250px;
-    top: -280px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(135deg,
-            #9ddcff 0%,
-            #635bff 30%,
-            #d946ef 55%,
-            #ff6b6b 75%,
-            #ffb000 100%);
-
-    opacity: 0.85;
-
-    transform: rotate(25deg);
-
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: 0;
+    opacity: 0.18; /* bem sutil — o texto precisa ser legível */
 }
 
+/* overlay branco suave sobre o vídeo para garantir legibilidade */
+.section_1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,1)   0%,
+        rgba(255,255,255,0.7) 55%,
+        rgba(255,255,255,0)   100%
+    );
+    z-index: 1;
+}
 
-.section_1>div {
+.section_1 .col-line {
     position: relative;
     z-index: 2;
 
-    max-width: 650px;
+    /* estica até a altura total da section (que é flex) */
+    align-self: stretch;
+
+    /* mantém o conteúdo centralizado verticalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.section_1 .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
 
-/* texto principal */
+/* texto hero */
 
 .texto_1_section_1 {
-    font-size: 44px;
+    font-size: 52px;
     line-height: 1.1;
-
-    font-weight: 500;
-
-    letter-spacing: -1.8px;
-
+    font-weight: 700;
+    letter-spacing: -2px;
     color: #0a2540;
+    max-width: 580px;
+    margin-bottom: 32px;
 }
 
-
-/* botão */
+/* botão hero */
 
 .btn_section_1 {
-    position: relative;
-    z-index: 2;
-
-    align-self: flex-start;
-
-    margin-top: 32px;
-
-    padding: 13px 20px;
-
+    padding: 14px 22px;
     border: none;
-    border-radius: 5px;
-
+    border-radius: 6px;
     background: #635bff;
     color: #ffffff;
-
     font-size: 14px;
     font-weight: 600;
-
     cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn_section_1:hover {
+    background: #5148d9;
+    transform: translateY(-2px);
 }
 
 
 /* =========================================================
-   SECTION 2
+   SECTION 2 — CARDS COM IMAGEM + TEXTO
+   Referência: layout Webflow/Stripe de 3 colunas abertas.
+
+   "Card aberto" = sem borda ou caixa ao redor.
+   A imagem e o texto são peças soltas verticalmente.
 ========================================================= */
 
 .section_2 {
-    padding: 80px 50px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-
-    border-bottom: 1px solid #e5e7eb;
-}
-
-
-/* título da seção */
-
-.section_2>p {
-    grid-column: 1 / -1;
-
-    margin-bottom: 20px;
-
-    font-size: 28px;
-    font-weight: 500;
-}
-
-
-/* cards */
-
-.card_section_2 {
-    min-height: 330px;
-
-    padding: 24px;
-
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-
-    background: #ffffff;
-
-    display: flex;
-    flex-direction: column;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.card_section_2:hover {
-    transform: translateY(-4px);
-
-    box-shadow: 0 12px 30px rgba(10, 37, 64, 0.08);
-}
-
-
-/* imagem dos cards */
-
-.img_card_section_2 {
     width: 100%;
-    height: 150px;
-
-    object-fit: contain;
-
-    display: block;
-
-    margin-bottom: 24px;
-}
-
-
-/* título */
-
-.h2_card_section_2 {
-    font-size: 20px;
-
-    line-height: 1.2;
-
-    margin-bottom: 12px;
-}
-
-
-/* texto */
-
-.p_card_section_2 {
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    color: #64748b;
-}
-
-
-/* =========================================================
-   SECTION 3 — SOLUÇÕES
-========================================================= */
-
-.section_3 {
-    padding: 90px 50px;
-
     border-bottom: 1px solid #e5e7eb;
+
+    /* fundo branco — igual ao restante da página clara */
+    background: #ffffff;
 }
 
+/* ── padding da seção ─────────────────────────────────── */
 
-/* cabeçalho */
-
-.section-header {
-    max-width: 700px;
-
-    margin-bottom: 45px;
+.section_2 .wrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
-.section-header h2 {
-    font-size: 34px;
+/* ── título centralizado ──────────────────────────────── */
 
-    line-height: 1.15;
+/*
+   text-align: center → centraliza o texto.
+   max-width + margin: 0 auto → limita a largura e centraliza
+   o bloco de texto (sem isso, o texto ocuparia 100% e a
+   quebra de linha ficaria numa posição ruim).
+*/
 
+.titulo_section_2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
     letter-spacing: -1px;
+    color: #0a2540;
 
-    margin-bottom: 14px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px;
 }
 
-.section-header p {
-    font-size: 16px;
+/* ── grid de 3 colunas ────────────────────────────────── */
 
-    line-height: 1.6;
+/*
+   grid-template-columns: repeat(3, 1fr)
+   → 3 colunas de largura igual (1 fração cada).
 
-    color: #64748b;
-}
+   gap: 28px → espaço entre as colunas.
+   align-items: start → os cards alinham pelo topo,
+   não esticam para igualar altura (comportamento "aberto").
+*/
 
-
-/* grid */
-
-.grid-cards {
+.grid_section_2 {
     display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: start;
 }
 
+/* ── card ─────────────────────────────────────────────── */
 
-/* cards */
+/*
+   display: flex + flex-direction: column
+   → empilha imagem e texto verticalmente.
 
-.card {
-    min-height: 330px;
+   Sem border, sem background, sem border-radius:
+   esse é o "card aberto" — só o conteúdo, sem moldura.
+*/
 
-    padding: 28px;
-
+.card_s2 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-
-    background: #ffffff;
-
-    position: relative;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-4px);
+/* ── área da imagem ───────────────────────────────────── */
 
-    box-shadow: 0 15px 35px rgba(10, 37, 64, 0.08);
-}
+/*
+   aspect-ratio: 3 / 4 → proporção fixa de 3:4 (mais alta
+   que larga, como na referência). Independente do tamanho
+   da tela, a imagem mantém essa proporção.
+   É como um "slot" de altura automática baseada na largura.
 
+   overflow: hidden → garante que a imagem não vaze do
+   espaço quando cresce com object-fit: cover.
 
-/* card destaque */
+   border-radius: 10px → cantos arredondados suaves.
+*/
 
-.card.featured {
-    border-color: #635bff;
-}
-
-
-/* selo */
-
-.badge-featured {
-    position: absolute;
-
-    top: 18px;
-    right: 18px;
-
-    padding: 5px 9px;
-
-    border-radius: 20px;
-
-    background: #635bff;
-    color: #ffffff;
-
-    font-size: 11px;
-    font-weight: 600;
-}
-
-
-/* ícone */
-
-.card-icon {
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 22px;
-
+.card_s2__img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
     border-radius: 10px;
 
-    background: #f0efff;
+    /* fundo cinza enquanto a imagem não carrega */
+    background: #f1f5f9;
 
-    color: #635bff;
-
-    font-size: 20px;
+    /* margin-bottom: espaço entre a imagem e o texto abaixo */
+    margin-bottom: 20px;
 }
 
+/*
+   object-fit: cover → a imagem cobre todo o espaço do
+   container sem distorcer, recortando as bordas se necessário.
+   width/height: 100% → ocupa todo o .card_s2__img.
+   display: block → remove o espaço padrão abaixo de imagens
+   (comportamento inline padrão cria um gap indesejado).
+*/
 
-/* título */
+.card_s2__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 
-.card h3 {
-    margin-bottom: 12px;
-
-    font-size: 20px;
-
-    line-height: 1.3;
+    /* transição suave no hover */
+    transition: transform 0.4s ease;
 }
 
-
-/* descrição */
-
-.card p {
-    color: #64748b;
-
-    font-size: 14px;
-
-    line-height: 1.7;
+/* zoom sutil na imagem ao passar o mouse no card */
+.card_s2:hover .card_s2__img img {
+    transform: scale(1.03);
 }
 
+/* ── corpo de texto ───────────────────────────────────── */
 
-/* botão */
+.card_s2__body {
+    display: flex;
+    flex-direction: column;
 
-.btn-card {
-    display: inline-block;
+    /* gap entre título, parágrafo e link */
+    gap: 10px;
+}
 
-    margin-top: 25px;
-
-    color: #635bff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
+.card_s2__titulo {
+    font-size: 17px;
     font-weight: 600;
+    line-height: 1.3;
+    color: #0a2540;
 }
 
-.btn-card:hover {
+.card_s2__desc {
+    font-size: 14px;
+    line-height: 1.7;
+
+    /* cinza médio — tom secundário da paleta */
+    color: #080808;
+}
+
+/*
+   display: inline-block → necessário para que o link <a>
+   respeite o margin-top. Links são inline por padrão.
+   margin-top: auto em flex empurraria para baixo,
+   mas aqui usamos gap no pai + margin-top pequeno.
+*/
+
+.card_s2__link {
+    display: inline-block;
+    margin-top: 4px;
+
+    color: #080808;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: gap 0.2s ease;
+}
+
+.card_s2__link:hover {
     text-decoration: underline;
 }
 
 
 /* =========================================================
-   SECTION 4
+   SECTION 3 — PROCESSO / TIMELINE
+
+   Estrutura inspirada no process-section do 3.md:
+   linha central vertical + itens alternando esquerda/direita.
+
+   CORES:
+   - Fundo e textos externos: paleta do hero do 3.md
+     (escuro #030712, branco #fff, azul #00d2ff, muted #9ca3af)
+   - Cards internos: fundo branco, borda clara, texto escuro
+     (paleta section-light do 3.md)
 ========================================================= */
 
-.section_4 {
+.section_3 {
     width: 100%;
-    max-width: 1028px;
 
+    /*
+       Fundo escuro do hero do 3.md.
+       linear-gradient sutil entre os dois tons escuros
+       para dar profundidade sem ser monocromático.
+    */
+    background: linear-gradient(180deg, #030712, #070b14);
+
+    /*
+       Cor padrão dos textos externos (fora dos cards):
+       branco suave do hero — herdado pelos filhos que não
+       definem cor própria.
+    */
+    color: #f3f4f6;
+
+    border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+}
+
+/* linhas laterais ficam visíveis no fundo escuro */
+.section_3 .col-line {
+    border-left-color:  #1e3a5f;
+    border-right-color: #1e3a5f;
+}
+
+.section_3 .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+/* ── cabeçalho da seção ─────────────────────────────────
+
+   Fica centralizado acima da timeline.
+   max-width + margin auto → bloco centralizado.
+*/
+
+.section_3 .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 70px;
+}
+
+/*
+   section-label: o pequeno texto uppercase acima do título.
+   Cor azul #00d2ff, letra-spacing largo, fonte pequena —
+   exatamente como o hero-tag do 3.md.
+*/
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00d2ff;
+    margin-bottom: 14px;
+}
+
+.section_3 .section-header h2 {
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+
+    /* texto externo: branco do hero */
+    color: #ffffff;
+}
+
+/* span do título em azul com glow — igual hero-text h1 span */
+.section_3 .section-header h2 span {
+    color: #00d2ff;
+    text-shadow:
+        0 0 15px rgba(0, 210, 255, 0.5),
+        0 0 40px rgba(0, 210, 255, 0.2);
+}
+
+.section_3 .section-header p {
+    font-size: 16px;
+    line-height: 1.65;
+
+    /* muted externo: cinza do hero do 3.md */
+    color: #9ca3af;
+}
+
+/* ── timeline container ─────────────────────────────────
+
+   position: relative → necessário para o ::before
+   (linha central) ser posicionado em relação a ele.
+
+   max-width: limita a largura da timeline dentro do wrapper.
+   margin: auto → centraliza.
+*/
+
+.timeline {
+    position: relative;
+    max-width: 900px;
     margin: 0 auto;
-
-    padding: 80px 50px;
-
-    display: grid;
-
-    grid-template-columns: 1.3fr 1fr;
-
-    gap: 50px;
-
-    border-left: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
-    border-bottom: 1px solid #e5e7eb;
 }
 
+/* ── linha central vertical ─────────────────────────────
 
-/* tela do Patty System */
+   ::before cria a linha sem HTML extra.
+   left: 50% + translateX(-50%) → centraliza exatamente.
 
-.patty_system_screen {
-    min-height: 400px;
+   O gradiente começa e termina em transparent para
+   a linha "aparecer" e "desaparecer" suavemente.
+*/
 
-    border: 1px solid #e2e8f0;
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        #00d2ff 10%,
+        #00d2ff 90%,
+        transparent
+    );
+    transform: translateX(-50%);
+}
 
+/* ── item da timeline ───────────────────────────────────
+
+   Cada item ocupa 50% da largura.
+   Alternância: ímpares ficam à esquerda, pares à direita.
+*/
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1.5rem 0;
+}
+
+/* ímpar: lado esquerdo, texto alinhado à direita */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 48px;
+    text-align: right;
+}
+
+/* par: lado direito, texto alinhado à esquerda */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 48px;
+    text-align: left;
+}
+
+/* ── dot (bolinha na linha central) ─────────────────────
+
+   position: absolute → posiciona em relação ao .timeline-item.
+   top: 2.5rem → alinha verticalmente com o título do card.
+
+   border-radius: 50% → círculo perfeito.
+   border: 3px solid #00d2ff → anel azul.
+   background: #030712 → fundo escuro (igual ao da seção).
+   box-shadow: glow azul ao redor.
+   z-index: 2 → fica na frente da linha central.
+*/
+
+.timeline-dot {
+    position: absolute;
+    top: 2.5rem;
+    width: 18px;
+    height: 18px;
+    background: #030712;
+    border: 3px solid #00d2ff;
+    border-radius: 50%;
+    box-shadow: 0 0 14px rgba(0, 210, 255, 0.7);
+    z-index: 2;
+}
+
+/* dot dos ímpares: grudado na borda direita do item */
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -9px;
+}
+
+/* dot dos pares: grudado na borda esquerda do item */
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -9px;
+}
+
+/* ── card interno ───────────────────────────────────────
+
+   Cores da section-light do 3.md:
+   - background: rgba(255,255,255,0.8) — branco translúcido
+   - border: #dbe4ef — cinza claro
+   - textos: escuros (#172033 e #64748b)
+
+   Isso cria o contraste com o fundo escuro da seção:
+   card claro sobre seção escura.
+*/
+
+.timeline-content {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid #dbe4ef;
     border-radius: 10px;
-
-    overflow: hidden;
-
-    background: #f8fafc;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.patty_system_screen img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: #00d2ff;
+    box-shadow: 0 15px 35px rgba(0, 210, 255, 0.15);
 }
 
-
-/* caixas de texto */
-
-.box_section_4 {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-
-    gap: 30px;
+/* "Etapa 01" — azul, pequeno, uppercase */
+.timeline-step {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0066ff;
+    margin-bottom: 8px;
 }
 
-.text_box_section_4 {
-    padding-bottom: 25px;
-
-    border-bottom: 1px solid #e5e7eb;
+/* título do card: escuro (texto-light do 3.md) */
+.timeline-content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: #172033;
 }
 
-.h2_section_4 {
-    margin-bottom: 10px;
-
-    font-size: 22px;
-}
-
-.p_section_4 {
-    color: #64748b;
-
+/* parágrafo do card: cinza médio */
+.timeline-content p {
     font-size: 14px;
-
-    line-height: 1.6;
+    line-height: 1.7;
+    color: #64748b;
 }
 
 
 /* =========================================================
-   SECTION 5
+   SECTION DARK — AZUL ESCURO
+
+   border-bottom muda de cor: sobre fundo escuro, a borda
+   #e5e7eb (cinza claro) ficaria invisível ou estranha.
+   Usamos um azul um pouco mais claro que o fundo.
+
+   O .col-line dentro dela tem bordas laterais azul-claro
+   (definido lá em cima na regra .section_dark .col-line).
+========================================================= */
+
+.section_dark {
+    width: 100%;
+    background: #0a2540;
+    color: #ffffff;
+    border-bottom: 1px solid #1e3a5f;
+}
+
+.section_dark .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.section_dark h2 {
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+
+.section_dark p {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.section_dark .btn-dark {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 13px 22px;
+    border-radius: 6px;
+    background: #635bff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.section_dark .btn-dark:hover {
+    background: #5148d9;
+}
+
+
+/* =========================================================
+   SECTION 4 — PATTY SYSTEM
+========================================================= */
+
+.section_4 {
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.section_4 .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 5%;
+}
+
+.box_section_4 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    /* flex-wrap: wrap; */
+}
+
+.patty_system_screen {
+    display: flex;
+    justify-content: center;
+}
+
+.patty_system_screen img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 1%;
+}
+
+
+
+
+.text_box_section_4 {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* .text_box_section_4:last-child {
+    border-bottom: none;
+} */
+
+.h2_section_4 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #0a2540;
+}
+
+.p_section_4 {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   SECTION 5 — SITES / LANDING PAGES
 ========================================================= */
 
 .section_5 {
     width: 100%;
-    max-width: 1028px;
-
-    margin: 0 auto;
-
-    border-left: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
     border-bottom: 1px solid #e5e7eb;
 }
 
-
-.content_section_5 {
-    padding: 90px 50px;
+.section_5 .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
 }
 
-
-/* texto */
-
 .text_section_5 {
-    max-width: 650px;
+    max-width: 620px;
 }
 
 .h1_section_5 {
-    font-size: 42px;
-
+    font-size: 44px;
     line-height: 1.1;
-
     letter-spacing: -1.5px;
-
     margin-bottom: 20px;
+    color: #0a2540;
 }
 
 .p_section_5 {
     color: #64748b;
-
     font-size: 16px;
-
     line-height: 1.7;
 }
 
-
-/* botões */
-
 .btns_section_5 {
     display: flex;
-
     gap: 10px;
-
-    margin-top: 30px;
+    margin-top: 28px;
 }
 
 .btn_1_section_5,
 .btn_2_section_5 {
     padding: 13px 20px;
-
-    border-radius: 5px;
-
+    border-radius: 6px;
     font-size: 14px;
-
     font-weight: 600;
-
     cursor: pointer;
+    border: none;
+    transition: 0.2s ease;
 }
 
 .btn_1_section_5 {
@@ -686,37 +881,34 @@ main {
     color: #ffffff;
 }
 
-.btn_2_section_5 {
-    border: 1px solid #635bff;
-
-    color: #635bff;
-
-    background: #ffffff;
+.btn_1_section_5:hover {
+    background: #5148d9;
 }
 
+.btn_2_section_5 {
+    border: 1.5px solid #635bff;
+    color: #635bff;
+    background: transparent;
+}
 
-/* carrossel */
+.btn_2_section_5:hover {
+    background: #f0efff;
+}
 
 .carrossel_sites_restaurantes {
     width: 100%;
-
-    min-height: 250px;
-
-    margin-top: 50px;
-
+    min-height: 240px;
+    margin-top: 48px;
     border: 1px solid #e2e8f0;
-
-    border-radius: 10px;
-
+    border-radius: 12px;
     overflow: hidden;
+    background: #f8fafc;
 }
 
 .carrossel_sites_restaurantes img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
-
     display: block;
 }
 
@@ -727,103 +919,84 @@ main {
 
 .section_6 {
     width: 100%;
-    max-width: 1028px;
-
-    margin: 0 auto;
-
-    padding: 90px 50px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-
-    border-left: 1px solid #e5e7eb;
-    border-right: 1px solid #e5e7eb;
     border-bottom: 1px solid #e5e7eb;
 }
 
-
-/* título */
+.section_6 .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
 .h1_section_6 {
     grid-column: 1 / -1;
-
-    margin-bottom: 25px;
-
-    font-size: 36px;
-
+    font-size: 34px;
     letter-spacing: -1px;
+    margin-bottom: 24px;
+    color: #0a2540;
 }
-
-
-/* colaborador */
 
 .card_colaborador {
-    padding: 25px;
-
+    padding: 24px;
     border: 1px solid #e2e8f0;
-
-    border-radius: 8px;
-
+    border-radius: 10px;
     background: #ffffff;
-
     text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
-/* foto */
+.card_colaborador:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(10, 37, 64, 0.07);
+}
 
 .card_colaborador img {
-    width: 140px;
-    height: 140px;
-
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-
     border-radius: 50%;
-
     display: block;
-
-    margin: 0 auto 20px;
+    margin: 0 auto 18px;
 }
-
-
-/* nome */
 
 .h2_card_colaborador {
-    font-size: 19px;
-
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #0a2540;
 }
-
-
-/* textos */
 
 .p_1_card_colaborador,
 .p_2_card_colaborador {
     font-size: 13px;
-
     line-height: 1.6;
-
     color: #64748b;
 }
 
 
 /* =========================================================
    FOOTER
+
+   Mesmo azul escuro da section_dark para continuidade.
+   Linhas laterais em azul visível (via .col-line herdado).
+   Texto BRANCO — não mais cinza.
 ========================================================= */
 
 footer {
     width: 100%;
+    background: linear-gradient(180deg, #030712, #070b14);
+    border-top: 1px solid #1e3a5f;
 
-    padding: 30px;
+}
 
+footer .col-line .wrapper {
+    padding-top: 28px;
+    padding-bottom: 28px;
     text-align: center;
 
-    border-top: 1px solid #e5e7eb;
-
-    color: #64748b;
+    /* BRANCO — legível sobre o fundo azul escuro */
+    color: #ffffff;
 
     font-size: 13px;
 }
@@ -835,291 +1008,111 @@ footer {
 
 @media (max-width: 900px) {
 
+    .wrapper {
+        padding: 0 28px;
+    }
+
     .nav_bar {
-        padding: 15px 20px;
-
+        padding: 14px 28px;
         flex-wrap: wrap;
-
-        gap: 15px;
-    }
-
-    .elementos_menu_direita {
-        gap: 20px;
-    }
-
-    .menu li {
         gap: 12px;
-    }
-
-    .section_1 {
-        padding: 70px 40px;
+        min-height: auto;
     }
 
     .texto_1_section_1 {
         font-size: 38px;
     }
 
-    .section_2 {
+    .grid-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* em tablet: 2 cards por linha na section_2 */
+    .grid_section_2 {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .section_6 {
+    /* tablet: timeline vira coluna única à esquerda da linha */
+    .timeline::before {
+        left: 15px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 48px;
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 6px;
+        right: auto;
+    }
+
+    .section_4 .wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .section_6 .wrapper {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-
 @media (max-width: 650px) {
+
+    .wrapper {
+        padding: 0 20px;
+    }
 
     .nav_bar {
         flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 18px;
+        align-items: flex-start;
+        padding: 16px 20px;
     }
 
     .elementos_menu_direita {
         flex-direction: column;
-
         align-items: flex-start;
+        gap: 14px;
     }
 
     .menu li {
         flex-wrap: wrap;
+        gap: 12px;
+        
     }
 
-    .elemtos_menu_esquerda {
+    .elementos_menu_esquerda {
         justify-content: flex-start;
     }
 
-
-    .section_1 {
-        min-height: 500px;
-
-        padding: 60px 25px;
-    }
-
     .texto_1_section_1 {
-        font-size: 34px;
-    }
-
-
-    .section_2 {
-        grid-template-columns: 1fr;
-
-        padding: 60px 25px;
-    }
-
-
-    .grid-cards {
-        grid-template-columns: 1fr;
-    }
-
-
-
-    .section_3 {
-
-        padding: 7rem 5%;
-
-    }
-
-
-    .grid-cards {
-
-        position: relative;
-
-        max-width: 950px;
-
-        margin: auto;
-
-    }
-
-
-    .grid-cards::before {
-
-        content: '';
-
-        position: absolute;
-
-        top: 0;
-        bottom: 0;
-
-        left: 50%;
-
-        width: 2px;
-
-        background:
-            linear-gradient(to bottom,
-                transparent,
-                var(--blue),
-                transparent);
-
-        transform: translateX(-50%);
-
-    }
-
-
-    .timeline-item {
-
-        position: relative;
-
-        width: 50%;
-
-        padding: 1.5rem 0;
-
-    }
-
-
-    .timeline-item:nth-child(odd) {
-
-        left: 0;
-
-        padding-right: 3rem;
-
-        text-align: right;
-
-    }
-
-
-    .timeline-item:nth-child(even) {
-
-        left: 50%;
-
-        padding-left: 3rem;
-
-    }
-
-
-    .timeline-dot {
-
-        position: absolute;
-
-        top: 2.5rem;
-
-        width: 20px;
-        height: 20px;
-
-        background: var(--light);
-
-        border: 3px solid var(--blue);
-
-        border-radius: 50%;
-
-        box-shadow:
-            0 0 15px var(--blue);
-
-        z-index: 2;
-
-    }
-
-
-    .timeline-item:nth-child(odd) .timeline-dot {
-
-        right: -10px;
-
-    }
-
-
-    .timeline-item:nth-child(even) .timeline-dot {
-
-        left: -10px;
-
-    }
-
-
-    .timeline-content {
-
-        padding: 1.7rem;
-
-        background: rgba(255, 255, 255, .8);
-
-        border: 1px solid #dbe4ef;
-
-        border-radius: 10px;
-
-        box-shadow:
-            0 10px 30px rgba(15, 23, 42, .06);
-
-        transition: .3s;
-
-    }
-
-
-    .timeline-content:hover {
-
-        border-color: var(--blue);
-
-        transform: translateY(-5px);
-
-        box-shadow:
-            0 15px 35px rgba(0, 210, 255, .12);
-
-    }
-
-
-    .timeline-step {
-
-        color: var(--blue-dark);
-
-        font-family: 'Orbitron', sans-serif;
-
-        font-size: .8rem;
-
-        font-weight: 900;
-
-        letter-spacing: 1px;
-
-        margin-bottom: .5rem;
-
-    }
-
-
-    .timeline-content h3 {
-
-        font-family: 'Orbitron', sans-serif;
-
-        font-size: 1.2rem;
-
-        margin-bottom: .7rem;
-
-        color: var(--text-light);
-
-    }
-
-
-    .timeline-content p {
-
-        color: var(--muted-light);
-
-    }
-
-
-
-    .section_4 {
-        grid-template-columns: 1fr;
-
-        padding: 60px 25px;
-    }
-
-
-    .content_section_5 {
-        padding: 60px 25px;
+        font-size: 32px;
+        letter-spacing: -1px;
     }
 
     .h1_section_5 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
-
-    .section_6 {
+    .section_6 .wrapper {
         grid-template-columns: 1fr;
-
-        padding: 60px 25px;
     }
-}
 
-footer {
-    background-color: #080808;
-    color: #ffffff;
+    .btns_section_5 {
+        flex-direction: column;
+    }
+
+    /* mobile: 1 card por linha, título menor */
+    .grid_section_2 {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo_section_2 {
+        font-size: 28px;
+    }
 }
