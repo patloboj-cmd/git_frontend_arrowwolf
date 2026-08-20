@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Arrowwolf</title>
+    <link rel="stylesheet" href="css/formulariocss.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <main id="Form_container">
         <div id="form_header">
-            <h1 class="title">
+            <h1 id="form_tittle">
                 Criar conta
             </h1>
-            <button class="button">
-                <i class="fa-solid fa-right-to-bracket" style="color: rgb(116, 192, 252);"></i>
+            <button class="btn-default">
+                <i class="fa-solid fa-right-to-bracket"></i>
             </button>
         </div>
 
@@ -82,8 +83,8 @@
                     </label>
 
                     <div class="input-field">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Sua senha" required>
-                        <i class="fa-regular fa-eye-slash"></i>
+                        <input type="password" id="password-field" name="password" class="form-control" placeholder="Sua senha" required>
+                        <i class="fa-regular fa-eye-slash password-icon"></i>
                     </div>
                 </div>
 
@@ -96,7 +97,7 @@
 
                     <div class="input-field">
                         <input type="password" id="password_confirm" name="password_confirm" class="form-control" placeholder="Confirme sua senha" required>
-                        <i class="fa-regular fa-eye-slash"></i>
+                        <i class="fa-regular fa-eye-slash password-icon"></i>
                     </div>
                 </div>
 
