@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Arrowwolf</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <main id="Form_container">
+        <div id="form_header">
+            <h1 class="title">
+                Criar conta
+            </h1>
+            <button class="button">
+                <i class="fa-solid fa-right-to-bracket" style="color: rgb(116, 192, 252);"></i>
+            </button>
+        </div>
+
+        <form action="" id="form">
+            <div id="input_container">
+
+                <div class="input-box">
+                    <label for="name" class="form-label">
+
+                        Primeiro nome
+
+                    </label>
+
+                    <div class="input-field">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Seu nome" required>
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                </div>
+
+                 <div class="input-box">
+                    <label for="last_name" class="form-label">
+
+                        Último nome
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="text" id="last_name" name=" last_name" class="form-control" placeholder="Seu sobrenome" required>
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="Nascimento" class="form-label">
+
+                        Data de Nascimento
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="date" id="Nascimento" name="Nascimento" class="form-control" placeholder="Sua data de nascimento" required>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="gmail" class="form-label">
+
+                        E-mail
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="email" id="gmail" name="gmail" class="form-control" placeholder="Seu e-mail" required>
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="password" class="form-label">
+
+                        Sua senha
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Sua senha" required>
+                        <i class="fa-regular fa-eye-slash"></i>
+                    </div>
+                </div>
+
+                 <div class="input-box">
+                    <label for="password_confirm" class="form-label">
+
+                        Confirmar senha
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="password" id="password_confirm" name="password_confirm" class="form-control" placeholder="Confirme sua senha" required>
+                        <i class="fa-regular fa-eye-slash"></i>
+                    </div>
+                </div>
+
+                <div class="radio-container">
+                    <label class="form-label">
+                        Genero
+                    </label>
+
+                    <div></div>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Masculino</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Feminino</label>
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">Outro</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn-default">
+                <id class="fa-solid fa-check"></id>
+                Criar conta
+            </button>
+                      
+        </form>
+    </main>
+</body>
+
+</html>
