@@ -1,7 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
 :root {
 
     --dark: #030712;
-    --dark-2: #070b14;
+    --dark-2: #001f6d;
     --dark-card: #0b1120;
 
     --light: #f5f8fc;
@@ -128,7 +131,7 @@ header {
 
 .logo {
 
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'comfortaa', sans-serif;
 
     font-size: 1.7rem;
 
