@@ -828,90 +828,295 @@ footer .col-line {
 
 
 /* =========================================================
-   SECTION 5 — SITES / LANDING PAGES
+   SECTION 5 — CARROSSEL COM FUNDO BORRADO
 ========================================================= */
 
 .section_5 {
     width: 100%;
-    border-bottom: 1px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+    min-height: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* fundo borrado — background-image trocado por JS */
+
+.s5-bg {
+    position: absolute;
+    inset: -40px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /*
+       blur(28px) cria o desfoque.
+       scale(1.08) evita bordas brancas que o blur gera
+       nas extremidades — a imagem "extravasa" levemente.
+    */
+    filter: blur(28px);
+    transform: scale(1.08);
+    z-index: 0;
+
+    /* fade controlado pelo JS via opacity */
+    transition: opacity 0.4s ease;
+}
+
+/* overlay escuro sobre o blur para legibilidade do texto */
+
+.s5-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 10, 20, 0.70);
+    z-index: 1;
+}
+
+.section_5 .col-line {
+    position: relative;
+    z-index: 2;
+    border-left-color:  rgba(255,255,255,0.12);
+    border-right-color: rgba(255,255,255,0.12);
 }
 
 .section_5 .wrapper {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
 }
 
-.text_section_5 {
-    max-width: 620px;
+/* ── texto central ───────────────────────────────────── */
+
+.s5-content {
+    text-align: center;
+    max-width: 540px;
 }
 
-.h1_section_5 {
-    font-size: 44px;
-    line-height: 1.1;
+.s5-titulo {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
     letter-spacing: -1.5px;
-    margin-bottom: 20px;
-    color: #0a2540;
+    color: #ffffff;
+    margin-bottom: 14px;
 }
 
-.p_section_5 {
-    color: #64748b;
+.s5-subtitulo {
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 28px;
 }
 
-.btns_section_5 {
+.s5-btns {
     display: flex;
     gap: 10px;
-    margin-top: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.btn_1_section_5,
-.btn_2_section_5 {
-    padding: 13px 20px;
+.s5-btn {
+    padding: 13px 22px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
-    border: none;
     transition: 0.2s ease;
+    display: inline-block;
 }
 
-.btn_1_section_5 {
+.s5-btn--primary {
     background: #635bff;
     color: #ffffff;
+    border: none;
 }
 
-.btn_1_section_5:hover {
+.s5-btn--primary:hover {
     background: #5148d9;
+    transform: translateY(-2px);
 }
 
-.btn_2_section_5 {
-    border: 1.5px solid #635bff;
-    color: #635bff;
+.s5-btn--outline {
     background: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255,255,255,0.45);
 }
 
-.btn_2_section_5:hover {
-    background: #f0efff;
+.s5-btn--outline:hover {
+    border-color: #ffffff;
+    background: rgba(255,255,255,0.08);
 }
 
-.carrossel_sites_restaurantes {
+/* ── carrossel ───────────────────────────────────────── */
+
+.s5-carrossel-wrap {
     width: 100%;
-    min-height: 240px;
-    margin-top: 48px;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.carrossel_sites_restaurantes img {
+/*
+   overflow: hidden → esconde os cards fora da área visível.
+   O track se move com translateX e os cards somem por aqui.
+*/
+.s5-carrossel-viewport {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/*
+   display: flex → cards em fila horizontal.
+   transition com cubic-bezier → animação com desaceleração
+   natural no final, parece mais "física".
+*/
+.s5-carrossel-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── card ────────────────────────────────────────────── */
+
+/*
+   width: 72% → mostra o próximo card "espiando" na borda,
+   sinalizando que o carrossel tem mais conteúdo.
+   flex-shrink: 0 → impede que os cards encolham.
+   aspect-ratio: 16/10 → proporção de tela de computador.
+*/
+.s5-card {
+    flex-shrink: 0;
+    width: 72%;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    outline: 2px solid transparent;
+    transition: outline-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* card ativo: destaque com borda branca semitransparente */
+.s5-card--ativo {
+    outline-color: rgba(255,255,255,0.55);
+}
+
+/* cards inativos: levemente menores e mais opacos */
+.s5-card:not(.s5-card--ativo) {
+    transform: scale(0.96);
+    opacity: 0.70;
+}
+
+.s5-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
+/* label que aparece no hover do card */
+
+.s5-card__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 20px 18px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.s5-card:hover .s5-card__label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s5-card__link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.s5-card__link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* ── botões nav ← → ─────────────────────────────────── */
+
+.s5-nav {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    backdrop-filter: blur(6px);
+}
+
+.s5-nav:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.8);
+}
+
+.s5-nav:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+/* ── dots ────────────────────────────────────────────── */
+
+.s5-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.s5-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    padding: 0;
+}
+
+.s5-dot--ativo {
+    background: #ffffff;
+    transform: scale(1.3);
+}
+
+/* ── responsividade ──────────────────────────────────── */
+
+@media (max-width: 700px) {
+    .s5-titulo { font-size: 28px; }
+    .s5-card   { width: 88%; }
+    .s5-nav    { width: 36px; height: 36px; font-size: 14px; }
+}
 
 /* =========================================================
    SECTION 6 — NOSSO TIME
