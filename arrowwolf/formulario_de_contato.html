@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato ArrowWolf</title>
+    <link rel="stylesheet" href="css/formulario_arrowwolf.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<!-- Nome,Email whatsapp/telefone texto grande -->
+<body>
+    <main id="Form_container">
+        <div id="form_header">
+            <h1 id="form_tittle">
+                Contato
+            </h1>
+        </div>
+
+        <form action="" id="form">
+            <div id="input_container">
+
+                <div class="input-box">
+                    <label for="name" class="form-label">
+
+                        Nome
+
+                    </label>
+
+                    <div class="input-field">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Seu nome" required>
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="gmail" class="form-label">
+
+                        E-mail
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="email" id="gmail" name="gmail" class="form-control" placeholder="Seu e-mail" required>
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="password" class="form-label">
+
+                        Telefone/Whatsapp
+                        
+                    </label>
+
+                    <div class="input-field">
+                        <input type="tel" id="password-field" name="password" class="form-control" placeholder="Seu whatsapp ou telefone" required>
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                </div> 
+
+                <div class="input-box">
+                    <label for="mensagem" class="form-label">
+
+                        Mensagem
+                    </label>
+                    <br>
+                    <textarea name="mensagem" class="mensagem-zap" rows="10" cols="50" placeholder="Digite sua mensagem aqui..."></textarea>
+                </div>
+
+            <button type="submit" class="btn-default">
+                <id class="fa-solid fa-check"></id>
+                Enviar
+            </button>
+                      
+        </form>
+    </main>
+</body>
+
+</html>
