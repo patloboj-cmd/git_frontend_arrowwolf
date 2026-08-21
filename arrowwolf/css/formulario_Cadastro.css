@@ -8,7 +8,7 @@
 }
 
 body {
-    background: linear-gradient(180deg, #030712, #070b14);
+    background: linear-gradient(135deg,  #EE45A0, #8B4FE8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ body {
 }
 
 .btn-default {
-    background-color: #75e869;
+    background-color: #4ccc3e;
     display: flex;
     align-items: center;
     justify-content: center;
