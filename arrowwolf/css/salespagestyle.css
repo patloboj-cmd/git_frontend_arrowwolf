@@ -735,24 +735,18 @@ nav a:hover {
 
 .patty-container {
 
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 5rem;
-
+    display: flex;
     align-items: center;
-
-    position: relative;
-
-    z-index: 1;
-
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 40px;
 }
-
+.patty-content {
+    flex: 1 1 50%;
+    max-width: 600px;
+}
 
 .patty-label {
 
@@ -828,7 +822,7 @@ nav a:hover {
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
     gap: 1rem;
 
@@ -909,7 +903,55 @@ nav a:hover {
     font-size: .8rem;
 
 }
+/* =========================================
+   PATTY IMAGE — DESTAQUE
+========================================= */
 
+.patty-image {
+    flex: 1 1 60%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patty-image::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(0,210,255,.25), transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+}
+
+.patty-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: px;
+    height: auto;
+    display: block;
+
+    filter: drop-shadow(0 25px 45px rgba(0,0,0,.5));
+
+    animation: patty-float 4s ease-in-out infinite;
+
+    transition: transform .4s ease, filter .4s ease;
+}
+
+.patty-image:hover img {
+    transform: scale(1.03);
+    filter: drop-shadow(0 30px 55px rgba(0,210,255,.35));
+}
+
+@keyframes patty-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-15px); }
+}
 
 /* =========================================
    PATTY BUTTON
@@ -1511,17 +1553,14 @@ footer p {
 
     .patty-container {
 
-        grid-template-columns: 1fr;
-
-        gap: 3rem;
+        flex-direction: column;
+        text-align: center;
 
     }
 
 
     .patty-content {
-
-        text-align: center;
-
+        max-width: 100%;
     }
 
 
@@ -1555,7 +1594,9 @@ footer p {
     }
 
 }
-
+.patty-image{
+    margin-top: 40px;
+}
 
 @media (max-width: 768px) {
 
