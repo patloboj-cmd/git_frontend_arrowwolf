@@ -1234,8 +1234,8 @@ footer .col-line {
 
 .s6-card {
     flex-shrink: 0;
-    width: calc(25% - 12px);
-    aspect-ratio: 3 / 4;
+    width: calc(38% - 12px);
+    aspect-ratio: 3 / 5;
     border-radius: 12px;
     overflow: hidden;
     position: relative;
