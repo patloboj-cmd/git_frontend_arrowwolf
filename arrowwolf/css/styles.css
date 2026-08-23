@@ -1,4 +1,35 @@
 /* =========================================================
+   RESET
+   Zera margens e espaçamentos padrão do navegador.
+   box-sizing: border-box → padding e border incluídos
+   na largura/altura, evita cálculos confusos de layout.
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #0a2540;
+    /*
+       padding-top: 68px → compensa o header fixo (position:fixed).
+       Sem isso o conteúdo começaria atrás do header.
+    */
+    padding-top: 68px;
+}
+
+
+/* =========================================================
    LINHA DELIMITADORA — O CONCEITO CENTRAL DO LAYOUT STRIPE
 
    A Stripe usa duas linhas verticais sutis que criam uma
@@ -990,9 +1021,11 @@ footer .col-line {
 .s5-carrossel-track {
     position: absolute;
     inset: 0;
-    width: 100%;
+    width: 100%;   /* explícito: garante que left:50% nos cards
+                      calcule corretamente em relação ao viewport */
     height: 100%;
 }
+
 /* ── card base ───────────────────────────────────────────
    position: absolute → todos os cards empilhados no mesmo lugar.
    left: 14% centra o card de width:72% no viewport (14+72+14=100%).
