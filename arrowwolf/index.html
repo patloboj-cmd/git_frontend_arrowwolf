@@ -219,18 +219,22 @@
                 </div>
             </div>
         </section>
-
-        <!-- ══════════════════════════════════════════════
-             SECTION 5 — SITES
+ <!-- ══════════════════════════════════════════════
+             SECTION 5 — SITES (deck de cartas com fundo borrado)
+ 
+             IMPORTANTE: data-bg e src devem ter EXATAMENTE
+             o mesmo caminho — o JS usa data-bg para o fundo
+             borrado e o <img> exibe a imagem no card.
         ═══════════════════════════════════════════════ -->
         <section class="section_5">
-
+ 
+            <!-- fundo borrado: background-image injetado por JS -->
             <div class="s5-bg" id="s5-bg"></div>
             <div class="s5-overlay"></div>
-
+ 
             <div class="col-line">
                 <div class="wrapper">
-
+ 
                     <div class="s5-content">
                         <h2 class="s5-titulo">Faça seu Website<br>e aumente sua competitividade</h2>
                         <p class="s5-subtitulo">Sites que convertem visitantes em clientes — com design exclusivo e alta performance.</p>
@@ -239,55 +243,55 @@
                             <a href="#" class="s5-btn s5-btn--outline">Fale conosco</a>
                         </div>
                     </div>
-
+ 
                     <div class="s5-carrossel-wrap">
-
                         <button class="s5-nav s5-nav--prev" id="s5-prev" aria-label="Anterior">&#8592;</button>
-
+ 
                         <div class="s5-carrossel-viewport">
+                            <!-- track estático: os cards se movem individualmente via JS -->
                             <div class="s5-carrossel-track" id="s5-track">
-
-                                <div class="s5-card s5-card--ativo" data-bg="imagens/site1.png">
+ 
+                                <div class="s5-card" data-bg="img/site1.png">
                                     <img src="img/site1.png" alt="Trem Bão">
                                     <div class="s5-card__label">
                                         Trem Bão
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
-
-                                <div class="s5-card" data-bg="imagens/site2.png">
+ 
+                                <div class="s5-card" data-bg="img/site2.png">
                                     <img src="img/site2.png" alt="Site Institucional">
                                     <div class="s5-card__label">
                                         Site Institucional
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
-
-                                <div class="s5-card" data-bg="imagens/site3.png">
+ 
+                                <div class="s5-card" data-bg="img/site3.png">
                                     <img src="img/site3.png" alt="Landing Page">
                                     <div class="s5-card__label">
                                         Landing Page
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
-
-                                <div class="s5-card" data-bg="imagens/site4.png">
+ 
+                                <div class="s5-card" data-bg="img/site4.png">
                                     <img src="img/site4.png" alt="E-commerce">
                                     <div class="s5-card__label">
                                         E-commerce
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
-
+ 
                             </div>
                         </div>
-
+ 
                         <button class="s5-nav s5-nav--next" id="s5-next" aria-label="Próximo">&#8594;</button>
-
                     </div>
-
+ 
+                    <!-- dots gerados dinamicamente pelo JS -->
                     <div class="s5-dots" id="s5-dots"></div>
-
+ 
                 </div>
             </div>
         </section>
@@ -445,8 +449,8 @@
             </div>
         </div>
     </footer>
-    <script src="js/section5_script.js"></script>
-    <script src="js/section6_script.js"></script>
+    <script src="js/scripts.js"></script>
+   
 
 </body>
 
