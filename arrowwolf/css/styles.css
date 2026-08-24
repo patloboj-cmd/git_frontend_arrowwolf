@@ -127,7 +127,7 @@ footer .col-line {
     border-bottom: 1px solid #e5e7eb;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 1%;
+    padding: 0.5%;
     
 }
 
@@ -189,9 +189,9 @@ footer .col-line {
 .btn_direct_login,
 .btn_contato {
     border: none;
-    padding: 18px 28px;
+    padding: 16px 26px;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s ease;
@@ -1748,7 +1748,7 @@ footer .col-line .wrapper {
 /* grid: logo | nav | ajuda | contato */
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 40px;
     padding-bottom: 40px;
 }
@@ -1762,7 +1762,7 @@ footer .col-line .wrapper {
 }
 
 .footer-col__titulo {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.5px;
@@ -1777,7 +1777,7 @@ footer .col-line .wrapper {
 }
 
 .footer-col__lista a {
-    font-size: 13px;
+    font-size: 14px;
     color: #94a3b8;
     text-decoration: none;
     transition: color 0.2s ease;
