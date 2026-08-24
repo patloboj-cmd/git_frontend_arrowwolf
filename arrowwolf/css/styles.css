@@ -127,6 +127,7 @@ footer .col-line {
     border-bottom: 1px solid #e5e7eb;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    padding: 1%;
     
 }
 
@@ -1947,3 +1948,5 @@ footer .col-line .wrapper {
         font-size: 28px;
     }
 }
+
+
