@@ -128,9 +128,9 @@ footer .col-line {
 }
 
 .menu a {
-    color: #0a2540;
+    color: #080808;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 19px;
     font-weight: 500;
     transition: color 0.2s ease;
 }
@@ -150,22 +150,22 @@ footer .col-line {
 .btn_direct_login,
 .btn_contato {
     border: none;
-    padding: 15px 24px;
+    padding: 18px 28px;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s ease;
 }
 
-.btn_direct_login {
+/* .btn_direct_login {
     background: transparent;
-}
+} */
 
-.btn_direct_login a {
+/* .btn_direct_login a {
     color: #635bff;
     text-decoration: none;
-}
+} */
 
 .btn_contato {
     background: #635bff;
@@ -202,7 +202,7 @@ footer .col-line {
     justify-content: center;
     overflow: hidden;
     border-bottom: 1px solid #e5e7eb;
-    background-image: url(/arrowwolf/img/Blue\ Simple\ Future\ Company\ YouTube\ Video\ Intro.gif);
+    background-image: url('/img/Blue\ Simple\ Future\ Company\ YouTube\ Video\ Intro.gif');
 }
 
 /* ── vídeo de fundo ──────────────────────────────────────
@@ -272,12 +272,12 @@ footer .col-line {
 /* botão hero */
 
 .btn_section_1 {
-    padding: 14px 22px;
+    padding: 22px 30px;
     border: none;
     border-radius: 6px;
     background: #635bff;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
@@ -820,6 +820,10 @@ footer .col-line {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline-block;
+
+    
+    padding-bottom: 0.15em;
+
 }
 
 /* ── área da imagem ──────────────────────────────────────
@@ -1521,20 +1525,14 @@ footer .col-line {
 /* ── topo do card: logo/nome da empresa ─────────────── */
 
 .s6-card__topo {
-    padding: 20px;
+    padding: 0px 12px;
 }
 
-.s6-card__empresa {
-    font-size: 13px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 1px;
-
-    /*
-       text-shadow para o nome ficar legível sobre qualquer
-       cor de fundo da foto.
-    */
-    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+.s6-card__logo {
+    height: 105px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1); /* garante branco puro independente da versão da imagem */
 }
 
 /* ── base do card: gradiente + texto ────────────────── */
