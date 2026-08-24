@@ -15,6 +15,43 @@ html {
     scroll-behavior: smooth;
 }
 
+/*
+   position: fixed → gruda na janela, não na página.
+   Rola com o usuário — sempre visível.
+   bottom + right → posição em relação à janela.
+   z-index: 999 → acima de todo o conteúdo.
+*/
+.whatsapp-float {
+    position: fixed;
+    bottom: 34px;
+    right: 34px;
+    z-index: 999;
+
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+
+    background: #25d366;
+    color: #ffffff;
+    font-size: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    /* box-shadow cria o efeito de "flutuar" acima da página */
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.7);
+}
+
 body {
     width: 100%;
     min-height: 100vh;
@@ -27,6 +64,7 @@ body {
     */
     padding-top: 68px;
 }
+
 
 
 /* =========================================================
