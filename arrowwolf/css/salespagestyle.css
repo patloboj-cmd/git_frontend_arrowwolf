@@ -1434,7 +1434,7 @@ nav a:hover {
     padding: 1.3rem 1.6rem;
     background: transparent;
     border: none;
-    color: #fff;
+    color: #000;
     font-size: 1.05rem;
     font-weight: 700;
     text-align: left;
@@ -1459,7 +1459,7 @@ nav a:hover {
     padding: 0 1.6rem 1.5rem;
 }
 .faq-answer p {
-    color: var(--muted-dark);
+    color: var(--muted-light);
     font-size: .95rem;
     line-height: 1.6;
 }
