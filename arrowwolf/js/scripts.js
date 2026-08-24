@@ -1,4 +1,131 @@
 /*
+   SCRIPT DA SECTION 4 — PATTY SYSTEM
+   ────────────────────────────────────
+   Sem botões de navegação. Duas formas de troca de imagem:
+
+   1. AUTO-PLAY: muda a cada 6s enquanto a section está
+      visível (IntersectionObserver pausa quando fora da tela).
+
+   2. HOVER nas colunas de texto:
+      - Build (data-img="1")      → imagem índice 1
+      - Gestão (data-img="2")     → imagem índice 2
+      - Otimização (data-img="3") → imagem índice 3
+      - Ao sair do hover, volta ao auto-play a partir do atual.
+
+   3. SCROLL: IntersectionObserver detecta entrada/saída
+      da section_4. Ao entrar ou sair → volta à imagem 0.
+*/
+
+(function () {
+
+    const track    = document.getElementById('s4-track');
+    const section  = document.getElementById('section_4');
+
+    if (!track || !section) return;
+
+    const cards   = Array.from(track.querySelectorAll('.s4-card'));
+    const colunas = Array.from(section.querySelectorAll('.text_box_section_4'));
+    const total   = cards.length;
+    let   atual   = 0;
+    let   timer   = null;
+    let   pausado = false; /* true quando mouse está sobre uma coluna */
+
+    /* ── ativa uma imagem pelo índice ────────────────────
+       Remove .s4-card--ativo de todos e aplica no alvo.
+       Atualiza a coluna de texto ativa (linha indicadora).
+    */
+    function mostrar(indice) {
+        /* garante que o índice está dentro do range */
+        indice = ((indice % total) + total) % total;
+
+        /* troca de card */
+        cards.forEach(function (c) { c.classList.remove('s4-card--ativo'); });
+        cards[indice].classList.add('s4-card--ativo');
+
+        /* destaca a coluna correspondente (índice 0 → nenhuma coluna ativa) */
+        colunas.forEach(function (col) {
+            col.classList.remove('text_box_section_4--ativa');
+        });
+        if (indice > 0) {
+            /* data-img="1" corresponde ao índice 1, etc. */
+            const col = section.querySelector('.text_box_section_4[data-img="' + indice + '"]');
+            if (col) col.classList.add('text_box_section_4--ativa');
+        }
+
+        atual = indice;
+    }
+
+    /* ── auto-play ───────────────────────────────────────
+       Avança para o próximo índice a cada 6000ms.
+       Pausa quando o mouse está sobre uma coluna (pausado=true)
+       ou quando a section sai da viewport (ver IntersectionObserver).
+    */
+    function iniciarTimer() {
+        pararTimer();
+        timer = setInterval(function () {
+            if (!pausado) {
+                mostrar((atual + 1) % total);
+            }
+        }, 6000);
+    }
+
+    function pararTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    /* ── hover nas colunas ───────────────────────────────
+       mouseenter → mostra a imagem do data-img da coluna,
+                    pausa o auto-play.
+       mouseleave → retoma o auto-play a partir do slide atual.
+    */
+    colunas.forEach(function (col) {
+        col.addEventListener('mouseenter', function () {
+            pausado = true;
+            const idx = parseInt(col.dataset.img, 10);
+            if (!isNaN(idx)) mostrar(idx);
+        });
+
+        col.addEventListener('mouseleave', function () {
+            pausado = false;
+            /* retoma o timer sem resetar o índice atual */
+            iniciarTimer();
+        });
+    });
+
+    /* ── IntersectionObserver ────────────────────────────
+       Monitora quando a section_4 entra ou sai da viewport.
+
+       Ao ENTRAR (isIntersecting: true):
+       → volta para a imagem 0 e inicia o auto-play.
+
+       Ao SAIR (isIntersecting: false):
+       → volta para a imagem 0 e pausa o auto-play.
+
+       threshold: 0.1 → dispara quando 10% da section
+       está visível — evita disparos com 1 pixel na borda.
+    */
+    const observer = new IntersectionObserver(function (entries) {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+            mostrar(0);
+            iniciarTimer();
+        } else {
+            mostrar(0);
+            pararTimer();
+        }
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+
+    /* inicialização */
+    mostrar(0);
+
+})();
+
+/*
    SCRIPT DA SECTION 5 — CARROSSEL DECK DE CARTAS
    ────────────────────────────────────────────────
    MUDANÇA PRINCIPAL em relação à versão anterior:

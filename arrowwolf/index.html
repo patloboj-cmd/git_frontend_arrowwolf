@@ -87,7 +87,8 @@
                             </div>
                             <div class="card_s2__body">
                                 <h3 class="card_s2__titulo">Sites para Restaurantes</h3>
-                                <p class="card_s2__desc">Cardápio digital, reservas online e identidade visual que converte visitas em mesas cheias.</p>
+                                <p class="card_s2__desc">Cardápio digital, reservas online e identidade visual que
+                                    converte visitas em mesas cheias.</p>
                                 <a href="#" class="card_s2__link">Ver projeto →</a>
                             </div>
                         </div>
@@ -99,7 +100,8 @@
                             </div>
                             <div class="card_s2__body">
                                 <h3 class="card_s2__titulo">Sites Institucionais</h3>
-                                <p class="card_s2__desc">Presença digital profissional com design exclusivo para posicionar sua marca como referência no segmento.</p>
+                                <p class="card_s2__desc">Presença digital profissional com design exclusivo para
+                                    posicionar sua marca como referência no segmento.</p>
                                 <a href="#" class="card_s2__link">Ver projeto →</a>
                             </div>
                         </div>
@@ -111,7 +113,8 @@
                             </div>
                             <div class="card_s2__body">
                                 <h3 class="card_s2__titulo">Patty System</h3>
-                                <p class="card_s2__desc">Sistema SaaS de gestão completa para consultoras multimarcas: vendas, estoque e clientes em um só lugar.</p>
+                                <p class="card_s2__desc">Sistema SaaS de gestão completa para consultoras multimarcas:
+                                    vendas, estoque e clientes em um só lugar.</p>
                                 <a href="pattySystem1.html" class="card_s2__link">Conhecer o sistema →</a>
                             </div>
                         </div>
@@ -147,7 +150,8 @@
                             <div class="timeline-content">
                                 <div class="timeline-step">Etapa 01</div>
                                 <h3>Primeiro Contato & Alinhamento</h3>
-                                <p>Reunião inicial sem compromisso para entender os objetivos estratégicos da sua empresa e como o projeto web agregará valor comercial.</p>
+                                <p>Reunião inicial sem compromisso para entender os objetivos estratégicos da sua
+                                    empresa e como o projeto web agregará valor comercial.</p>
                             </div>
                         </div>
 
@@ -156,7 +160,8 @@
                             <div class="timeline-content">
                                 <div class="timeline-step">Etapa 02</div>
                                 <h3>Entrevista & Levantamento de Requisitos</h3>
-                                <p>Imersão total na sua marca. Coletamos dados do público-alvo, funcionalidades necessárias, referências visuais e mapa de conteúdo.</p>
+                                <p>Imersão total na sua marca. Coletamos dados do público-alvo, funcionalidades
+                                    necessárias, referências visuais e mapa de conteúdo.</p>
                             </div>
                         </div>
 
@@ -165,7 +170,8 @@
                             <div class="timeline-content">
                                 <div class="timeline-step">Etapa 03</div>
                                 <h3>Design UI/UX & Prototipagem</h3>
-                                <p>Desenhamos a interface responsiva da sua página, focando em usabilidade, autoridade visual e gatilhos para aumentar conversões.</p>
+                                <p>Desenhamos a interface responsiva da sua página, focando em usabilidade, autoridade
+                                    visual e gatilhos para aumentar conversões.</p>
                             </div>
                         </div>
 
@@ -174,7 +180,8 @@
                             <div class="timeline-content">
                                 <div class="timeline-step">Etapa 04</div>
                                 <h3>Desenvolvimento & Código Limpo</h3>
-                                <p>Codificação responsiva de alta performance, otimizando velocidade de carregamento, segurança e adequação com as práticas de SEO.</p>
+                                <p>Codificação responsiva de alta performance, otimizando velocidade de carregamento,
+                                    segurança e adequação com as práticas de SEO.</p>
                             </div>
                         </div>
 
@@ -183,7 +190,8 @@
                             <div class="timeline-content">
                                 <div class="timeline-step">Etapa 05</div>
                                 <h3>Testes, Entrega & Suporte</h3>
-                                <p>Testes rigorosos antes da entrega. Fornecemos todos os arquivos fonte, acessos do servidor e suporte contínuo pós-lançamento.</p>
+                                <p>Testes rigorosos antes da entrega. Fornecemos todos os arquivos fonte, acessos do
+                                    servidor e suporte contínuo pós-lançamento.</p>
                             </div>
                         </div>
 
@@ -195,31 +203,74 @@
 
         <!-- ══════════════════════════════════════════════
              SECTION 4 — PATTY SYSTEM
+
+             Comportamento:
+             - 1 imagem por vez, sem deck, sem frame branco
+             - Troca automática a cada 6s (IntersectionObserver
+               pausa quando fora da tela)
+             - Hover nas colunas de texto troca a imagem:
+               Build → img 2 | Gestão → img 3 | Otimização → img 4
+             - Scroll chegando/saindo da section → volta img 1
+             - Sem botões de navegação
         ═══════════════════════════════════════════════ -->
         <section id="section_4" class="section_4">
             <div class="col-line">
                 <div class="wrapper">
-                    <div class="patty_system_screen">
-                        <img src="img/telaInterna_1.png" alt="Patty System Screen">
+
+                    <!-- título com gradiente pink→purple -->
+                    <h2 class="s4-titulo">
+                        <span class="s4-titulo__grad">Patty's System</span>
+                    </h2>
+
+                    <!-- área da imagem: 1 card visível, troca via JS -->
+                    <div class="s4-img-wrap">
+                        <div class="s4-img-track" id="s4-track">
+
+                            <div class="s4-card" data-index="0">
+                                <img src="img/telaInterna_1.png" alt="Patty System — visão geral">
+                            </div>
+
+                            <div class="s4-card" data-index="1">
+                                <img src="img/telaInterna_2.png" alt="Patty System — build">
+                            </div>
+
+                            <div class="s4-card" data-index="2">
+                                <img src="img/telaInterna_3.png" alt="Patty System — gestão">
+                            </div>
+
+                            <div class="s4-card" data-index="3">
+                                <img src="img/telaInterna_4.png" alt="Patty System — otimização">
+                            </div>
+
+                        </div>
                     </div>
+
+                    <!-- texto abaixo — hover em cada coluna troca a imagem
+                         data-img indica qual índice de imagem mostrar -->
                     <div class="box_section_4">
-                        <div class="text_box_section_4">
+
+                        <div class="text_box_section_4" data-img="1">
                             <h2 class="h2_section_4">Build</h2>
                             <p class="p_section_4">Construímos sistemas pensando na escalabilidade desde o início.</p>
                         </div>
-                        <div class="text_box_section_4">
+
+                        <div class="text_box_section_4" data-img="2">
                             <h2 class="h2_section_4">Gestão</h2>
                             <p class="p_section_4">Ferramentas que organizam seu negócio sem complicar sua rotina.</p>
                         </div>
-                        <div class="text_box_section_4">
+
+                        <div class="text_box_section_4" data-img="3">
                             <h2 class="h2_section_4">Otimização</h2>
                             <p class="p_section_4">Cada entrega é analisada e refinada para gerar o máximo resultado.</p>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </section>
- <!-- ══════════════════════════════════════════════
+        
+        <!-- ══════════════════════════════════════════════
              SECTION 5 — SITES (deck de cartas com fundo borrado)
  
              IMPORTANTE: data-bg e src devem ter EXATAMENTE
@@ -227,30 +278,31 @@
              borrado e o <img> exibe a imagem no card.
         ═══════════════════════════════════════════════ -->
         <section class="section_5">
- 
+
             <!-- fundo borrado: background-image injetado por JS -->
             <div class="s5-bg" id="s5-bg"></div>
             <div class="s5-overlay"></div>
- 
+
             <div class="col-line">
                 <div class="wrapper">
- 
+
                     <div class="s5-content">
                         <h2 class="s5-titulo">Faça seu Website<br>e aumente sua competitividade</h2>
-                        <p class="s5-subtitulo">Sites que convertem visitantes em clientes — com design exclusivo e alta performance.</p>
+                        <p class="s5-subtitulo">Sites que convertem visitantes em clientes — com design exclusivo e alta
+                            performance.</p>
                         <div class="s5-btns">
                             <a href="#" class="s5-btn s5-btn--primary">Começar agora →</a>
                             <a href="#" class="s5-btn s5-btn--outline">Fale conosco</a>
                         </div>
                     </div>
- 
+
                     <div class="s5-carrossel-wrap">
                         <button class="s5-nav s5-nav--prev" id="s5-prev" aria-label="Anterior">&#8592;</button>
- 
+
                         <div class="s5-carrossel-viewport">
                             <!-- track estático: os cards se movem individualmente via JS -->
                             <div class="s5-carrossel-track" id="s5-track">
- 
+
                                 <div class="s5-card" data-bg="img/site1.png">
                                     <img src="img/site1.png" alt="Trem Bão">
                                     <div class="s5-card__label">
@@ -258,7 +310,7 @@
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
- 
+
                                 <div class="s5-card" data-bg="img/site2.png">
                                     <img src="img/site2.png" alt="Site Institucional">
                                     <div class="s5-card__label">
@@ -266,7 +318,7 @@
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
- 
+
                                 <div class="s5-card" data-bg="img/site3.png">
                                     <img src="img/site3.png" alt="Landing Page">
                                     <div class="s5-card__label">
@@ -274,7 +326,7 @@
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
- 
+
                                 <div class="s5-card" data-bg="img/site4.png">
                                     <img src="img/site4.png" alt="E-commerce">
                                     <div class="s5-card__label">
@@ -282,16 +334,16 @@
                                         <a href="#" class="s5-card__link">Ver site →</a>
                                     </div>
                                 </div>
- 
+
                             </div>
                         </div>
- 
+
                         <button class="s5-nav s5-nav--next" id="s5-next" aria-label="Próximo">&#8594;</button>
                     </div>
- 
+
                     <!-- dots gerados dinamicamente pelo JS -->
                     <div class="s5-dots" id="s5-dots"></div>
- 
+
                 </div>
             </div>
         </section>
@@ -336,7 +388,8 @@
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Co-fundadora</div>
                                     <div class="s6-card__cargo">Gestão & Relacionamento</div>
-                                    <p class="s6-card__quote">"Acredito que tecnologia só tem valor quando simplifica a vida real de pessoas reais."</p>
+                                    <p class="s6-card__quote">"Acredito que tecnologia só tem valor quando simplifica a
+                                        vida real de pessoas reais."</p>
                                     <div class="s6-card__rodape">
                                         <span class="s6-card__nome">Patrícia Lobo</span>
                                         <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
@@ -352,7 +405,8 @@
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Co-fundador & Dev</div>
                                     <div class="s6-card__cargo">Arquitetura & Desenvolvimento</div>
-                                    <p class="s6-card__quote">"Cada linha de código é uma decisão de negócio. Construo sistemas que escalam junto com o cliente."</p>
+                                    <p class="s6-card__quote">"Cada linha de código é uma decisão de negócio. Construo
+                                        sistemas que escalam junto com o cliente."</p>
                                     <div class="s6-card__rodape">
                                         <span class="s6-card__nome">Marco Flexa</span>
                                         <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
@@ -368,7 +422,8 @@
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Designer</div>
                                     <div class="s6-card__cargo">UI/UX & Identidade Visual</div>
-                                    <p class="s6-card__quote">"Design não é só estética — é a primeira conversa que o produto tem com o usuário."</p>
+                                    <p class="s6-card__quote">"Design não é só estética — é a primeira conversa que o
+                                        produto tem com o usuário."</p>
                                     <div class="s6-card__rodape">
                                         <span class="s6-card__nome">Luciane Ribeiro</span>
                                         <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
@@ -384,7 +439,8 @@
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Dev Backend</div>
                                     <div class="s6-card__cargo">APIs & Infraestrutura</div>
-                                    <p class="s6-card__quote">"Infraestrutura bem feita é invisível para o usuário — e isso é exatamente o objetivo."</p>
+                                    <p class="s6-card__quote">"Infraestrutura bem feita é invisível para o usuário — e
+                                        isso é exatamente o objetivo."</p>
                                     <div class="s6-card__rodape">
                                         <span class="s6-card__nome">Ramon Silva</span>
                                         <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
@@ -400,7 +456,8 @@
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Dev Frontend</div>
                                     <div class="s6-card__cargo">Interfaces & Performance</div>
-                                    <p class="s6-card__quote">"Uma interface rápida e bonita não é luxo — é respeito pelo tempo do usuário."</p>
+                                    <p class="s6-card__quote">"Uma interface rápida e bonita não é luxo — é respeito
+                                        pelo tempo do usuário."</p>
                                     <div class="s6-card__rodape">
                                         <span class="s6-card__nome">James Dias</span>
                                         <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
@@ -437,20 +494,20 @@
             </div>
         </section>
 
-    <!-- ══════════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════════
          FOOTER
          Azul escuro. .col-line com bordas azul-claro.
          Texto branco.
     ═══════════════════════════════════════════════════ -->
-    <footer>
-        <div class="col-line">
-            <div class="wrapper">
-                &copy; 2026 arrowwolf Tecnologia. Todos os direitos reservados.
+        <footer>
+            <div class="col-line">
+                <div class="wrapper">
+                    &copy; 2026 arrowwolf Tecnologia. Todos os direitos reservados.
+                </div>
             </div>
-        </div>
-    </footer>
-    <script src="js/scripts.js"></script>
-   
+        </footer>
+        <script src="js/scripts.js"></script>
+
 
 </body>
 

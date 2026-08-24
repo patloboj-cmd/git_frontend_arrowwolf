@@ -775,62 +775,199 @@ footer .col-line {
 
 /* =========================================================
    SECTION 4 — PATTY SYSTEM
+
+   Layout:
+   - Título com gradiente pink→purple acima das imagens
+   - 1 imagem por vez, sem deck, sem frame branco
+   - Texto abaixo no mesmo estilo do resto da página
+   - Hover nas colunas e auto-play de 6s trocam a imagem
 ========================================================= */
 
 .section_4 {
     width: 100%;
+    background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
 }
 
 .section_4 .wrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 40px;
-    padding: 5%;
 }
 
+/* ── título com gradiente ────────────────────────────────
+   -webkit-background-clip: text → gradiente vira a "tinta".
+   -webkit-text-fill-color: transparent → fill invisível.
+   display: inline-block → necessário para o clip funcionar.
+*/
+.s4-titulo {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.s4-titulo__grad {
+    --pink:   #f472b6;
+    --purple: #635bff;
+    --grad: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
+
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+/* ── área da imagem ──────────────────────────────────────
+   overflow: hidden → corta os cards invisíveis que saem
+   da área (opacity 0 mas ainda ocupam espaço no DOM).
+   border-radius: 12px → cantos suaves.
+   Sem box-shadow, sem border → sem frame branco.
+   aspect-ratio: 16/9 → proporção de tela, responsivo.
+*/
+.s4-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+}
+
+/* ── track ───────────────────────────────────────────────
+   position: absolute + inset: 0 → ocupa todo o wrap.
+   Os cards ficam empilhados via position:absolute.
+*/
+.s4-img-track {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── card ────────────────────────────────────────────────
+   position: absolute → todos empilhados no mesmo ponto.
+   opacity: 0 por padrão → JS adiciona .s4-card--ativo.
+   transition: opacity → fade suave entre imagens.
+   pointer-events: none nos inativos → não capturam hover.
+*/
+.s4-card {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.s4-card--ativo {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* object-fit: cover → preenche sem distorcer nem cortar. */
+.s4-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* contain → mostra a imagem inteira sem cortar */
+    display: block;
+    background: #f8fafc; /* fundo neutro atrás da imagem se houver espaço */
+}
+
+/* ── texto abaixo — estilo original restaurado ───────────
+   flex row → 3 colunas lado a lado.
+   border-top separa visualmente do carrossel.
+   Separadores verticais via border-right entre colunas.
+   cursor: pointer → indica que é interativo (hover troca img).
+*/
 .box_section_4 {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 30px;
-    /* flex-wrap: wrap; */
+    width: 100%;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 32px;
+    gap: 0;
 }
-
-.patty_system_screen {
-    display: flex;
-    justify-content: center;
-}
-
-.patty_system_screen img {
-    max-width: 90%;
-    height: auto;
-    border-radius: 1%;
-}
-
-
-
 
 .text_box_section_4 {
-    padding-bottom: 24px;
-    border-bottom: 1px solid #e5e7eb;
+    flex: 1;
+    padding: 0 32px 0;
+    border-right: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
 }
 
-/* .text_box_section_4:last-child {
-    border-bottom: none;
-} */
+.text_box_section_4:first-child {
+    padding-left: 0;
+}
 
+.text_box_section_4:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+/* coluna ativa (hover ou correspondente à imagem atual):
+   sublinhado na base do h2 com gradiente */
+.text_box_section_4--ativa .h2_section_4::after {
+    width: 100%;
+}
+
+/* hover sutil nas colunas não ativas */
+.text_box_section_4:not(.text_box_section_4--ativa) {
+    opacity: 0.6;
+}
+
+.text_box_section_4:hover {
+    opacity: 1 !important;
+}
+
+/* h2 das colunas — estilo original (sem gradiente) */
 .h2_section_4 {
     font-size: 20px;
-    margin-bottom: 8px;
+    font-weight: 700;
     color: #0a2540;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+/*
+   Linha indicadora abaixo do h2 da coluna ativa.
+   ::after cria a linha; começa com width:0 e anima para 100%
+   quando a coluna recebe .text_box_section_4--ativa.
+*/
+.h2_section_4::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #f472b6 0%, #635bff 100%);
+    transition: width 0.35s ease;
+}
+
+.text_box_section_4--ativa .h2_section_4::after {
+    width: 100%;
 }
 
 .p_section_4 {
     color: #64748b;
     font-size: 14px;
     line-height: 1.65;
+}
+
+/* ── responsividade ──────────────────────────────────────*/
+@media (max-width: 700px) {
+    .s4-titulo          { font-size: 32px; }
+    .s4-img-wrap        { aspect-ratio: 4 / 3; }
+    .box_section_4      { flex-direction: column; gap: 24px; padding-top: 24px; }
+    .text_box_section_4 { border-right: none; border-bottom: 1px solid #e5e7eb;
+                          padding: 0 0 24px; }
+    .text_box_section_4:last-child { border-bottom: none; }
 }
 
 
