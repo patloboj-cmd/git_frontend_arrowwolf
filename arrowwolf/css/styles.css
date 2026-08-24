@@ -1555,7 +1555,7 @@ footer .col-line {
 
 .s6-card {
     flex-shrink: 0;
-    width: calc(38% - 12px);
+    width: calc(36% - 12px);
     aspect-ratio: 3 / 5;
     border-radius: 12px;
     overflow: hidden;
@@ -1585,7 +1585,7 @@ footer .col-line {
 }
 
 .s6-card__logo {
-    height: 105px;
+    height: 100px;
     width: auto;
     display: block;
     filter: brightness(0) invert(1); /* garante branco puro independente da versão da imagem */

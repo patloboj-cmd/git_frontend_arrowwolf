@@ -298,7 +298,7 @@
         const larguraTela = window.innerWidth;
         if (larguraTela <= 600) return 1;
         if (larguraTela <= 900) return 2;
-        return 1;
+        return 1.5;
     }
 
     function irPara(indice) {
