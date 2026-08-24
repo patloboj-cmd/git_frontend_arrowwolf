@@ -348,7 +348,7 @@ footer .col-line {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
-    align-items: start;
+    align-items: stretch;
 }
 
 /* ── card ─────────────────────────────────────────────── */
@@ -364,7 +364,9 @@ footer .col-line {
 .card_s2 {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
+
 
 /* ── área da imagem ───────────────────────────────────── */
 
@@ -418,13 +420,20 @@ footer .col-line {
 
 /* ── corpo de texto ───────────────────────────────────── */
 
+/*
+   flex: 1 → o body ocupa todo o espaço restante abaixo
+   da imagem, empurrando o link para a base.
+   justify-content: space-between → título+desc no topo,
+   link fixo na base independente do tamanho do texto.
+*/
 .card_s2__body {
     display: flex;
     flex-direction: column;
-
-    /* gap entre título, parágrafo e link */
+    flex: 1;
+    justify-content: space-between;
     gap: 10px;
 }
+
 
 .card_s2__titulo {
     font-size: 17px;
@@ -448,20 +457,28 @@ footer .col-line {
    mas aqui usamos gap no pai + margin-top pequeno.
 */
 
+/*
+   margin-top: auto → empurra o link para a base do body.
+   Redundante com justify-content: space-between mas garante
+   o comportamento em qualquer contexto flex.
+*/
+ 
 .card_s2__link {
     display: inline-block;
-    margin-top: 4px;
-
+    margin-top: auto;
+    padding-top: 8px; /* espaço mínimo entre o texto e o link */
+ 
     color: #080808;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-
-    transition: gap 0.2s ease;
+ 
+    transition: color 0.2s ease;
 }
 
 .card_s2__link:hover {
-    text-decoration: underline;
+    color: #635bff;
+    /* text-decoration: underline; */
 }
 
 
@@ -731,7 +748,7 @@ footer .col-line {
 
 .section_dark {
     width: 100%;
-    background: #0a2540;
+    background: linear-gradient(180deg, #030712, #070b14);
     color: #ffffff;
     border-bottom: 1px solid #1e3a5f;
 }
@@ -1764,7 +1781,7 @@ footer .col-line .wrapper {
     padding: 24px 0;
     text-align: center;
     font-size: 13px;
-    color: #64748b;
+    color: #ffffff;
 }
 
 /* responsividade */
