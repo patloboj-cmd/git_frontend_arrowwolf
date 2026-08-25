@@ -218,6 +218,18 @@ h1, h2, h3{
   color: var(--pink);
 }
 
+/* login */
+.link-login{ 
+  font-size: 14.5px;
+  font-weight: 700;             /* mais pesado que os links do menu (que são 600) */
+  color: var(--navy);           /* cor mais escura/forte que os outros links */
+  transition: color .2s ease;
+}
+.link-login:hover{
+  color: var(--pink);           /* mesmo efeito de hover que o menu já tem */
+}
+
+
 main{
   padding-top: 92px;
 }
@@ -604,11 +616,121 @@ main{
   box-shadow: 0 16px 34px -10px rgba(0,0,0,.3);
   position: relative;
 }
+/* =========================================================
+   FOOTER
+
+   Mesmo azul escuro da section_dark para continuidade.
+   Linhas laterais em azul visível (via .col-line herdado).
+   Texto BRANCO — não mais cinza.
+========================================================= */
+
+footer.rodape-site {
+    width: 100%;
+    background: linear-gradient(180deg, #030712, #070b14);
+    border-top: 1px solid #1e3a5f;
+
+}
+
+footer .col-line .wrapper {
+    padding-top: 48px;
+    padding-bottom: 0;
+    text-align: left;
+}
+
+/* grid: logo | nav | ajuda | contato */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    height: 160px;
+    width: auto;
+    display: block;
+    margin-bottom: 1px;
+    margin-left: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-col__titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+.footer-col__lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col__lista a {
+    font-size: 14px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-col__lista a:hover {
+    color: #ffffff;
+}
+
+/* ícones sociais */
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.footer-social__link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social__link:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* linha divisória + copyright */
+.footer-bottom {
+    border-top: 1px solid #1e3a5f;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+/* responsividade */
+@media (max-width: 700px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
 
 /* ---------------------------------------------------------------
    11. RODAPÉ
 --------------------------------------------------------------- */
-footer.rodape{
+/* footer.rodape{
   background: var(--navy);
   color: #B9AEDD;
   padding: 50px 0;
@@ -640,7 +762,7 @@ footer.rodape small{
   margin-top: 30px;
   font-size: 12.5px;
   color: #6D5F9B;
-}
+} */
 
 /* ---------------------------------------------------------------
    12. ANIMAÇÕES  
@@ -675,17 +797,81 @@ footer.rodape small{
 /* ---------------------------------------------------------------
    13. RESPONSIVO
 --------------------------------------------------------------- */
+/* @media = "regra que só vale abaixo de um certo tamanho de tela".
+   max-width: 980px = tudo aqui dentro só se aplica em telas de até 980px de largura
+   (tablets e celulares). Em telas maiores, essas regras são ignoradas. */
 @media (max-width: 980px){
+
+  /* o hero tinha 2 colunas (texto | imagem) lado a lado; aqui vira 1 coluna só,
+     empilhando texto e imagem um embaixo do outro */
   .hero-grid{ grid-template-columns: 1fr; }
-  .hero-figura{ order: -1; } /* imagem aparece antes do texto no celular */
+
+  /* faz a imagem aparecer ANTES do texto na ordem visual no celular,
+     mesmo que no HTML o texto venha primeiro */
+  .hero-figura{ order: -1; }
+
+  /* tira o limite de largura do texto e centraliza ele,
+     já que agora ele ocupa a tela toda (não mais só metade) */
   .hero-texto{ max-width: none; text-align: center; margin: 0 auto; }
+
+  /* centraliza os botões "Quero começar"/"Ver como funciona",
+     que antes ficavam alinhados à esquerda */
   .hero-cta{ justify-content: center; }
+
+  /* os cards de benefício, que eram 4 colunas, viram 2 colunas */
   .beneficios-lista{ grid-template-columns: repeat(2, 1fr); }
+
+  /* os 3 depoimentos, que ficavam lado a lado, empilham em 1 coluna só */
   .depoimentos-lista{ grid-template-columns: 1fr; }
+
+  /* os 3 planos também empilham em 1 coluna, com largura máxima
+     pra não ficarem esticados de ponta a ponta */
   .planos-lista{ grid-template-columns: 1fr; max-width: 420px; }
+
+  /* tira o "scale" (aumento de tamanho) do card de plano em destaque,
+     senão ele fica maior que os outros de um jeito estranho empilhado */
   .plano-card.destaque{ transform: none; }
+
+  /* esconde o menu (Sobre, Depoimentos, Planos, Dúvidas) — não cabe
+     mais na tela pequena junto com logo + botões */
   .topo nav{ display: none; }
+
+  /* diminui o tamanho da fonte do título principal do hero */
   .hero-texto h1{ font-size: 34px; }
+
+  /* diminui o tamanho da fonte dos títulos de cada seção (h2) */
   .section-head h2{ font-size: 26px; }
+
+  /* o rodapé, que tinha logo/links/contato lado a lado,
+     empilha tudo centralizado */
   footer.rodape .container{ flex-direction: column; text-align: center; }
+}
+
+/* segundo @media, mais restrito: só entra em ação em telas AINDA menores
+   (celulares estreitos, abaixo de 560px) — as regras aqui somam com as de cima */
+@media (max-width: 560px){
+
+  /* diminui o espaço entre o Login e o botão "Quero começar grátis" */
+  .header-botoes{
+    gap: 10px;
+  }
+
+  /* diminui o tamanho do botão "Quero começar grátis" (padding e fonte),
+     pra caber melhor numa tela estreita */
+  .header-botoes .btn{
+    padding: 11px 18px;
+    font-size: 13.5px;
+  }
+
+  /* diminui a fonte do link "Login" também, no mesmo espírito */
+  .link-login{
+    font-size: 13.5px;
+  }
+
+  /* a seção "Sobre o produto", que já tinha virado 2 colunas no
+     @media anterior, agora vira 1 coluna só — os cards ficariam
+     apertados demais em 2 colunas numa tela tão estreita */
+  .beneficios-lista{
+    grid-template-columns: 1fr;
+  }
 }
