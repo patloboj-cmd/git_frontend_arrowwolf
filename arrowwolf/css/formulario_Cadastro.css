@@ -15,6 +15,14 @@ body {
     min-height: 100vh;
 }
 
+ img{
+    width:56px;
+    height:56px;
+    border-radius:8px;
+    object-fit:cover;
+    flex-shrink:0;
+  }
+
 .btn-default {
     background-color: #4ccc3e;
     display: flex;
