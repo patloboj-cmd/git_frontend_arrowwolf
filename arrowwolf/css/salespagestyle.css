@@ -127,33 +127,11 @@ header {
     border-bottom: 1px solid rgba(0, 210, 255, .15);
 
 }
-
-
-.logo {
-
-    font-family: 'comfortaa', sans-serif;
-
-    font-size: 1.7rem;
-
-    font-weight: 900;
-
-    color: #fff;
-
-    text-decoration: none;
-
-    letter-spacing: -1px;
-
+.logo img {
+    width: 125px;
+    height: auto;
+    display: block;
 }
-
-
-.logo span,
-.footer-logo span {
-
-    color: var(--blue);
-
-}
-
-
 nav ul {
 
     display: flex;
@@ -1569,38 +1547,97 @@ nav a:hover {
 ========================================= */
 
 footer {
-
-    padding: 2.5rem 5%;
-
-    text-align: center;
-
-    background: #02040a;
-
-    border-top: 1px solid rgba(0,210,255,.15);
+    width: 100%;
+    background: linear-gradient(180deg, #030712, #070b14);
+    border-top: 1px solid #1e3a5f;
 
 }
 
+footer .col-line .wrapper {
+    padding-top: 48px;
+    padding-bottom: 0;
+    text-align: left;
+}
+
+/* grid: logo | nav | ajuda | contato */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+}
 
 .footer-logo {
-
-    font-family: 'Orbitron', sans-serif;
-
-    font-size: 1.3rem;
-
-    font-weight: 900;
-
-    margin-bottom: .5rem;
-
+    height: 160px;
+    width: auto;
+    display: block;
+    margin-bottom: 12px;
+    margin-left: 30%;
+    filter: brightness(0) invert(1);
 }
 
-
-footer p {
-
-    color: #64748b;
-
-    font-size: .85rem;
-
+.footer-col__titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
 }
+
+.footer-col__lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col__lista a {
+    font-size: 14px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-col__lista a:hover {
+    color: #ffffff;
+}
+
+/* ícones sociais */
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.footer-social__link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social__link:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* linha divisória + copyright */
+.footer-bottom {
+    border-top: 1px solid #1e3a5f;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 13px;
+    color: #ffffff;
+}
+
 
 
 /* =========================================
