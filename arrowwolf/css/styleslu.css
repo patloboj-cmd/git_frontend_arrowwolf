@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 /* =========================================================
    RESET
    Zera margens e espaçamentos padrão do navegador.
@@ -13,6 +14,16 @@
 
 html {
     scroll-behavior: smooth;
+
+}
+
+html h1,
+h2,
+h3, p, span, a{
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: bold;
 }
 
 /*
@@ -55,7 +66,7 @@ html {
 body {
     width: 100%;
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Obitron", Arial, Helvetica, sans-serif;
     background: #ffffff;
     color: #0a2540;
     /*
@@ -90,14 +101,14 @@ body {
     margin: 0 auto;
 
     /* as duas linhas verticais */
-    border-left:  1px solid #e5e7eb;
+    border-left: 1px solid #e5e7eb;
     border-right: 1px solid #e5e7eb;
 }
 
 /* nas seções escuras as linhas ficam azul-claro visíveis */
 .section_dark .col-line,
 footer .col-line {
-    border-left-color:  #1e3a5f;
+    border-left-color: #1e3a5f;
     border-right-color: #1e3a5f;
 }
 
@@ -128,7 +139,7 @@ footer .col-line {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 0.5%;
-    
+
 }
 
 .nav_bar {
@@ -247,10 +258,12 @@ footer .col-line {
 .btn_hamburguer.ativo span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
+
 .btn_hamburguer.ativo span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
+
 .btn_hamburguer.ativo span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
@@ -326,6 +339,7 @@ footer .col-line {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -351,7 +365,8 @@ footer .col-line {
 
     .btn_hamburguer {
         flex-shrink: 0;
-        margin-left: 0; /* remove o margin-left: auto se tiver */
+        margin-left: 0;
+        /* remove o margin-left: auto se tiver */
     }
 }
 
@@ -400,7 +415,8 @@ footer .col-line {
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.18; /* bem sutil — o texto precisa ser legível */
+    opacity: 0.18;
+    /* bem sutil — o texto precisa ser legível */
 }
 
 /* overlay branco suave sobre o vídeo para garantir legibilidade */
@@ -408,12 +424,10 @@ footer .col-line {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to right,
-        rgba(255,255,255,1)   0%,
-        rgba(255,255,255,0.7) 55%,
-        rgba(255,255,255,0)   100%
-    );
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 0.7) 55%,
+            rgba(255, 255, 255, 0) 100%);
     z-index: 1;
 }
 
@@ -440,11 +454,13 @@ footer .col-line {
 .texto_1_section_1 {
     font-size: 52px;
     line-height: 1.1;
-    font-weight: 700;
+    font-weight: 760;
     letter-spacing: -2px;
-    color: #0a2540;
+    color: #080808;
     max-width: 580px;
     margin-bottom: 32px;
+    font-family: "Orbitron", sans-serif;;
+
 }
 
 /* botão hero */
@@ -640,17 +656,18 @@ footer .col-line {
    Redundante com justify-content: space-between mas garante
    o comportamento em qualquer contexto flex.
 */
- 
+
 .card_s2__link {
     display: inline-block;
     margin-top: auto;
-    padding-top: 8px; /* espaço mínimo entre o texto e o link */
- 
+    padding-top: 8px;
+    /* espaço mínimo entre o texto e o link */
+
     color: #080808;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
- 
+
     transition: color 0.2s ease;
 }
 
@@ -690,7 +707,7 @@ footer .col-line {
 
 
 .section-light .section-header .section-label {
-     color: #00d2ff;
+    color: #00d2ff;
 }
 
 .section-light .section-header h2 {
@@ -852,7 +869,7 @@ footer .col-line {
     justify-content: space-between;
 }
 
-.card_lu > div {
+.card_lu>div {
     flex: 1;
 }
 
@@ -862,6 +879,7 @@ footer .col-line {
         z-index: 1;
     }
 }
+
 /* =========================================================
    SECTION DARK — AZUL ESCURO
 
@@ -955,7 +973,7 @@ footer .col-line {
 }
 
 .s4-titulo__grad {
-    --pink:   #f472b6;
+    --pink: #f472b6;
     --purple: #635bff;
     --grad: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
 
@@ -965,7 +983,7 @@ footer .col-line {
     background-clip: text;
     display: inline-block;
 
-    
+
     padding-bottom: 0.15em;
 
 }
@@ -1020,9 +1038,11 @@ footer .col-line {
 .s4-card img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* contain → mostra a imagem inteira sem cortar */
+    object-fit: contain;
+    /* contain → mostra a imagem inteira sem cortar */
     display: block;
-    background: #f8fafc; /* fundo neutro atrás da imagem se houver espaço */
+    background: #f8fafc;
+    /* fundo neutro atrás da imagem se houver espaço */
 }
 
 /* ── texto abaixo — estilo original restaurado ───────────
@@ -1110,12 +1130,29 @@ footer .col-line {
 
 /* ── responsividade ──────────────────────────────────────*/
 @media (max-width: 700px) {
-    .s4-titulo          { font-size: 32px; }
-    .s4-img-wrap        { aspect-ratio: 4 / 3; }
-    .box_section_4      { flex-direction: column; gap: 24px; padding-top: 24px; }
-    .text_box_section_4 { border-right: none; border-bottom: 1px solid #e5e7eb;
-                          padding: 0 0 24px; }
-    .text_box_section_4:last-child { border-bottom: none; }
+    .s4-titulo {
+        font-size: 32px;
+    }
+
+    .s4-img-wrap {
+        aspect-ratio: 4 / 3;
+    }
+
+    .box_section_4 {
+        flex-direction: column;
+        gap: 24px;
+        padding-top: 24px;
+    }
+
+    .text_box_section_4 {
+        border-right: none;
+        border-bottom: 1px solid #e5e7eb;
+        padding: 0 0 24px;
+    }
+
+    .text_box_section_4:last-child {
+        border-bottom: none;
+    }
 }
 
 
@@ -1194,7 +1231,7 @@ footer .col-line {
 .section_5 .col-line {
     position: relative;
     z-index: 2;
-    border-left-color:  rgba(255, 255, 255, 0.12);
+    border-left-color: rgba(255, 255, 255, 0.12);
     border-right-color: rgba(255, 255, 255, 0.12);
 }
 
@@ -1306,7 +1343,8 @@ footer .col-line {
 .s5-carrossel-track {
     position: absolute;
     inset: 0;
-    width: 100%;   /* explícito: garante que left:50% nos cards
+    width: 100%;
+    /* explícito: garante que left:50% nos cards
                       calcule corretamente em relação ao viewport */
     height: 100%;
 }
@@ -1338,11 +1376,12 @@ footer .col-line {
     overflow: hidden;
     cursor: pointer;
     outline: 2px solid transparent;
-    transform: translateX(0);   /* reset — o deslocamento do deck
+    transform: translateX(0);
+    /* reset — o deslocamento do deck
                                    é feito pelas classes abaixo */
     transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity   0.45s ease,
-                outline-color 0.3s ease;
+        opacity 0.45s ease,
+        outline-color 0.3s ease;
     z-index: 1;
     opacity: 0;
 }
@@ -1474,10 +1513,14 @@ footer .col-line {
 }
 
 /* botão anterior: colado na borda esquerda do wrap */
-.s5-nav--prev { left: 0; }
+.s5-nav--prev {
+    left: 0;
+}
 
 /* botão próximo: colado na borda direita do wrap */
-.s5-nav--next { right: 0; }
+.s5-nav--next {
+    right: 0;
+}
 
 .s5-nav:hover {
     background: rgba(255, 255, 255, 0.18);
@@ -1521,10 +1564,23 @@ footer .col-line {
    700px → mobile: card maior, botões menores, viewport mais alto.
 */
 @media (max-width: 700px) {
-    .s5-titulo             { font-size: 28px; }
-    .s5-card               { width: 88%; }
-    .s5-nav                { width: 36px; height: 36px; font-size: 14px; }
-    .s5-carrossel-viewport { padding-bottom: 65%; }
+    .s5-titulo {
+        font-size: 28px;
+    }
+
+    .s5-card {
+        width: 88%;
+    }
+
+    .s5-nav {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .s5-carrossel-viewport {
+        padding-bottom: 65%;
+    }
 }
 
 /* =========================================================
@@ -1652,7 +1708,8 @@ footer .col-line {
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-    background-color: #1e293b; /* fallback enquanto a imagem carrega */
+    background-color: #1e293b;
+    /* fallback enquanto a imagem carrega */
 
     display: flex;
     flex-direction: column;
@@ -1676,7 +1733,8 @@ footer .col-line {
     height: 100px;
     width: auto;
     display: block;
-    filter: brightness(0) invert(1); /* garante branco puro independente da versão da imagem */
+    filter: brightness(0) invert(1);
+    /* garante branco puro independente da versão da imagem */
 }
 
 /* ── base do card: gradiente + texto ────────────────── */
@@ -1689,12 +1747,10 @@ footer .col-line {
 
 .s6-card__body {
     padding: 60px 20px 20px;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.88) 0%,
-        rgba(0, 0, 0, 0.55) 55%,
-        transparent         100%
-    );
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.55) 55%,
+            transparent 100%);
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -1716,14 +1772,14 @@ footer .col-line {
 .s6-card__cargo {
     font-size: 13px;
     font-weight: 500;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 6px;
 }
 
 .s6-card__quote {
     font-size: 13px;
     line-height: 1.6;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 10px;
 }
 
@@ -1751,8 +1807,8 @@ footer .col-line {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     color: #ffffff;
     text-decoration: none;
     font-size: 14px;
@@ -1764,7 +1820,7 @@ footer .col-line {
 }
 
 .s6-card__link:hover {
-    background: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.35);
 }
 
 /* ── rodapé da seção: linha + CTA ───────────────────── */
@@ -1790,6 +1846,7 @@ footer .col-line {
 /* ── responsividade ──────────────────────────────────── */
 
 @media (max-width: 900px) {
+
     /* 2 cards visíveis em tablet */
     .s6-card {
         width: calc(50% - 8px);
@@ -1843,7 +1900,8 @@ footer {
 
 .footer-inner {
     max-width: 100%;
-    padding: 60px 48px 32px; /* ajuste conforme o padding original do .wrapper do footer */
+    padding: 60px 48px 32px;
+    /* ajuste conforme o padding original do .wrapper do footer */
 }
 
 .footer-logo {
@@ -1892,8 +1950,8 @@ footer {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     color: #ffffff;
     font-size: 15px;
     display: flex;
@@ -1904,8 +1962,8 @@ footer {
 }
 
 .footer-social__link:hover {
-    background: rgba(255,255,255,0.18);
-    border-color: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* linha divisória + copyright */
@@ -1923,6 +1981,7 @@ footer {
         grid-template-columns: 1fr 1fr;
         gap: 32px;
     }
+
     .footer-brand {
         grid-column: 1 / -1;
         margin-left: -33%;
@@ -1951,9 +2010,9 @@ footer {
         font-size: 38px;
     }
 
-     .products-section .grid-cards {
+    .products-section .grid-cards {
         grid-template-columns: repeat(2, 1fr);
-        
+
     }
 
     /* em tablet: 2 cards por linha na section_2 */
@@ -2012,7 +2071,7 @@ footer {
     .menu li {
         flex-wrap: wrap;
         gap: 12px;
-        
+
     }
 
     .elementos_menu_esquerda {
@@ -2045,5 +2104,3 @@ footer {
         font-size: 28px;
     }
 }
-
-
