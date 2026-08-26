@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — Patty Wolf's Management System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- reaproveita as variáveis de cor/fonte, botões etc. do site inteiro -->
+  <link rel="stylesheet" href="css/pattySystem1.css">
+  <!-- estilos exclusivos dessa página -->
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <main class="login-pagina">
+    <section class="login-split" aria-label="Entrar na sua conta">
+
+      <!-- lado ilustrado: gradiente da marca + destaque do produto -->
+      <div class="login-visual">
+        <a href="pattySystem1.html" class="login-marca">
+          <span class="marca-selo">PW</span>Patty Wolf's
+        </a>
+
+         <!-- imagem da boneca -->
+        <img src="img/boneca_patty1.png" alt="Ilustração de uma consultora, em traço branco" class="login-boneca">
+
+        <div class="login-visual-conteudo">
+          <h1>Sua consultoria, sempre à mão.</h1>
+          <p>Pedidos, estoque, clientes e financeiro — organizados e prontos assim que você entra.</p>
+        </div>
+
+        <p class="login-visual-rodape">Patty Wolf's Management System © 2026</p>
+      </div>
+
+      <!-- lado do formulário -->
+      <div class="login-form-wrap">
+        <div class="login-form-caixa">
+          <h2>Bem-vinda de volta</h2>
+          <p class="login-subtitulo">Entre com sua conta pra continuar de onde parou.</p>
+
+          <form class="login-form">
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="voce@exemplo.com" required>
+            </div>
+
+            <div class="campo">
+              <label for="senha">Senha</label>
+              <input type="password" id="senha" name="senha" placeholder="Sua senha" required>
+              <!-- link "esqueci minha senha", logo abaixo do campo -->
+              <a href="#" class="link-esqueci">Esqueceu sua senha?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary login-botao">Entrar</button>
+          </form>
+
+          <p class="login-cadastro">
+            Ainda não tem conta?
+            <a href="pattySystem1.html#planos">Comece gratuitamente</a>
+          </p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>
