@@ -1,0 +1,2049 @@
+/* =========================================================
+   RESET
+   Zera margens e espaçamentos padrão do navegador.
+   box-sizing: border-box → padding e border incluídos
+   na largura/altura, evita cálculos confusos de layout.
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*
+   position: fixed → gruda na janela, não na página.
+   Rola com o usuário — sempre visível.
+   bottom + right → posição em relação à janela.
+   z-index: 999 → acima de todo o conteúdo.
+*/
+.whatsapp-float {
+    position: fixed;
+    bottom: 34px;
+    right: 34px;
+    z-index: 999;
+
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+
+    background: #25d366;
+    color: #ffffff;
+    font-size: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    /* box-shadow cria o efeito de "flutuar" acima da página */
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.7);
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #0a2540;
+    /*
+       padding-top: 68px → compensa o header fixo (position:fixed).
+       Sem isso o conteúdo começaria atrás do header.
+    */
+    padding-top: 68px;
+}
+
+
+
+/* =========================================================
+   LINHA DELIMITADORA — O CONCEITO CENTRAL DO LAYOUT STRIPE
+
+   A Stripe usa duas linhas verticais sutis que criam uma
+   "calha" visual onde o conteúdo vive. O fundo das seções
+   vai de ponta a ponta, mas essas linhas definem a coluna.
+
+   Como funciona:
+   - .col-line é um wrapper de largura máxima centralizado
+   - ele tem border-left e border-right em cinza claro
+   - nas seções escuras (azul), as bordas mudam de cor
+     para ficarem visíveis sobre o fundo escuro
+
+   É diferente do .wrapper: o .wrapper só limita o padding
+   do conteúdo. O .col-line é quem desenha as linhas.
+========================================================= */
+
+.col-line {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    /* as duas linhas verticais */
+    border-left:  1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+}
+
+/* nas seções escuras as linhas ficam azul-claro visíveis */
+.section_dark .col-line,
+footer .col-line {
+    border-left-color:  #1e3a5f;
+    border-right-color: #1e3a5f;
+}
+
+/* ── wrapper interno: só controla padding do conteúdo ──── */
+
+.wrapper {
+    padding: 0 48px;
+}
+
+
+/* =========================================================
+   HEADER
+   
+   O nav fica contido dentro das linhas delimitadoras.
+   O .cabecalho é 100% de largura (fundo branco vai de
+   ponta a ponta), mas o .col-line dentro dele centraliza
+   o nav e desenha as linhas laterais.
+========================================================= */
+
+.cabecalho {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid #e5e7eb;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.5%;
+    
+}
+
+.nav_bar {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* padding interno — dentro do col-line */
+    padding: 0 32px;
+}
+
+/* lado esquerdo: logo + links */
+
+.elementos_menu_direita {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.logo img {
+    width: 125px;
+    height: auto;
+    display: block;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.menu a {
+    color: #080808;
+    text-decoration: none;
+    font-size: 19px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.menu a:hover {
+    color: #635bff;
+}
+
+/* lado direito: botões */
+
+.elementos_menu_esquerda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn_direct_login,
+.btn_contato {
+    border: none;
+    padding: 16px 26px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* .btn_direct_login {
+    background: transparent;
+} */
+
+/* .btn_direct_login a {
+    color: #635bff;
+    text-decoration: none;
+} */
+
+.btn_contato {
+    background: #635bff;
+    color: #ffffff;
+}
+
+.btn_contato:hover {
+    background: #5148d9;
+}
+
+/* =========================================================
+   HAMBURGUER — mobile ≤ 800px
+========================================================= */
+
+.btn_hamburguer {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 1100;
+}
+
+.btn_hamburguer span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #080808;
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    transform-origin: center;
+}
+
+/* estado X — classe adicionada via JS */
+.btn_hamburguer.ativo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.btn_hamburguer.ativo span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.btn_hamburguer.ativo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 800px) {
+
+    .btn_hamburguer {
+        display: flex;
+    }
+
+    /* esconde os itens de desktop */
+    .menu,
+    .elementos_menu_esquerda {
+        display: none;
+    }
+
+    /* menu mobile — painel que desce do header */
+    .menu.menu--aberto {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid #e5e7eb;
+        padding: 24px 32px 32px;
+        gap: 0;
+        animation: menuDesce 0.3s ease forwards;
+        z-index: 999;
+    }
+
+    .menu.menu--aberto li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .menu.menu--aberto a {
+        font-size: 22px;
+        padding: 14px 0;
+        border-bottom: 1px solid #e5e7eb;
+        width: 100%;
+    }
+
+    .menu.menu--aberto a:last-child {
+        border-bottom: none;
+    }
+
+    /* botão fale conosco aparece junto no painel */
+    .elementos_menu_esquerda.menu--aberto {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 32px;
+        background: rgba(255, 255, 255, 0.97);
+        border-top: 1px solid #e5e7eb;
+        z-index: 999;
+    }
+
+    .elementos_menu_esquerda.menu--aberto .btn_contato {
+        width: 100%;
+        font-size: 17px;
+    }
+}
+
+@keyframes menuDesce {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 800px) {
+    .elementos_menu_esquerda.menu--aberto {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .nav_bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .elementos_menu_direita {
+        flex: 1;
+    }
+
+    .btn_hamburguer {
+        flex-shrink: 0;
+        margin-left: 0; /* remove o margin-left: auto se tiver */
+    }
+}
+
+/* =========================================================
+   SECTION 1 — HERO COM VÍDEO
+
+   A section é 100% de largura — o vídeo de fundo ocupa
+   toda a tela.
+
+   O .col-line delimita as linhas laterais.
+   O .wrapper controla o padding do texto.
+
+   position: relative → necessário para o vídeo absoluto.
+   overflow: hidden → garante que o vídeo não vaze.
+
+   O vídeo fica em position: absolute cobrindo tudo,
+   atrás do texto (z-index: 0).
+   O conteúdo fica em z-index: 2.
+========================================================= */
+
+.section_1 {
+    position: relative;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #e5e7eb;
+    background-image: url('/arrowwolf/img/Blue\ Simple\ Future\ Company\ YouTube\ Video\ Intro.gif');
+}
+
+/* ── vídeo de fundo ──────────────────────────────────────
+
+   position: absolute → sai do fluxo e cobre o pai.
+   inset: 0 → atalho para top:0 right:0 bottom:0 left:0.
+   width/height: 100% → cobre toda a section.
+   object-fit: cover → recorta o vídeo para preencher
+   sem distorcer (igual background-size: cover).
+   z-index: 0 → fica atrás do conteúdo.
+*/
+
+.video_hero {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.18; /* bem sutil — o texto precisa ser legível */
+}
+
+/* overlay branco suave sobre o vídeo para garantir legibilidade */
+.section_1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,1)   0%,
+        rgba(255,255,255,0.7) 55%,
+        rgba(255,255,255,0)   100%
+    );
+    z-index: 1;
+}
+
+.section_1 .col-line {
+    position: relative;
+    z-index: 2;
+
+    /* estica até a altura total da section (que é flex) */
+    align-self: stretch;
+
+    /* mantém o conteúdo centralizado verticalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section_1 .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+/* texto hero */
+
+.texto_1_section_1 {
+    font-size: 52px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -2px;
+    color: #0a2540;
+    max-width: 580px;
+    margin-bottom: 32px;
+}
+
+/* botão hero */
+
+.btn_section_1 {
+    padding: 22px 30px;
+    border: none;
+    border-radius: 6px;
+    background: #635bff;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.btn_section_1:hover {
+    background: #5148d9;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SECTION 2 — CARDS COM IMAGEM + TEXTO
+   Referência: layout Webflow/Stripe de 3 colunas abertas.
+
+   "Card aberto" = sem borda ou caixa ao redor.
+   A imagem e o texto são peças soltas verticalmente.
+========================================================= */
+
+.section_2 {
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+
+    /* fundo branco — igual ao restante da página clara */
+    background: #ffffff;
+}
+
+/* ── padding da seção ─────────────────────────────────── */
+
+.section_2 .wrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* ── título centralizado ──────────────────────────────── */
+
+/*
+   text-align: center → centraliza o texto.
+   max-width + margin: 0 auto → limita a largura e centraliza
+   o bloco de texto (sem isso, o texto ocuparia 100% e a
+   quebra de linha ficaria numa posição ruim).
+*/
+
+.titulo_section_2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #0a2540;
+
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 56px;
+}
+
+/* ── grid de 3 colunas ────────────────────────────────── */
+
+/*
+   grid-template-columns: repeat(3, 1fr)
+   → 3 colunas de largura igual (1 fração cada).
+
+   gap: 28px → espaço entre as colunas.
+   align-items: start → os cards alinham pelo topo,
+   não esticam para igualar altura (comportamento "aberto").
+*/
+
+.grid_section_2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+/* ── card ─────────────────────────────────────────────── */
+
+/*
+   display: flex + flex-direction: column
+   → empilha imagem e texto verticalmente.
+
+   Sem border, sem background, sem border-radius:
+   esse é o "card aberto" — só o conteúdo, sem moldura.
+*/
+
+.card_s2 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/* ── área da imagem ───────────────────────────────────── */
+
+/*
+   aspect-ratio: 3 / 4 → proporção fixa de 3:4 (mais alta
+   que larga, como na referência). Independente do tamanho
+   da tela, a imagem mantém essa proporção.
+   É como um "slot" de altura automática baseada na largura.
+
+   overflow: hidden → garante que a imagem não vaze do
+   espaço quando cresce com object-fit: cover.
+
+   border-radius: 10px → cantos arredondados suaves.
+*/
+
+.card_s2__img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 10px;
+
+    /* fundo cinza enquanto a imagem não carrega */
+    background: #f1f5f9;
+
+    /* margin-bottom: espaço entre a imagem e o texto abaixo */
+    margin-bottom: 20px;
+}
+
+/*
+   object-fit: cover → a imagem cobre todo o espaço do
+   container sem distorcer, recortando as bordas se necessário.
+   width/height: 100% → ocupa todo o .card_s2__img.
+   display: block → remove o espaço padrão abaixo de imagens
+   (comportamento inline padrão cria um gap indesejado).
+*/
+
+.card_s2__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    /* transição suave no hover */
+    transition: transform 0.4s ease;
+}
+
+/* zoom sutil na imagem ao passar o mouse no card */
+.card_s2:hover .card_s2__img img {
+    transform: scale(1.03);
+}
+
+/* ── corpo de texto ───────────────────────────────────── */
+
+/*
+   flex: 1 → o body ocupa todo o espaço restante abaixo
+   da imagem, empurrando o link para a base.
+   justify-content: space-between → título+desc no topo,
+   link fixo na base independente do tamanho do texto.
+*/
+.card_s2__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+
+.card_s2__titulo {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #0a2540;
+}
+
+.card_s2__desc {
+    font-size: 14px;
+    line-height: 1.7;
+
+    /* cinza médio — tom secundário da paleta */
+    color: #080808;
+}
+
+/*
+   display: inline-block → necessário para que o link <a>
+   respeite o margin-top. Links são inline por padrão.
+   margin-top: auto em flex empurraria para baixo,
+   mas aqui usamos gap no pai + margin-top pequeno.
+*/
+
+/*
+   margin-top: auto → empurra o link para a base do body.
+   Redundante com justify-content: space-between mas garante
+   o comportamento em qualquer contexto flex.
+*/
+ 
+.card_s2__link {
+    display: inline-block;
+    margin-top: auto;
+    padding-top: 8px; /* espaço mínimo entre o texto e o link */
+ 
+    color: #080808;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+ 
+    transition: color 0.2s ease;
+}
+
+.card_s2__link:hover {
+    color: #635bff;
+    /* text-decoration: underline; */
+}
+
+
+/* =========================================================
+   SECTION 3 — PROCESSO / TIMELINE
+
+   Estrutura inspirada no process-section do 3.md:
+   linha central vertical + itens alternando esquerda/direita.
+
+   CORES:
+   - Fundo e textos externos: paleta do hero do 3.md
+     (escuro #030712, branco #fff, azul #00d2ff, muted #9ca3af)
+   - Cards internos: fundo branco, borda clara, texto escuro
+     (paleta section-light do 3.md)
+========================================================= */
+
+
+/* =========================================================
+   SECTION 3 NOVA — OUTRAS SOLUÇÕES
+   .card_lu e .btn-card_lu isolados para não conflitar
+   com .card e .btn-card da salespage
+========================================================= */
+
+.products-section {
+    width: 100%;
+    background: linear-gradient(180deg, #030712, #070b14);
+    color: #f3f4f6;
+    border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+    padding: 90px 48px 120px;
+}
+
+
+.section-light .section-header .section-label {
+     color: #00d2ff;
+}
+
+.section-light .section-header h2 {
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: #f3f4f6;
+    margin-bottom: 14px;
+    text-transform: none;
+}
+
+.section-light .section-header h2 span {
+    color: #00d2ff;
+    text-shadow:
+        0 0 15px rgba(0, 210, 255, 0.5),
+        0 0 40px rgba(0, 210, 255, 0.2);
+}
+
+.section-light .section-header p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #9ca3af;
+}
+
+/* ── card_lu ── */
+
+.card_lu {
+    min-height: 360px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 1px solid #dbe4ef;
+    border-radius: 12px;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, .07);
+    transition: .3s;
+}
+
+.card_lu:hover {
+    transform: translateY(-10px);
+    border-color: #635bff;
+    box-shadow: 0 20px 40px rgba(99, 91, 255, .15);
+}
+
+.card_lu .card-icon {
+    font-size: 2.5rem;
+    color: #635bff;
+    margin-bottom: 1.5rem;
+    background: none;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+}
+
+.card_lu h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #0a2540;
+    margin-bottom: 10px;
+}
+
+.card_lu p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #6b7280;
+    margin-bottom: 0;
+}
+
+/* ── botões ── */
+
+.btn-card_lu {
+    display: block;
+    margin-top: 28px;
+    padding: .85rem;
+    border: 1px solid #635bff;
+    border-radius: 5px;
+    color: #635bff;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.btn-card_lu:hover {
+    background: #635bff;
+    color: #fff;
+}
+
+/* ── responsivo ── */
+
+@media (max-width: 800px) {
+    .products-section {
+        padding: 60px 24px;
+    }
+}
+
+/* ── correção de alinhamento section 3 ── */
+
+.products-section .section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 56px;
+}
+
+.products-section .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.card_lu {
+    min-height: auto;
+}
+
+@media (max-width: 1100px) {
+    .products-section .grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .products-section .grid-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* card destaque — Patty System */
+/* remove diferença visual do destaque */
+.card_lu.destaque {
+    border-color: #dbe4ef;
+    background: #f8fafc;
+}
+
+.card_lu.destaque:hover {
+    border-color: #635bff;
+    box-shadow: 0 20px 40px rgba(99, 91, 255, .15);
+}
+
+/* botão destaque igual aos outros */
+.btn-card_lu--destaque {
+    background: transparent;
+    color: #635bff;
+    border-color: #635bff;
+}
+
+.btn-card_lu--destaque:hover {
+    background: #635bff;
+    color: #ffffff;
+}
+
+/* botão sempre no rodapé, independente do texto */
+.card_lu {
+    justify-content: space-between;
+}
+
+.card_lu > div {
+    flex: 1;
+}
+
+@media (max-width: 800px) {
+    .products-section {
+        position: relative;
+        z-index: 1;
+    }
+}
+/* =========================================================
+   SECTION DARK — AZUL ESCURO
+
+   border-bottom muda de cor: sobre fundo escuro, a borda
+   #e5e7eb (cinza claro) ficaria invisível ou estranha.
+   Usamos um azul um pouco mais claro que o fundo.
+
+   O .col-line dentro dela tem bordas laterais azul-claro
+   (definido lá em cima na regra .section_dark .col-line).
+========================================================= */
+
+.section_dark {
+    width: 100%;
+    background: linear-gradient(180deg, #030712, #070b14);
+    color: #ffffff;
+    border-bottom: 1px solid #1e3a5f;
+}
+
+.section_dark .wrapper {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.section_dark h2 {
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+
+.section_dark p {
+    color: #94a3b8;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.section_dark .btn-dark {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 13px 22px;
+    border-radius: 6px;
+    background: #635bff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.section_dark .btn-dark:hover {
+    background: #5148d9;
+}
+
+
+/* =========================================================
+   SECTION 4 — PATTY SYSTEM
+
+   Layout:
+   - Título com gradiente pink→purple acima das imagens
+   - 1 imagem por vez, sem deck, sem frame branco
+   - Texto abaixo no mesmo estilo do resto da página
+   - Hover nas colunas e auto-play de 6s trocam a imagem
+========================================================= */
+
+.section_4 {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.section_4 .wrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ── título com gradiente ────────────────────────────────
+   -webkit-background-clip: text → gradiente vira a "tinta".
+   -webkit-text-fill-color: transparent → fill invisível.
+   display: inline-block → necessário para o clip funcionar.
+*/
+.s4-titulo {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.s4-titulo__grad {
+    --pink:   #f472b6;
+    --purple: #635bff;
+    --grad: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
+
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+
+    
+    padding-bottom: 0.15em;
+
+}
+
+/* ── área da imagem ──────────────────────────────────────
+   overflow: hidden → corta os cards invisíveis que saem
+   da área (opacity 0 mas ainda ocupam espaço no DOM).
+   border-radius: 12px → cantos suaves.
+   Sem box-shadow, sem border → sem frame branco.
+   aspect-ratio: 16/9 → proporção de tela, responsivo.
+*/
+.s4-img-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+}
+
+/* ── track ───────────────────────────────────────────────
+   position: absolute + inset: 0 → ocupa todo o wrap.
+   Os cards ficam empilhados via position:absolute.
+*/
+.s4-img-track {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── card ────────────────────────────────────────────────
+   position: absolute → todos empilhados no mesmo ponto.
+   opacity: 0 por padrão → JS adiciona .s4-card--ativo.
+   transition: opacity → fade suave entre imagens.
+   pointer-events: none nos inativos → não capturam hover.
+*/
+.s4-card {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.s4-card--ativo {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* object-fit: cover → preenche sem distorcer nem cortar. */
+.s4-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* contain → mostra a imagem inteira sem cortar */
+    display: block;
+    background: #f8fafc; /* fundo neutro atrás da imagem se houver espaço */
+}
+
+/* ── texto abaixo — estilo original restaurado ───────────
+   flex row → 3 colunas lado a lado.
+   border-top separa visualmente do carrossel.
+   Separadores verticais via border-right entre colunas.
+   cursor: pointer → indica que é interativo (hover troca img).
+*/
+.box_section_4 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 32px;
+    gap: 0;
+}
+
+.text_box_section_4 {
+    flex: 1;
+    padding: 0 32px 0;
+    border-right: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.text_box_section_4:first-child {
+    padding-left: 0;
+}
+
+.text_box_section_4:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+/* coluna ativa (hover ou correspondente à imagem atual):
+   sublinhado na base do h2 com gradiente */
+.text_box_section_4--ativa .h2_section_4::after {
+    width: 100%;
+}
+
+/* hover sutil nas colunas não ativas */
+.text_box_section_4:not(.text_box_section_4--ativa) {
+    opacity: 0.6;
+}
+
+.text_box_section_4:hover {
+    opacity: 1 !important;
+}
+
+/* h2 das colunas — estilo original (sem gradiente) */
+.h2_section_4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0a2540;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+}
+
+/*
+   Linha indicadora abaixo do h2 da coluna ativa.
+   ::after cria a linha; começa com width:0 e anima para 100%
+   quando a coluna recebe .text_box_section_4--ativa.
+*/
+.h2_section_4::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #f472b6 0%, #635bff 100%);
+    transition: width 0.35s ease;
+}
+
+.text_box_section_4--ativa .h2_section_4::after {
+    width: 100%;
+}
+
+.p_section_4 {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+/* ── responsividade ──────────────────────────────────────*/
+@media (max-width: 700px) {
+    .s4-titulo          { font-size: 32px; }
+    .s4-img-wrap        { aspect-ratio: 4 / 3; }
+    .box_section_4      { flex-direction: column; gap: 24px; padding-top: 24px; }
+    .text_box_section_4 { border-right: none; border-bottom: 1px solid #e5e7eb;
+                          padding: 0 0 24px; }
+    .text_box_section_4:last-child { border-bottom: none; }
+}
+
+
+/* =========================================================
+   SECTION 5 — SITES (carrossel estilo deck de cartas)
+
+   Estrutura visual:
+   .section_5              → container principal, position:relative
+   .s5-bg                  → div com background-image borrado (JS troca)
+   .s5-overlay             → escurecimento sobre o fundo
+   .col-line / .wrapper    → conteúdo acima do fundo (z-index:2)
+   .s5-content             → título + subtítulo + CTAs centralizados
+   .s5-carrossel-wrap      → ancora os botões nav absolutos;
+                             position:relative necessário para os
+                             botões position:absolute funcionarem
+   .s5-carrossel-viewport  → área visível do deck;
+                             height:0 + padding-bottom:52% cria
+                             altura responsiva sem filhos no fluxo
+   .s5-carrossel-track     → position:absolute, ocupa todo o viewport;
+                             fica estático — os cards se movem via classes
+   .s5-card                → position:absolute, todos empilhados no centro;
+                             JS aplica classes de posição para criar o deck
+   .s5-nav                 → botões ← → absolutos sobrepostos ao viewport
+   .s5-dots                → indicadores de slide gerados pelo JS
+========================================================= */
+
+/* ── container principal ─────────────────────────────────
+   position: relative → necessário para .s5-bg (position:absolute)
+   ser posicionado em relação a esta section.
+   overflow: hidden → impede que .s5-bg (inset:-40px) gere scroll.
+*/
+.section_5 {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── fundo borrado ───────────────────────────────────────
+   background-image injetado por JS via data-bg do card ativo.
+   inset: -40px → extravasa 40px além das bordas da section;
+   compensa as franjas brancas que o blur cria nas extremidades.
+   filter: blur(28px) + scale(1.08) → desfoque + escala que
+   garante que nenhuma borda apareça em nenhuma proporção de tela.
+   transition: opacity → JS anima a troca: opacity 0 → troca → opacity 1.
+*/
+.s5-bg {
+    position: absolute;
+    inset: -40px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: blur(28px);
+    transform: scale(1.08);
+    z-index: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* ── overlay escuro ──────────────────────────────────────
+   Entre o fundo borrado (z-index:0) e o conteúdo (z-index:2).
+   pointer-events: none → não bloqueia cliques no conteúdo acima.
+*/
+.s5-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 10, 20, 0.70);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* col-line e wrapper acima do overlay */
+.section_5 .col-line {
+    position: relative;
+    z-index: 2;
+    border-left-color:  rgba(255, 255, 255, 0.12);
+    border-right-color: rgba(255, 255, 255, 0.12);
+}
+
+.section_5 .wrapper {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 44px;
+}
+
+/* ── texto central ───────────────────────────────────────
+   max-width: 540px → limita para leitura confortável.
+*/
+.s5-content {
+    text-align: center;
+    max-width: 540px;
+}
+
+.s5-titulo {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+
+.s5-subtitulo {
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 28px;
+}
+
+/* flex-wrap: wrap → botões quebram linha em telas pequenas */
+.s5-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.s5-btn {
+    padding: 13px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+    display: inline-block;
+}
+
+.s5-btn--primary {
+    background: #635bff;
+    color: #ffffff;
+    border: none;
+}
+
+.s5-btn--primary:hover {
+    background: #5148d9;
+    transform: translateY(-2px);
+}
+
+.s5-btn--outline {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+}
+
+.s5-btn--outline:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── carrossel wrap ──────────────────────────────────────
+   position: relative → ancora os botões .s5-nav (position:absolute).
+   Os botões saíram do fluxo flex — sem display:flex aqui.
+   Sem isso os botões seriam posicionados em relação ao body.
+*/
+.s5-carrossel-wrap {
+    width: 100%;
+    position: relative;
+}
+
+/* ── viewport ────────────────────────────────────────────
+   height: 0 + padding-bottom: 52% → truque CSS para altura
+   responsiva proporcional sem filhos no fluxo normal.
+   Sem isso, com cards em position:absolute, o viewport
+   colapsaria para altura 0.
+   overflow: hidden → corta o que vaza fora da área.
+*/
+.s5-carrossel-viewport {
+    width: 100%;
+    position: relative;
+    height: 0;
+    padding-bottom: 52%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* ── track ───────────────────────────────────────────────
+   position: absolute + inset: 0 → ocupa exatamente o viewport.
+   O track é estático — os cards mudam de posição individualmente
+   via classes aplicadas pelo JS.
+*/
+.s5-carrossel-track {
+    position: absolute;
+    inset: 0;
+    width: 100%;   /* explícito: garante que left:50% nos cards
+                      calcule corretamente em relação ao viewport */
+    height: 100%;
+}
+
+/* ── card base ───────────────────────────────────────────
+   position: absolute → todos os cards empilhados no mesmo lugar.
+   left: 14% centra o card de width:72% no viewport (14+72+14=100%).
+   opacity: 0 por padrão → apenas as classes abaixo revelam.
+   transition → anima suavemente transform e opacity.
+   z-index: 1 → camada base; classes elevam conforme posição.
+*/
+.s5-card {
+    position: absolute;
+    top: 0;
+
+    /*
+       Centralização via left + margin-left:
+       left: 14% coloca a borda esquerda do card a 14% do track.
+       Como o card tem width:72%, o espaço restante é 28%.
+       14% de cada lado = card centralizado no viewport.
+       Mais preciso que left:50%+translateX quando o track
+       tem position:absolute sem um pai de largura conhecida.
+    */
+    left: 14%;
+
+    width: 72%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: 2px solid transparent;
+    transform: translateX(0);   /* reset — o deslocamento do deck
+                                   é feito pelas classes abaixo */
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity   0.45s ease,
+                outline-color 0.3s ease;
+    z-index: 1;
+    opacity: 0;
+}
+
+/* ── classes de posição do deck ──────────────────────────
+   JS atribui estas classes a cada troca de slide.
+   Todos os cards partem de left:14% (centralizado para width:72%).
+   As classes adicionam translateX positivo para criar o deck.
+
+   s5-card--ativo   → centro, frente, 100% visível
+   s5-card--proximo → deslocado +20% à direita, 88% escala
+   s5-card--atras   → deslocado +35% à direita, 78% escala
+   demais           → opacity 0, pointer-events none
+*/
+.s5-card--ativo {
+    /*
+       Card no centro: left:14% já centra o card de 72%.
+       Nenhum translateX adicional necessário.
+    */
+    transform: translateX(0) scale(1);
+    z-index: 10;
+    opacity: 1;
+    outline-color: rgba(255, 255, 255, 0.4);
+}
+
+.s5-card--proximo {
+    /*
+       Próximo card: desloca 18% para a direita em relação
+       ao centro, criando o efeito de profundidade do deck.
+       scale(0.88) reduz levemente para reforçar a perspectiva.
+    */
+    transform: translateX(18%) scale(0.88);
+    z-index: 5;
+    opacity: 0.65;
+}
+
+.s5-card--atras {
+    /* Dois cards atrás: mais deslocado e menor */
+    transform: translateX(32%) scale(0.78);
+    z-index: 3;
+    opacity: 0.35;
+}
+
+/* demais cards: invisíveis, não capturam cliques */
+.s5-card:not(.s5-card--ativo):not(.s5-card--proximo):not(.s5-card--atras) {
+    transform: translateX(38%) scale(0.70);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* object-fit: cover → preenche sem distorcer.
+   display: block → remove gap inline padrão. */
+.s5-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── label (nome + link) ─────────────────────────────────
+   Aparece na base do card ativo no hover.
+   opacity: 0 + translateY(6px) → estado inicial invisível.
+   transition → aparição animada (fade + subida suave).
+*/
+.s5-card__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px 20px 18px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.s5-card--ativo:hover .s5-card__label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s5-card__link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.s5-card__link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* ── botões de navegação ← → ────────────────────────────
+   position: absolute sobre .s5-carrossel-wrap (position:relative).
+   top: 50% + translateY(-50%) → centraliza verticalmente
+   em relação à altura do viewport (aspect-ratio 52%).
+   z-index: 20 → acima de todos os cards (máx z-index: 10).
+   line-height: 1 + padding: 0 → centraliza o glifo da seta;
+   sem isso o line-height herdado do body desalinha o caractere.
+*/
+.s5-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    backdrop-filter: blur(6px);
+    z-index: 20;
+}
+
+/* botão anterior: colado na borda esquerda do wrap */
+.s5-nav--prev { left: 0; }
+
+/* botão próximo: colado na borda direita do wrap */
+.s5-nav--next { right: 0; }
+
+.s5-nav:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* loop infinito — botões nunca ficam desabilitados */
+.s5-nav:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+/* ── dots (indicadores de slide) ─────────────────────────
+   Gerados dinamicamente pelo JS — um dot por card.
+   JS adiciona/remove .s5-dot--ativo conforme o slide atual.
+*/
+.s5-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.s5-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: none;
+    padding: 0;
+}
+
+/* dot ativo: branco e levemente maior */
+.s5-dot--ativo {
+    background: #ffffff;
+    transform: scale(1.3);
+}
+
+/* ── responsividade ──────────────────────────────────────
+   700px → mobile: card maior, botões menores, viewport mais alto.
+*/
+@media (max-width: 700px) {
+    .s5-titulo             { font-size: 28px; }
+    .s5-card               { width: 88%; }
+    .s5-nav                { width: 36px; height: 36px; font-size: 14px; }
+    .s5-carrossel-viewport { padding-bottom: 65%; }
+}
+
+/* =========================================================
+   SECTION 6 — NOSSO TIME (carrossel estilo Webflow)
+========================================================= */
+
+.section_6 {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.section_6 .wrapper {
+    padding-top: 80px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ── cabeçalho: título esquerda, botões direita ─────────
+
+   justify-content: space-between → empurra título e botões
+   para as extremidades opostas.
+   align-items: flex-end → alinha os botões na base do título.
+*/
+
+.s6-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+}
+
+.s6-titulo {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: #0a2540;
+    max-width: 480px;
+}
+
+/* ── botões de navegação ─────────────────────────────── */
+
+.s6-nav-wrap {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/*
+   Botões circulares com borda.
+   O ativo (→) tem fundo escuro — igual à foto de referência
+   onde o → está preenchido e o ← está vazio.
+*/
+
+.s6-nav {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid #cbd5e1;
+    background: transparent;
+    color: #0a2540;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.s6-nav:hover {
+    border-color: #0a2540;
+}
+
+/* botão ativo (→): fundo escuro, seta branca */
+.s6-nav--ativo {
+    background: #0a2540;
+    border-color: #0a2540;
+    color: #ffffff;
+}
+
+/* ── viewport do carrossel ───────────────────────────── */
+
+.s6-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+/*
+   O track é um flex horizontal.
+   transition com cubic-bezier → deslizamento suave e natural.
+*/
+
+.s6-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── card ────────────────────────────────────────────── */
+
+/*
+   flex-shrink: 0 → não encolhe.
+   width: calc(25% - 12px) → 4 cards visíveis com gap de 16px.
+   aspect-ratio: 3/4 → card alto, parecido com os da referência.
+
+   background-size: cover + background-position: center →
+   a imagem de fundo preenche sem distorcer (mesma lógica do
+   object-fit: cover mas para background-image).
+
+   display: flex + flex-direction: column + justify-content: space-between
+   → topo e base do card ficam nas extremidades.
+*/
+
+.s6-card {
+    flex-shrink: 0;
+    width: calc(36% - 12px);
+    aspect-ratio: 3 / 5;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #1e293b; /* fallback enquanto a imagem carrega */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.s6-card:hover {
+    transform: translateY(-6px);
+}
+
+/* ── topo do card: logo/nome da empresa ─────────────── */
+
+.s6-card__topo {
+    padding: 0px 12px;
+}
+
+.s6-card__logo {
+    height: 100px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1); /* garante branco puro independente da versão da imagem */
+}
+
+/* ── base do card: gradiente + texto ────────────────── */
+
+/*
+   O gradiente vai de transparente (topo) para escuro (base),
+   criando a área de leitura sem cobrir o rosto da foto.
+   padding-top grande (60px) garante a transição suave.
+*/
+
+.s6-card__body {
+    padding: 60px 20px 20px;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.55) 55%,
+        transparent         100%
+    );
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/*
+   Número/destaque grande — fonte grande e bold.
+   É o elemento de maior impacto visual do card.
+*/
+
+.s6-card__stat {
+    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.s6-card__cargo {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 6px;
+}
+
+.s6-card__quote {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 10px;
+}
+
+/* ── rodapé do card: nome + botão de seta ───────────── */
+
+.s6-card__rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.s6-card__nome {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/*
+   Botão de seta (↗) no canto inferior direito.
+   Círculo branco pequeno com seta diagonal.
+*/
+
+.s6-card__link {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+
+.s6-card__link:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+/* ── rodapé da seção: linha + CTA ───────────────────── */
+
+.s6-rodape {
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.s6-cta {
+    color: #635bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.s6-cta:hover {
+    text-decoration: underline;
+}
+
+/* ── responsividade ──────────────────────────────────── */
+
+@media (max-width: 900px) {
+    /* 2 cards visíveis em tablet */
+    .s6-card {
+        width: calc(50% - 8px);
+    }
+
+    .s6-titulo {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .s6-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* 1.2 cards em mobile — o próximo "espia" */
+    .s6-card {
+        width: calc(85% - 8px);
+    }
+}
+
+/* =========================================================
+   FOOTER
+
+   Mesmo azul escuro da section_dark para continuidade.
+   Linhas laterais em azul visível (via .col-line herdado).
+   Texto BRANCO — não mais cinza.
+========================================================= */
+
+footer {
+    width: 100%;
+    background: linear-gradient(180deg, #030712, #070b14);
+    border-top: 1px solid #1e3a5f;
+
+}
+
+/* footer .col-line .wrapper {
+    padding-top: 48px;
+    padding-bottom: 0;
+    text-align: left;
+} */
+
+/* grid: logo | nav | ajuda | contato */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-inner {
+    max-width: 100%;
+    padding: 60px 48px 32px; /* ajuste conforme o padding original do .wrapper do footer */
+}
+
+.footer-logo {
+    height: 160px;
+    width: auto;
+    display: block;
+    margin-bottom: 12px;
+    filter: brightness(0) invert(1);
+    margin-left: 25%;
+}
+
+.footer-col__titulo {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 14px;
+}
+
+.footer-col__lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col__lista a {
+    font-size: 14px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-col__lista a:hover {
+    color: #ffffff;
+}
+
+/* ícones sociais */
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.footer-social__link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-social__link:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* linha divisória + copyright */
+.footer-bottom {
+    border-top: 1px solid #1e3a5f;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+/* responsividade */
+@media (max-width: 800px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+    .footer-brand {
+        grid-column: 1 / -1;
+        margin-left: -33%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .wrapper {
+        padding: 0 28px;
+    }
+
+    .nav_bar {
+        padding: 14px 28px;
+        flex-wrap: wrap;
+        gap: 12px;
+        min-height: auto;
+    }
+
+    .texto_1_section_1 {
+        font-size: 38px;
+    }
+
+     .products-section .grid-cards {
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+
+    /* em tablet: 2 cards por linha na section_2 */
+    .grid_section_2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* tablet: timeline vira coluna única à esquerda da linha */
+    .timeline::before {
+        left: 15px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 48px;
+        padding-right: 0;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 6px;
+        right: auto;
+    }
+
+    .section_4 .wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .section_6 .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+
+    .wrapper {
+        padding: 0 20px;
+    }
+
+    .nav_bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 20px;
+    }
+
+    .elementos_menu_direita {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .menu li {
+        flex-wrap: wrap;
+        gap: 12px;
+        
+    }
+
+    .elementos_menu_esquerda {
+        justify-content: flex-start;
+    }
+
+    .texto_1_section_1 {
+        font-size: 32px;
+        letter-spacing: -1px;
+    }
+
+    .h1_section_5 {
+        font-size: 32px;
+    }
+
+    .section_6 .wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .btns_section_5 {
+        flex-direction: column;
+    }
+
+    /* mobile: 1 card por linha, título menor */
+    .grid_section_2 {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo_section_2 {
+        font-size: 28px;
+    }
+}
+
+

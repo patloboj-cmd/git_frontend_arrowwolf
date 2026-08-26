@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrowwolf</title>
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/styleslu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<a href="https://wa.me/559199999999" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<body>
+
+    <!-- ══════════════════════════════════════════════════
+         HEADER
+         .cabecalho → 100% de largura (fundo branco vai longe)
+         .col-line  → centraliza e desenha as linhas laterais
+         .nav_bar   → flex interno com logo e botões
+    ═══════════════════════════════════════════════════ -->
+    <header class="cabecalho">
+        <div class="col-line">
+            <nav class="nav_bar">
+                <div class="elementos_menu_direita">
+                    <a href="index.html">
+                        <div class="logo">
+                            <img src="img/logoPreto.png" alt="Logo da arrowwolf">
+                        </div>
+                    </a>
+                    <ul class="menu">
+                        <li>
+                            <a href="#produtos">Produtos</a>
+                            <a href="salespage.html">Soluções</a>
+                            <a href="#cases">Cases</a>
+                            <a href="#nosso_time">Nosso time</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="elementos_menu_esquerda">
+                    <a href="https://wa.me/559199999999"><button class="btn_contato">Fale Conosco</button></a>
+                </div>
+                <button class="btn_hamburguer" id="btnHamburguer" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 1 — HERO COM VÍDEO
+             O <video> fica solto dentro da section (position
+             absolute, cobre tudo). O .col-line e .wrapper
+             ficam na frente com z-index maior.
+        ═══════════════════════════════════════════════ -->
+        <section class="section_1">
+
+
+            <div class="col-line">
+                <div class="wrapper">
+                    <p class="texto_1_section_1">Tecnologia que transforma negócios reais.</p>
+                    <a href="formulario_de_contato.html"><button class="btn_section_1">Entre em contato</button></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 2 — CARDS COM IMAGEM + TEXTO
+             Estrutura de cada card:
+             .card_s2           → coluna flex vertical
+             .card_s2__img      → imagem tall (proporção fixa)
+             .card_s2__body     → área de texto abaixo da imagem
+        ═══════════════════════════════════════════════ -->
+        <section class="section_2">
+            <div class="col-line">
+                <div class="wrapper">
+
+                    <!-- título centralizado da seção -->
+                    <h2 class="titulo_section_2">
+                        Soluções que já estão<br>transformando negócios
+                    </h2>
+
+                    <!-- grid de 3 cards -->
+                    <div class="grid_section_2">
+
+                        <!-- card 1 -->
+                        <div class="card_s2">
+                            <div class="card_s2__img">
+                                <img src="img/trembao_novo.png" alt="Trem Bão — site de restaurante">
+                            </div>
+                            <div class="card_s2__body">
+                                <h3 class="card_s2__titulo">Sites para Restaurantes</h3>
+                                <p class="card_s2__desc">Cardápio digital, reservas online e identidade visual que
+                                    converte visitas em mesas cheias.</p>
+                                <a href="#" class="card_s2__link">Ver projeto →</a>
+                            </div>
+                        </div>
+
+                        <!-- card 2 -->
+                        <div class="card_s2">
+                            <div class="card_s2__img">
+                                <img src="img/Encanto_resto.png" alt="Site institucional">
+                            </div>
+                            <div class="card_s2__body">
+                                <h3 class="card_s2__titulo">Sites Institucionais</h3>
+                                <p class="card_s2__desc">Presença digital profissional com design exclusivo para
+                                    posicionar sua marca como referência no segmento.</p>
+                                <a href="#" class="card_s2__link">Ver projeto →</a>
+                            </div>
+                        </div>
+
+                        <!-- card 3 -->
+                        <div class="card_s2">
+                            <div class="card_s2__img">
+                                <img src="img/Patty System Insta.png" alt="Patty System — sistema de gestão">
+                            </div>
+                            <div class="card_s2__body">
+                                <h3 class="card_s2__titulo">Patty System</h3>
+                                <p class="card_s2__desc">Sistema SaaS de gestão completa para consultoras multimarcas:
+                                    vendas, estoque e clientes em um só lugar.</p>
+                                <a href="pattySystem1.html" class="card_s2__link">Conhecer o sistema →</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 3 — NOSSO PROCESSO (TIMELINE)
+
+             Fundo escuro do hero do 3.md.
+             Linha central azul + itens alternados.
+             Cards internos claros (section-light).
+        ═══════════════════════════════════════════════ -->
+        <section id="produtos" class="products-section section-light">
+            <div class="section-header">
+                <h2>Nossas <span>Soluções</span></h2>
+                <p>Conheça os produtos e serviços que oferecemos para alavancar seu negócio</p>
+            </div>
+
+            <div class="grid-cards">
+
+                <div class="card_lu">
+                    <div>
+                        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Sites Institucionais</h3>
+                        <p>Desenvolvimento web completo com design exclusivo, alta performance e foco em credibilidade
+                            para sua marca.</p>
+                    </div>
+                    <a href="salespage.html" class="btn-card_lu">Solicitar Orçamento</a>
+                </div>
+
+                <div class="card_lu">
+                    <div>
+                        <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Landing Pages</h3>
+                        <p>Páginas de alta conversão desenvolvidas para campanhas de tráfego pago e geração de leads.
+                        </p>
+                    </div>
+                    <a href="salespage.html" class="btn-card_lu">Quero Minha LP</a>
+                </div>
+
+                <div class="card_lu">
+                    <div>
+                        <div class="card-icon"><i class="fas fa-gauge-high"></i></div>
+                        <h3>SEO & Performance</h3>
+                        <p>Otimização técnica, velocidade, experiência do usuário e SEO para melhorar o desempenho do
+                            seu site nos mecanismos de busca.</p>
+                    </div>
+                    <a href="salespage.html" class="btn-card_lu">Otimizar Meu Site</a>
+                </div>
+
+                <div class="card_lu destaque">
+                    <div>
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <!-- <div class="card-icon"><i class="fa-solid fa-terminal"></i></i></div> -->
+                        <h3>Patty System</h3>
+                        <p>Sistema completo para consultoras de beleza multimarca — gestão de clientes, pedidos e
+                            catálogo em uma plataforma só.</p>
+                    </div>
+                    <a href="pattySystem1.html" class="btn-card_lu">Conhecer o Sistema</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 4 — PATTY SYSTEM
+
+             Comportamento:
+             - 1 imagem por vez, sem deck, sem frame branco
+             - Troca automática a cada 6s (IntersectionObserver
+               pausa quando fora da tela)
+             - Hover nas colunas de texto troca a imagem:
+               Build → img 2 | Gestão → img 3 | Otimização → img 4
+             - Scroll chegando/saindo da section → volta img 1
+             - Sem botões de navegação
+        ═══════════════════════════════════════════════ -->
+        <section id="section_4" class="section_4">
+            <div class="col-line">
+                <div class="wrapper">
+
+                    <!-- título com gradiente pink→purple -->
+                    <a href="pattySystem1.html">
+                        <h2 class="s4-titulo">
+                            <span class="s4-titulo__grad">Patty's System</span>
+                        </h2>
+                    </a>
+
+                    <!-- área da imagem: 1 card visível, troca via JS -->
+                    <a href="pattySystem1.html">
+                        <div class="s4-img-wrap">
+                            <div class="s4-img-track" id="s4-track">
+                                <div class="s4-card" data-index="0">
+                                    <img src="img/telaInterna_1.png" alt="Patty System — visão geral">
+                                </div>
+                                <div class="s4-card" data-index="1">
+                                    <img src="img/telaInterna_2.png" alt="Patty System — build">
+                                </div>
+                                <div class="s4-card" data-index="2">
+                                    <img src="img/telaInterna_3.png" alt="Patty System — gestão">
+                                </div>
+                                <div class="s4-card" data-index="3">
+                                    <img src="img/telaInterna_4.png" alt="Patty System — otimização">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- texto abaixo — hover em cada coluna troca a imagem
+                         data-img indica qual índice de imagem mostrar -->
+                    <div class="box_section_4">
+
+                        <div class="text_box_section_4" data-img="1">
+                            <h2 class="h2_section_4">Build</h2>
+                            <p class="p_section_4">Construímos sistemas pensando na escalabilidade desde o início.</p>
+                        </div>
+
+                        <div class="text_box_section_4" data-img="2">
+                            <h2 class="h2_section_4">Gestão</h2>
+                            <p class="p_section_4">Ferramentas que organizam seu negócio sem complicar sua rotina.</p>
+                        </div>
+
+                        <div class="text_box_section_4" data-img="3">
+                            <h2 class="h2_section_4">Otimização</h2>
+                            <p class="p_section_4">Cada entrega é analisada e refinada para gerar o máximo resultado.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 5 — SITES (deck de cartas com fundo borrado)
+ 
+             IMPORTANTE: data-bg e src devem ter EXATAMENTE
+             o mesmo caminho — o JS usa data-bg para o fundo
+             borrado e o <img> exibe a imagem no card.
+        ═══════════════════════════════════════════════ -->
+        <section class="section_5" id="cases">
+
+            <!-- fundo borrado: background-image injetado por JS -->
+            <div class="s5-bg" id="s5-bg"></div>
+            <div class="s5-overlay"></div>
+
+            <div class="col-line">
+                <div class="wrapper">
+
+                    <div class="s5-content">
+                        <h2 class="s5-titulo">Faça seu Website<br>e aumente sua competitividade</h2>
+                        <p class="s5-subtitulo">Sites que convertem visitantes em clientes — com design exclusivo e alta
+                            performance.</p>
+                        <div class="s5-btns">
+                            <a href="formulario_de_contato.html" class="s5-btn s5-btn--primary">Começar agora →</a>
+                            <a href="https://wa.me/559199999999" class="s5-btn s5-btn--outline">Fale conosco</a>
+                        </div>
+                    </div>
+
+                    <div class="s5-carrossel-wrap">
+                        <button class="s5-nav s5-nav--prev" id="s5-prev" aria-label="Anterior">&#8592;</button>
+
+                        <div class="s5-carrossel-viewport">
+                            <!-- track estático: os cards se movem individualmente via JS -->
+                            <div class="s5-carrossel-track" id="s5-track">
+
+                                <div class="s5-card" data-bg="img/site1.png">
+                                    <img src="img/site1.png" alt="Trem Bão">
+                                    <div class="s5-card__label">
+                                        Trem Bão
+                                        <a href="#" class="s5-card__link">Ver site →</a>
+                                    </div>
+                                </div>
+
+                                <div class="s5-card" data-bg="img/site2.png">
+                                    <img src="img/site2.png" alt="Site Institucional">
+                                    <div class="s5-card__label">
+                                        Site Institucional
+                                        <a href="#" class="s5-card__link">Ver site →</a>
+                                    </div>
+                                </div>
+
+                                <div class="s5-card" data-bg="img/site3.png">
+                                    <img src="img/site3.png" alt="Landing Page">
+                                    <div class="s5-card__label">
+                                        Landing Page
+                                        <a href="#" class="s5-card__link">Ver site →</a>
+                                    </div>
+                                </div>
+
+                                <div class="s5-card" data-bg="img/site4.png">
+                                    <img src="img/site4.png" alt="E-commerce">
+                                    <div class="s5-card__label">
+                                        E-commerce
+                                        <a href="#" class="s5-card__link">Ver site →</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button class="s5-nav s5-nav--next" id="s5-next" aria-label="Próximo">&#8594;</button>
+                    </div>
+
+                    <!-- dots gerados dinamicamente pelo JS -->
+                    <div class="s5-dots" id="s5-dots"></div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION 6 — NOSSO TIME (carrossel estilo Webflow)
+
+             Estrutura de cada card:
+             .s6-card          → container com imagem de fundo
+             .s6-card__logo    → logo/ícone da empresa no topo
+             .s6-card__body    → área de texto na base (gradiente escuro)
+             .s6-card__stat    → número/destaque grande
+             .s6-card__cargo   → cargo do colaborador
+             .s6-card__quote   → citação
+             .s6-card__nome    → nome completo
+             .s6-card__link    → botão de seta no canto inferior direito
+        ═══════════════════════════════════════════════ -->
+        <section class="section_6" id="nosso_time">
+            <div class="col-line">
+                <div class="wrapper">
+
+                    <!-- cabeçalho: título à esquerda, botões à direita -->
+                    <div class="s6-header">
+                        <h2 class="s6-titulo">
+                            O time que faz<br>a arrowwolf acontecer.
+                        </h2>
+                        <div class="s6-nav-wrap">
+                            <button class="s6-nav" id="s6-prev" aria-label="Anterior">&#8592;</button>
+                            <button class="s6-nav s6-nav--ativo" id="s6-next" aria-label="Próximo">&#8594;</button>
+                        </div>
+                    </div>
+
+                    <!-- viewport do carrossel -->
+                    <div class="s6-viewport">
+                        <div class="s6-track" id="s6-track">
+
+                            <!-- card 1 — Patrícia -->
+                            <div class="s6-card" style="background-image: url('img/patricia.png')">
+                                <div class="s6-card__topo">
+                                    <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="s6-card__logo">
+                                </div>
+                                <div class="s6-card__body">
+                                    <div class="s6-card__stat">Fundadora</div>
+                                    <div class="s6-card__cargo">Desenvolvedora, Engenheria de requisitos e
+                                        Relacionamento com Cliente</div>
+                                    <p class="s6-card__quote">"Acredito que tecnologia só tem valor quando simplifica a
+                                        vida real de pessoas reais."</p>
+                                    <div class="s6-card__rodape">
+                                        <span class="s6-card__nome">Patrícia Lobo</span>
+                                        <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card 2 — Marco -->
+                            <div class="s6-card" style="background-image: url('img/marco.png')">
+                                <div class="s6-card__topo">
+                                    <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="s6-card__logo">
+                                </div>
+                                <div class="s6-card__body">
+                                    <div class="s6-card__stat">Fundador</div>
+                                    <div class="s6-card__cargo">Líder de projetos, Arquitetura, Desenvolvimento e Gestão
+                                    </div>
+                                    <p class="s6-card__quote">"Cada linha de código é uma decisão de negócio. Construo
+                                        sistemas que escalam junto com o cliente."</p>
+                                    <div class="s6-card__rodape">
+                                        <span class="s6-card__nome">Marco Flexa</span>
+                                        <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card 3 — Luciane -->
+                            <div class="s6-card" style="background-image: url('img/time/luciane.jpg')">
+                                <div class="s6-card__topo">
+                                    <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="s6-card__logo">
+                                </div>
+                                <div class="s6-card__body">
+                                    <div class="s6-card__stat">Designer</div>
+                                    <div class="s6-card__cargo">UI/UX & Identidade Visual</div>
+                                    <p class="s6-card__quote">"Design não é só estética — é a primeira conversa que o
+                                        produto tem com o usuário."</p>
+                                    <div class="s6-card__rodape">
+                                        <span class="s6-card__nome">Luciane Ribeiro</span>
+                                        <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card 4 — Ramon -->
+                            <div class="s6-card" style="background-image: url('img/time/ramon.jpg')">
+                                <div class="s6-card__topo">
+                                    <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="s6-card__logo">
+                                </div>
+                                <div class="s6-card__body">
+                                    <div class="s6-card__stat">Dev Backend</div>
+                                    <div class="s6-card__cargo">APIs & Infraestrutura</div>
+                                    <p class="s6-card__quote">"Infraestrutura bem feita é invisível para o usuário — e
+                                        isso é exatamente o objetivo."</p>
+                                    <div class="s6-card__rodape">
+                                        <span class="s6-card__nome">Ramon Silva</span>
+                                        <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- card 5 — James -->
+                            <div class="s6-card" style="background-image: url('img/time/james.jpg')">
+                                <div class="s6-card__topo">
+                                    <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="s6-card__logo">
+                                </div>
+                                <div class="s6-card__body">
+                                    <div class="s6-card__stat">Dev Frontend</div>
+                                    <div class="s6-card__cargo">Interfaces & Performance</div>
+                                    <p class="s6-card__quote">"Uma interface rápida e bonita não é luxo — é respeito
+                                        pelo tempo do usuário."</p>
+                                    <div class="s6-card__rodape">
+                                        <span class="s6-card__nome">James Dias</span>
+                                        <a href="#" class="s6-card__link" aria-label="Ver perfil">&#8599;</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- linha de rodapé com CTA -->
+                    <!-- <div class="s6-rodape">
+                        <p>Vamos construir algo incrível juntos.
+                            <a href="https://wa.me/559199999999" class="s6-cta">Fale com nossa equipe →</a>
+                        </p>
+                    </div> -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════
+             SECTION DARK — AZUL ESCURO
+             .col-line aqui tem bordas laterais azul-claro
+             (definido no CSS por .section_dark .col-line)
+        ═══════════════════════════════════════════════ -->
+        <section id="infraestrutura_confiável" class="section_dark">
+            <div class="col-line">
+                <div class="wrapper">
+                    <h2>Infraestrutura confiável para cada etapa do seu negócio.</h2>
+                    <p>Da primeira linha de código ao cliente número mil — a arrowwolf está com você.</p>
+                    <a href="https://wa.me/559199999999" class="btn-dark">Fale com nossa equipe →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════
+         FOOTER
+         Azul escuro. .col-line com bordas azul-claro.
+         Texto branco.
+    ═══════════════════════════════════════════════════ -->
+        <footer class="rodape-site">
+
+            <div class="footer-inner">
+                <!-- <div class="col-line">
+            <div class="wrapper"> -->
+                <!-- bloco superior: logo+slogan | navegação | ajuda | contato -->
+                <div class="footer-grid">
+                    <a href="index.html">
+                        <div class="footer-brand">
+                            <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="footer-logo">
+
+                        </div>
+                    </a>
+                    <div class="footer-col">
+                        <h4 class="footer-col__titulo">Navegação</h4>
+                        <ul class="footer-col__lista">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#produtos">Produtos</a></li>
+                            <li><a href="salespage.html">Soluções</a></li>
+                            <li><a href="#nosso_time">Nosso Time</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-col__titulo">Ajuda</h4>
+                        <ul class="footer-col__lista">
+                            <li><a href="#">Termos de Uso</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="formulario_de_contato.html">Atendimento</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 class="footer-col__titulo">Contato</h4>
+                        <ul class="footer-col__lista">
+                            <li><a href="mailto:arrowwolf.devs@gmail.com">arrowwolf.devs@gmail.com</a></li>
+                            <li><a href="tel:+559199999999">(91) 99999-9999</a></li>
+                        </ul>
+                        <!-- ícones sociais -->
+                        <div class="footer-social">
+                            <a href="https://wa.me/559199999999" target="_blank" aria-label="WhatsApp"
+                                class="footer-social__link">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="mailto:arrowwolf.devs@gmail.com" aria-label="E-mail" class="footer-social__link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://instagram.com/arrowwolf" target="_blank" aria-label="Instagram"
+                                class="footer-social__link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/arrowwolf" target="_blank" aria-label="LinkedIn"
+                                class="footer-social__link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- linha divisória + copyright -->
+                <div class="footer-bottom">
+                    <span>&copy; 2026 arrowwolf. Todos os direitos reservados.</span>
+                </div>
+                <!-- </div>
+        </div> -->
+            </div>
+        </footer>
+
+
+        <!-- ══════════════════════════════════════════════════
+         JavaScript
+         Funções/Interações das Sessões 4, 5 e 6
+    ═══════════════════════════════════════════════════ -->
+        <script src="js/scripts.js"></script>
+
+
+</body>
+
+</html>
