@@ -338,6 +338,23 @@ footer .col-line {
     }
 }
 
+@media (max-width: 800px) {
+    .nav_bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .elementos_menu_direita {
+        flex: 1;
+    }
+
+    .btn_hamburguer {
+        flex-shrink: 0;
+        margin-left: 0; /* remove o margin-left: auto se tiver */
+    }
+}
+
 /* =========================================================
    SECTION 1 — HERO COM VÍDEO
 
