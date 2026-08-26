@@ -186,7 +186,7 @@ footer .col-line {
 }
 
 .menu a:hover {
-    color: #635bff;
+    color: #0066ff;
 }
 
 /* lado direito: botões */
@@ -218,12 +218,12 @@ footer .col-line {
 } */
 
 .btn_contato {
-    background: #635bff;
+    background: #0066ff;
     color: #ffffff;
 }
 
 .btn_contato:hover {
-    background: #5148d9;
+    background: #003688;
 }
 
 /* =========================================================
@@ -469,7 +469,7 @@ footer .col-line {
     padding: 22px 30px;
     border: none;
     border-radius: 6px;
-    background: #635bff;
+    background: #0066ff;
     color: #ffffff;
     font-size: 18px;
     font-weight: 600;
@@ -478,7 +478,7 @@ footer .col-line {
 }
 
 .btn_section_1:hover {
-    background: #5148d9;
+    background: #003688;
     transform: translateY(-2px);
 }
 
@@ -672,7 +672,7 @@ footer .col-line {
 }
 
 .card_s2__link:hover {
-    color: #635bff;
+    color: #0066ff;
     /* text-decoration: underline; */
 }
 
@@ -750,13 +750,13 @@ footer .col-line {
 
 .card_lu:hover {
     transform: translateY(-10px);
-    border-color: #635bff;
+    border-color: #0066ff;
     box-shadow: 0 20px 40px rgba(99, 91, 255, .15);
 }
 
 .card_lu .card-icon {
     font-size: 2.5rem;
-    color: #635bff;
+    color: #0066ff;
     margin-bottom: 1.5rem;
     background: none;
     width: auto;
@@ -784,9 +784,9 @@ footer .col-line {
     display: block;
     margin-top: 28px;
     padding: .85rem;
-    border: 1px solid #635bff;
+    border: 1px solid #0066ff;
     border-radius: 5px;
-    color: #635bff;
+    color: #0066ff;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
@@ -796,7 +796,7 @@ footer .col-line {
 }
 
 .btn-card_lu:hover {
-    background: #635bff;
+    background: #0066ff;
     color: #fff;
 }
 
@@ -848,19 +848,19 @@ footer .col-line {
 }
 
 .card_lu.destaque:hover {
-    border-color: #635bff;
+    border-color: #0066ff;
     box-shadow: 0 20px 40px rgba(99, 91, 255, .15);
 }
 
 /* botão destaque igual aos outros */
 .btn-card_lu--destaque {
     background: transparent;
-    color: #635bff;
-    border-color: #635bff;
+    color: #0066ff;
+    border-color: #0066ff;
 }
 
 .btn-card_lu--destaque:hover {
-    background: #635bff;
+    background: #0066ff;
     color: #ffffff;
 }
 
@@ -922,7 +922,7 @@ footer .col-line {
     margin-top: 28px;
     padding: 13px 22px;
     border-radius: 6px;
-    background: #635bff;
+    background: #0066ff;
     color: #ffffff;
     text-decoration: none;
     font-size: 14px;
@@ -931,7 +931,7 @@ footer .col-line {
 }
 
 .section_dark .btn-dark:hover {
-    background: #5148d9;
+    background: #003688;
 }
 
 
@@ -1288,13 +1288,13 @@ footer .col-line {
 }
 
 .s5-btn--primary {
-    background: #635bff;
+    background: #0066ff;
     color: #ffffff;
     border: none;
 }
 
 .s5-btn--primary:hover {
-    background: #5148d9;
+    background: #0043a8;
     transform: translateY(-2px);
 }
 
@@ -1825,7 +1825,7 @@ footer .col-line {
 
 /* ── rodapé da seção: linha + CTA ───────────────────── */
 
-.s6-rodape {
+/* .s6-rodape {
     text-align: center;
     padding-top: 8px;
     border-top: 1px solid #e5e7eb;
@@ -1834,14 +1834,14 @@ footer .col-line {
 }
 
 .s6-cta {
-    color: #635bff;
+    color: #0066ff;
     text-decoration: none;
     font-weight: 600;
 }
 
 .s6-cta:hover {
     text-decoration: underline;
-}
+} */
 
 /* ── responsividade ──────────────────────────────────── */
 
