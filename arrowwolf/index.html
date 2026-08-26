@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-    <a href="https://wa.me/559199999999" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+<a href="https://wa.me/559199999999" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
     <i class="fab fa-whatsapp"></i>
-    </a>
+</a>
+
 <body>
 
     <!-- ══════════════════════════════════════════════════
@@ -39,9 +40,13 @@
                     </ul>
                 </div>
                 <div class="elementos_menu_esquerda">
-                    <!-- <button class="btn_direct_login"><a href="pattySystem1.html">Patty System</a></button> -->
                     <a href="https://wa.me/559199999999"><button class="btn_contato">Fale Conosco</button></a>
                 </div>
+                <button class="btn_hamburguer" id="btnHamburguer" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
@@ -265,7 +270,8 @@
 
                         <div class="text_box_section_4" data-img="3">
                             <h2 class="h2_section_4">Otimização</h2>
-                            <p class="p_section_4">Cada entrega é analisada e refinada para gerar o máximo resultado.</p>
+                            <p class="p_section_4">Cada entrega é analisada e refinada para gerar o máximo resultado.
+                            </p>
                         </div>
 
                     </div>
@@ -273,7 +279,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- ══════════════════════════════════════════════
              SECTION 5 — SITES (deck de cartas com fundo borrado)
  
@@ -281,7 +287,7 @@
              o mesmo caminho — o JS usa data-bg para o fundo
              borrado e o <img> exibe a imagem no card.
         ═══════════════════════════════════════════════ -->
-        <section class="section_5"  id="cases">
+        <section class="section_5" id="cases">
 
             <!-- fundo borrado: background-image injetado por JS -->
             <div class="s5-bg" id="s5-bg"></div>
@@ -391,7 +397,8 @@
                                 </div>
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Fundadora</div>
-                                    <div class="s6-card__cargo">Desenvolvedora, Engenheria de requisitos e Relacionamento com Cliente</div>
+                                    <div class="s6-card__cargo">Desenvolvedora, Engenheria de requisitos e
+                                        Relacionamento com Cliente</div>
                                     <p class="s6-card__quote">"Acredito que tecnologia só tem valor quando simplifica a
                                         vida real de pessoas reais."</p>
                                     <div class="s6-card__rodape">
@@ -408,7 +415,8 @@
                                 </div>
                                 <div class="s6-card__body">
                                     <div class="s6-card__stat">Fundador</div>
-                                    <div class="s6-card__cargo">Líder de projetos, Arquitetura, Desenvolvimento e Gestão</div>
+                                    <div class="s6-card__cargo">Líder de projetos, Arquitetura, Desenvolvimento e Gestão
+                                    </div>
                                     <p class="s6-card__quote">"Cada linha de código é uma decisão de negócio. Construo
                                         sistemas que escalam junto com o cliente."</p>
                                     <div class="s6-card__rodape">
@@ -504,74 +512,78 @@
          Texto branco.
     ═══════════════════════════════════════════════════ -->
         <footer>
-    <div class="col-line">
-        <div class="wrapper">
+            <div class="col-line">
+                <div class="wrapper">
 
-            <!-- bloco superior: logo+slogan | navegação | ajuda | contato -->
-            <div class="footer-grid">
+                    <!-- bloco superior: logo+slogan | navegação | ajuda | contato -->
+                    <div class="footer-grid">
 
-                <a href="index.html">
-                    <div class="footer-brand">
-                        <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="footer-logo">
-                    
+                        <a href="index.html">
+                            <div class="footer-brand">
+                                <img src="img/logoBrancoSemFundo.png" alt="arrowwolf" class="footer-logo">
+
+                            </div>
+                        </a>
+
+                        <div class="footer-col">
+                            <h4 class="footer-col__titulo">Navegação</h4>
+                            <ul class="footer-col__lista">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#produtos">Produtos</a></li>
+                                <li><a href="salespage.html">Soluções</a></li>
+                                <li><a href="#nosso_time">Nosso Time</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="footer-col__titulo">Ajuda</h4>
+                            <ul class="footer-col__lista">
+                                <li><a href="#">Termos de Uso</a></li>
+                                <li><a href="#">Política de Privacidade</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="formulario_de_contato.html">Atendimento</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4 class="footer-col__titulo">Contato</h4>
+                            <ul class="footer-col__lista">
+                                <li><a href="mailto:arrowwolf.devs@gmail.com">arrowwolf.devs@gmail.com</a></li>
+                                <li><a href="tel:+559199999999">(91) 99999-9999</a></li>
+                            </ul>
+                            <!-- ícones sociais -->
+                            <div class="footer-social">
+                                <a href="https://wa.me/559199999999" target="_blank" aria-label="WhatsApp"
+                                    class="footer-social__link">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="mailto:arrowwolf.devs@gmail.com" aria-label="E-mail"
+                                    class="footer-social__link">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="https://instagram.com/arrowwolf" target="_blank" aria-label="Instagram"
+                                    class="footer-social__link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://linkedin.com/company/arrowwolf" target="_blank" aria-label="LinkedIn"
+                                    class="footer-social__link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                </a>
 
-                <div class="footer-col">
-                    <h4 class="footer-col__titulo">Navegação</h4>
-                    <ul class="footer-col__lista">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#produtos">Produtos</a></li>
-                        <li><a href="salespage.html">Soluções</a></li>
-                        <li><a href="#nosso_time">Nosso Time</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4 class="footer-col__titulo">Ajuda</h4>
-                    <ul class="footer-col__lista">
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="formulario_de_contato.html">Atendimento</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4 class="footer-col__titulo">Contato</h4>
-                    <ul class="footer-col__lista">
-                        <li><a href="mailto:arrowwolf.devs@gmail.com">arrowwolf.devs@gmail.com</a></li>
-                        <li><a href="tel:+559199999999">(91) 99999-9999</a></li>
-                    </ul>
-                    <!-- ícones sociais -->
-                    <div class="footer-social">
-                        <a href="https://wa.me/559199999999" target="_blank" aria-label="WhatsApp" class="footer-social__link">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="mailto:arrowwolf.devs@gmail.com" aria-label="E-mail" class="footer-social__link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://instagram.com/arrowwolf" target="_blank" aria-label="Instagram" class="footer-social__link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://linkedin.com/company/arrowwolf" target="_blank" aria-label="LinkedIn" class="footer-social__link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                    <!-- linha divisória + copyright -->
+                    <div class="footer-bottom">
+                        <span>&copy; 2026 arrowwolf. Todos os direitos reservados.</span>
                     </div>
+
                 </div>
-
             </div>
+        </footer>
 
-            <!-- linha divisória + copyright -->
-            <div class="footer-bottom">
-                <span>&copy; 2026 arrowwolf.  Todos os direitos reservados.</span>
-            </div>
-
-        </div>
-    </div>
-</footer>
-
- <!-- ══════════════════════════════════════════════════
+        <!-- ══════════════════════════════════════════════════
          JavaScript
          Funções/Interações das Sessões 4, 5 e 6
     ═══════════════════════════════════════════════════ -->

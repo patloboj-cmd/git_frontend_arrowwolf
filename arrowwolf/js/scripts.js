@@ -1,3 +1,34 @@
+/* ── hamburguer ── */
+(function () {
+    const btn  = document.getElementById('btnHamburguer');
+    const menu = document.querySelector('.menu');
+    const cta  = document.querySelector('.elementos_menu_esquerda');
+    const links = menu ? menu.querySelectorAll('a') : [];
+
+    function fechar() {
+        btn.classList.remove('ativo');
+        menu.classList.remove('menu--aberto');
+        cta.classList.remove('menu--aberto');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', function () {
+        const aberto = menu.classList.toggle('menu--aberto');
+        cta.classList.toggle('menu--aberto', aberto);
+        btn.classList.toggle('ativo', aberto);
+        btn.setAttribute('aria-expanded', String(aberto));
+    });
+
+    // fecha ao clicar em qualquer link
+    links.forEach(function (a) {
+        a.addEventListener('click', fechar);
+    });
+
+    // fecha ao redimensionar de volta para desktop
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 800) fechar();
+    });
+}());
 /*
    SCRIPT DA SECTION 4 — PATTY SYSTEM
    ────────────────────────────────────
