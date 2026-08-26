@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
 :root {
 
@@ -48,7 +47,7 @@ html {
 
 body {
 
-    font-family: 'Rajdhani', 'Roboto', sans-serif;
+    font-family: '', 'Roboto', sans-serif;
 
     line-height: 1.6;
 

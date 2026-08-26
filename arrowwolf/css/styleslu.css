@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
 /* =========================================================
    RESET
    Zera margens e espaçamentos padrão do navegador.
@@ -19,11 +19,15 @@ html {
 
 html h1,
 h2,
-h3, p, span, a{
+h3{
     font-family: "Orbitron", sans-serif;
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: bold;
+}
+html p, span, a {
+    font-family: "PT Sans";
+    font-weight: 800;
 }
 
 /*
