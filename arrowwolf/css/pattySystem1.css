@@ -180,7 +180,42 @@ h1, h2, h3{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position:relative;
 }
+/* ---------- MENU HAMBÚRGUER (só CSS, sem JavaScript) ---------- */
+
+.menu-toggle-input{
+  display: none;
+}
+
+.menu-toggle-label{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+.menu-toggle-label span{
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.menu-toggle-input:checked ~ .menu-toggle-label span:nth-child(1){
+  transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle-input:checked ~ .menu-toggle-label span:nth-child(2){
+  opacity: 0;
+}
+.menu-toggle-input:checked ~ .menu-toggle-label span:nth-child(3){
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 .marca{
   display: flex;
   align-items: center;
@@ -204,6 +239,10 @@ h1, h2, h3{
   gap: 5px; /* distância entre os dois botões */
 }
 
+/* esse Login extra só existe pro celular; fica escondido no desktop */
+.nav-item-mobile{
+  display: none;
+}
 .topo nav ul{
   display: flex;
   gap: 32px;
@@ -728,43 +767,6 @@ footer .col-line .wrapper {
 }
 
 /* ---------------------------------------------------------------
-   11. RODAPÉ
---------------------------------------------------------------- */
-/* footer.rodape{
-  background: var(--navy);
-  color: #B9AEDD;
-  padding: 50px 0;
-}
-footer.rodape .container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-footer.rodape .marca{ color: #fff; }
-footer.rodape nav ul{
-  display: flex;
-  gap: 26px;
-}
-footer.rodape nav a{
-  font-size: 13.5px;
-  transition: color .2s ease;
-}
-footer.rodape nav a:hover{ color: #fff; }
-footer.rodape address{
-  font-style: normal;
-  font-size: 13px;
-}
-footer.rodape small{
-  display: block;
-  text-align: center;
-  margin-top: 30px;
-  font-size: 12.5px;
-  color: #6D5F9B;
-} */
-
-/* ---------------------------------------------------------------
    12. ANIMAÇÕES  
 --------------------------------------------------------------- */
 @keyframes flutuar{
@@ -818,6 +820,11 @@ footer.rodape small{
      que antes ficavam alinhados à esquerda */
   .hero-cta{ justify-content: center; }
 
+  /* no celular, mostra esse Login extra dentro do menu */
+  .nav-item-mobile{
+    display: block;
+  }
+  
   /* os cards de benefício, que eram 4 colunas, viram 2 colunas */
   .beneficios-lista{ grid-template-columns: repeat(2, 1fr); }
 
@@ -834,8 +841,49 @@ footer.rodape small{
 
   /* esconde o menu (Sobre, Depoimentos, Planos, Dúvidas) — não cabe
      mais na tela pequena junto com logo + botões */
-  .topo nav{ display: none; }
+  .menu-toggle-label{ display: flex; }
+    /* esconde o Login do topo no celular (ele já está duplicado dentro do menu) */
+  
+  .link-login{
+    display: none;
+  }
 
+  /* diminui a logo, que estava com 60px de altura — grande demais pro celular */
+  .marca-logo{
+    height: 40px;
+  }
+
+  /* diminui um pouco o botão "Quero começar grátis" pra caber melhor */
+  .header-botoes .btn{
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .topo nav{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    border-bottom: 1px solid var(--line);
+  }
+  .menu-toggle-input:checked ~ nav{
+    max-height: 300px;
+  }
+  .topo nav ul{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 20px 32px 24px;
+  }
+  .topo nav a{
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+  }
   /* diminui o tamanho da fonte do título principal do hero */
   .hero-texto h1{ font-size: 34px; }
 
@@ -844,9 +892,16 @@ footer.rodape small{
 
   /* o rodapé, que tinha logo/links/contato lado a lado,
      empilha tudo centralizado */
-  footer.rodape .container{ flex-direction: column; text-align: center; }
-}
-
+  footer.rodape .container{ 
+    flex-direction: column;
+    text-align: center; 
+  }
+   footer.rodape nav ul{
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+ }
 /* segundo @media, mais restrito: só entra em ação em telas AINDA menores
    (celulares estreitos, abaixo de 560px) — as regras aqui somam com as de cima */
 @media (max-width: 560px){
@@ -874,4 +929,5 @@ footer.rodape small{
   .beneficios-lista{
     grid-template-columns: 1fr;
   }
-}
+ }
+

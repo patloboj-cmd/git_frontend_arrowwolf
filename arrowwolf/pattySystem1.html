@@ -34,8 +34,14 @@
       <p class="marca">
         <img src="img/PATTYLOGOEDIT.png" alt="logomarca Patty Wolf´s" class="marca-logo">
            Patty's System
-      <!-- <p class="marca"><span class="marca-selo">PW</span>Patty Wolf's</p> -->
       </p>
+      
+      <!-- Menu hambúrguer checkbox escondido: guarda o estado "menu aberto/fechado" -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-input">
+    <!-- label ligado ao checkbox: ao clicar nele, o checkbox "marca" sozinho -->
+    <label for="menu-toggle" class="menu-toggle-label" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </label>
 
       <!-- <nav>: agrupa os links de navegação principal do site -->
       <nav aria-label="Navegação principal">
@@ -44,13 +50,15 @@
           <li><a href="#depoimentos">Depoimentos</a></li>
           <li><a href="#planos">Planos</a></li>
           <li><a href="#faq">Dúvidas</a></li>
+          <li class="nav-item-mobile"><a href="#">Login</a></li>
+          
         </ul>
       </nav>
 
-      <div class="header-botoes"></div>
-      <a href="#" class="link-login">Login</a>
-      <a href="formulario_Cadastro.html" class="btn btn-primary">Quero começar grátis</a>
-
+      <div class="header-botoes">
+        <a href="#" class="link-login">Login</a>
+        <a href="formulario_Cadastro.html" class="btn btn-primary">Quero começar grátis</a>
+      </div>
     </div>
   </header>
 
